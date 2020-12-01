@@ -408,9 +408,7 @@ RCT_ENUM_CONVERTER(
       // Added for Android compatibility
       @"numeric" : @(UIKeyboardTypeDecimalPad),
     }];
-    if (@available(iOS 10.0, tvOS 10.0, *)) {
-      temporaryMapping[@"ascii-capable-number-pad"] = @(UIKeyboardTypeASCIICapableNumberPad);
-    }
+    temporaryMapping[@"ascii-capable-number-pad"] = @(UIKeyboardTypeASCIICapableNumberPad);
     mapping = temporaryMapping;
   });
 
