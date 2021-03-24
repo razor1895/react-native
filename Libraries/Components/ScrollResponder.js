@@ -461,7 +461,7 @@ const ScrollResponderMixin = {
    * This is currently used to help focus child TextViews, but can also
    * be used to quickly scroll to any element we want to focus. Syntax:
    *
-   * `scrollResponderScrollTo(options: {x: number = 0; y: number = 0; animated: boolean = true})`
+   * `scrollResponderScrollTo(options: {x = 0; y = 0; animated: boolean = true})`
    *
    * Note: The weird argument signature is due to the fact that, for historical reasons,
    * the function also accepts separate arguments as as alternative to the options object.
@@ -526,7 +526,7 @@ const ScrollResponderMixin = {
 
   /**
    * A helper function to zoom to a specific rect in the scrollview. The argument has the shape
-   * {x: number; y: number; width: number; height: number; animated: boolean = true}
+   * {x; y; width; height; animated: boolean = true}
    *
    * @platform ios
    */

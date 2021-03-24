@@ -10,21 +10,19 @@
 
 'use strict';
 
-                                                                            
-
 class DatePickerAndroid {
-  static async open(options          )                                {
+  static async open(options) {
     throw new Error('DatePickerAndroid is not supported on this platform.');
   }
 
   /**
    * A date has been selected.
    */
-  static +dateSetAction                  = 'dateSetAction';
+  static dateSetAction = 'dateSetAction';
   /**
    * The dialog has been dismissed.
    */
-  static +dismissedAction                    = 'dismissedAction';
+  static dismissedAction = 'dismissedAction';
 }
 
 module.exports = DatePickerAndroid;

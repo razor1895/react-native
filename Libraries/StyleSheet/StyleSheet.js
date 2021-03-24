@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *      
+ *
  * @format
  */
 
@@ -16,18 +16,6 @@ const StyleSheetValidation = require('./StyleSheetValidation');
 
 const flatten = require('./flattenStyle');
 
-             
-                      
-                                         
-                                             
-                         
-                             
-                         
-                             
-                          
-                              
-                           
-
 /**
  * This type should be used as the type for a prop that is passed through
  * to a <View>'s `style` prop. This ensures call sites of the component
@@ -36,7 +24,6 @@ const flatten = require('./flattenStyle');
  * type Props = {style: ViewStyleProp}
  * const MyComponent = (props: Props) => <View style={props.style} />
  */
-                                                       
 
 /**
  * This type should be used as the type for a prop that is passed through
@@ -46,7 +33,6 @@ const flatten = require('./flattenStyle');
  * type Props = {style: TextStyleProp}
  * const MyComponent = (props: Props) => <Text style={props.style} />
  */
-                                                       
 
 /**
  * This type should be used as the type for a prop that is passed through
@@ -56,7 +42,6 @@ const flatten = require('./flattenStyle');
  * type Props = {style: ImageStyleProp}
  * const MyComponent = (props: Props) => <Image style={props.style} />
  */
-                                                         
 
 /**
  * WARNING: You probably shouldn't be using this type. This type
@@ -65,14 +50,13 @@ const flatten = require('./flattenStyle');
  * through to an underlying component. Using this is almost always a mistake
  * and using one of the other more restrictive types is likely the right choice.
  */
-                                                                                       
 
 /**
  * Utility type for getting the values for specific style keys.
  *
  * The following is bad because position is more restrictive than 'string':
  * ```
- * type Props = {position: string};
+ * type Props = {position};
  * ```
  *
  * You should use the following instead:
@@ -83,9 +67,6 @@ const flatten = require('./flattenStyle');
  *
  * This will correctly give you the type 'absolute' | 'relative'
  */
-                            
-                                                      
-                                                              
 
 /**
  * This type is an object of the different possible style
@@ -102,7 +83,6 @@ const flatten = require('./flattenStyle');
  * object of styles to pass to a View that can't be precomputed with
  * StyleSheet.create.
  */
-                                               
 
 /**
  * This type is an object of the different possible style
@@ -119,7 +99,6 @@ const flatten = require('./flattenStyle');
  * object of styles to pass to a Text that can't be precomputed with
  * StyleSheet.create.
  */
-                                               
 
 /**
  * This type is an object of the different possible style
@@ -136,7 +115,6 @@ const flatten = require('./flattenStyle');
  * object of styles to pass to an Image that can't be precomputed with
  * StyleSheet.create.
  */
-                                                 
 
 /**
  * WARNING: You probably shouldn't be using this type. This type is an object
@@ -150,9 +128,8 @@ const flatten = require('./flattenStyle');
  * This should only be used by very core utilities that operate on an object
  * containing any possible style value.
  */
-                                                                               
 
-let hairlineWidth         = PixelRatio.roundToNearestPixel(0.4);
+let hairlineWidth = PixelRatio.roundToNearestPixel(0.4);
 if (hairlineWidth === 0) {
   hairlineWidth = 1 / PixelRatio.get();
 }
@@ -239,7 +216,7 @@ module.exports = {
    * so `absoluteFill` can be used for convenience and to reduce duplication of these repeated
    * styles.
    */
-  absoluteFill: (absoluteFill     ), // TODO: This should be updated after we fix downstream Flow sites.
+  absoluteFill: absoluteFill, // TODO: This should be updated after we fix downstream Flow sites.
 
   /**
    * Sometimes you may want `absoluteFill` but with a couple tweaks - `absoluteFillObject` can be
@@ -261,12 +238,9 @@ module.exports = {
    * array, saving allocations and maintaining reference equality for
    * PureComponent checks.
    */
-  compose                                  (
-    style1    ,
-    style2    ,
-  )                         {
+  compose(style1, style2) {
     if (style1 != null && style2 != null) {
-      return ([style1, style2]                   );
+      return [style1, style2];
     } else {
       return style1 != null ? style1 : style2;
     }
@@ -322,10 +296,7 @@ module.exports = {
    * internally to process color and transform values. You should not use this
    * unless you really know what you are doing and have exhausted other options.
    */
-  setStyleAttributePreprocessor(
-    property        ,
-    process                            ,
-  ) {
+  setStyleAttributePreprocessor(property, process) {
     let value;
 
     if (ReactNativeStyleAttributes[property] === true) {
@@ -347,7 +318,7 @@ module.exports = {
   /**
    * Creates a StyleSheet style reference from the given object.
    */
-  create                         (obj   )               {
+  create(obj) {
     // TODO: This should return S as the return type. But first,
     // we need to codemod all the callsites that are typing this
     // return value as a number (even though it was opaque).

@@ -45,7 +45,7 @@ describe('newRangeCount', function() {
 describe('elementsThatOverlapOffsets', function() {
   it('handles fixed length', function() {
     const offsets = [0, 250, 350, 450];
-    function getFrameMetrics(index: number) {
+    function getFrameMetrics(index) {
       return {
         length: 100,
         offset: 100 * index,

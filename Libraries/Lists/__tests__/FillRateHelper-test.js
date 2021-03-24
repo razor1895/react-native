@@ -21,12 +21,12 @@ const dataGlobal = [
   {key: 'd'},
   {key: 'footer'},
 ];
-function getFrameMetrics(index: number) {
+function getFrameMetrics(index) {
   const frame = rowFramesGlobal[dataGlobal[index].key];
   return {length: frame.height, offset: frame.y, inLayout: frame.inLayout};
 }
 
-function computeResult({helper, props, state, scroll}): number {
+function computeResult({helper, props, state, scroll}) {
   helper.activate();
   return helper.computeBlankness(
     {

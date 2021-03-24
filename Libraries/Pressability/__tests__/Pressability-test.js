@@ -577,7 +577,7 @@ describe('Pressability', () => {
   describe('onPressOut', () => {
     it('is called after `onResponderRelease` before `delayPressIn`', () => {
       const {config, handlers} = createMockPressability({
-        delayPressIn: Number.EPSILON,
+        delayPressIn.EPSILON,
       });
 
       handlers.onStartShouldSetResponder();
@@ -593,7 +593,7 @@ describe('Pressability', () => {
 
     it('is called after `onResponderRelease` after `delayPressIn`', () => {
       const {config, handlers} = createMockPressability({
-        delayPressIn: Number.EPSILON,
+        delayPressIn.EPSILON,
       });
 
       handlers.onStartShouldSetResponder();
@@ -610,7 +610,7 @@ describe('Pressability', () => {
 
     it('is not called after `onResponderTerminate` before `delayPressIn`', () => {
       const {config, handlers} = createMockPressability({
-        delayPressIn: Number.EPSILON,
+        delayPressIn.EPSILON,
       });
 
       handlers.onStartShouldSetResponder();

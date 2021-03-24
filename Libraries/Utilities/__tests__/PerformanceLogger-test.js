@@ -11,7 +11,6 @@
 
 import GlobalPerformanceLogger from '../GlobalPerformanceLogger';
 import createPerformanceLogger from '../createPerformanceLogger';
-import type {IPerformanceLogger} from '../createPerformanceLogger';
 
 const TIMESPAN_1 = '<timespan_1>';
 const TIMESPAN_2 = '<timespan_2>';
@@ -101,7 +100,7 @@ describe('PerformanceLogger', () => {
   });
 
   it('global and local loggers do not conflict', () => {
-    let checkLogger = (logger: IPerformanceLogger, shouldBeEmpty: boolean) => {
+    let checkLogger = (logger, shouldBeEmpty) => {
       expect(Object.keys(logger.getTimespans())).toEqual(
         shouldBeEmpty ? [] : [TIMESPAN_1],
       );

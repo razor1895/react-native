@@ -51,7 +51,7 @@ function getReactTree() {
 }
 
 /*
-function dumpNode(node: Object, indentation: number) {
+function dumpNode(node: Object, indentation) {
   const data = getReactData(node);
   if (data.nodeType === 'Text') {
     return indent(indentation) + data.text + '\n';
@@ -88,7 +88,7 @@ function dumpNode(node: Object, indentation: number) {
   return output;
 }
 
-function isNormalProp(name: string): boolean {
+function isNormalProp(name): boolean {
   switch (name) {
     case 'children':
     case 'key':
@@ -99,7 +99,7 @@ function isNormalProp(name: string): boolean {
   }
 }
 
-function convertObject(object: Object, depth: number) {
+function convertObject(object: Object, depth) {
   if (depth >= MAX_DEPTH) {
     return '[...omitted]';
   }
@@ -135,7 +135,7 @@ function convertValue(value, depth = 0): ?string {
   }
 }
 
-function possiblyEllipsis(value: string) {
+function possiblyEllipsis(value) {
   if (value.length > MAX_STRING_LENGTH) {
     return value.slice(0, MAX_STRING_LENGTH) + '...';
   } else {
@@ -143,7 +143,7 @@ function possiblyEllipsis(value: string) {
   }
 }
 
-function indent(size: number) {
+function indent(size) {
   return ' '.repeat(size * INDENTATION_SIZE);
 }
 */

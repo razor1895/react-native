@@ -10,47 +10,6 @@
 
 'use strict';
 
-                                   
-                  
-   
-
-                                   
-                  
-                     
-                      
-                        
-   
-
-                                     
-                    
-                     
-                      
-                               
-   
-
-                          
-                             
-                             
-                                
-
-                               
-                 
-                                 
-                        
-   
-
-                                 
-                   
-                 
-   
-
-                                                                        
-
-                                  
-                   
-                                             
-   
-
 // Capturing groups:
 // 1. function name
 // 2. is this a native stack frame?
@@ -64,7 +23,7 @@ const RE_FRAME = /^ {4}at (.+?)(?: \((native)\)?| \((address at )?(.+?):(\d+):(\
 // 1. count of skipped frames
 const RE_SKIPPED = /^ {4}... skipping (\d+) frames$/;
 
-function parseLine(line        )                    {
+function parseLine(line) {
   const asFrame = line.match(RE_FRAME);
   if (asFrame) {
     return {
@@ -97,7 +56,7 @@ function parseLine(line        )                    {
   }
 }
 
-module.exports = function parseHermesStack(stack        )                    {
+module.exports = function parseHermesStack(stack) {
   const lines = stack.split(/\n/);
   let entries = [];
   let lastMessageLine = -1;

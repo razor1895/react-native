@@ -56,13 +56,13 @@ if (
 export class URLSearchParams {
   _searchParams = [];
 
-  constructor(params: any) {
+  constructor(params) {
     if (typeof params === 'object') {
       Object.keys(params).forEach(key => this.append(key, params[key]));
     }
   }
 
-  append(key: string, value: string) {
+  append(key, value) {
     this._searchParams.push([key, value]);
   }
 
@@ -105,7 +105,7 @@ export class URLSearchParams {
   }
 }
 
-function validateBaseUrl(url: string) {
+function validateBaseUrl(url) {
   // from this MIT-licensed gist: https://gist.github.com/dperini/729294
   return /^(?:(?:(?:https?|ftp):)?\/\/)(?:(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))?)(?::\d{2,5})?(?:[/?#]\S*)?$/i.test(
     url,
@@ -115,7 +115,7 @@ function validateBaseUrl(url: string) {
 export class URL {
   _searchParamsInstance = null;
 
-  static createObjectURL(blob: Blob) {
+  static createObjectURL(blob) {
     if (BLOB_URL_PREFIX === null) {
       throw new Error('Cannot create URL for blob!');
     }
@@ -124,11 +124,11 @@ export class URL {
     }&size=${blob.size}`;
   }
 
-  static revokeObjectURL(url: string) {
+  static revokeObjectURL(url) {
     // Do nothing.
   }
 
-  constructor(url: string, base: string) {
+  constructor(url, base) {
     let baseUrl = null;
     if (!base || validateBaseUrl(url)) {
       this._url = url;
@@ -169,7 +169,7 @@ export class URL {
     throw new Error('not implemented');
   }
 
-  get href(): string {
+  get href() {
     return this.toString();
   }
 
@@ -197,18 +197,18 @@ export class URL {
     throw new Error('not implemented');
   }
 
-  get searchParams(): URLSearchParams {
+  get searchParams() {
     if (this._searchParamsInstance == null) {
       this._searchParamsInstance = new URLSearchParams();
     }
     return this._searchParamsInstance;
   }
 
-  toJSON(): string {
+  toJSON() {
     return this.toString();
   }
 
-  toString(): string {
+  toString() {
     if (this._searchParamsInstance === null) {
       return this._url;
     }

@@ -11,7 +11,7 @@ import NativeDevSettings from '../NativeModules/specs/NativeDevSettings';
 import NativeEventEmitter from '../EventEmitter/NativeEventEmitter';
 
 class DevSettings extends NativeEventEmitter {
-  _menuItems: Map<string, () => mixed>;
+  _menuItems;
 
   constructor() {
     super(NativeDevSettings);
@@ -19,7 +19,7 @@ class DevSettings extends NativeEventEmitter {
     this._menuItems = new Map();
   }
 
-  addMenuItem(title: string, handler: () => mixed) {
+  addMenuItem(title, handler) {
     // Make sure items are not added multiple times. This can
     // happen when hot reloading the module that registers the
     // menu items. The title is used as the id which means we
@@ -39,7 +39,7 @@ class DevSettings extends NativeEventEmitter {
     });
   }
 
-  reload(reason: string) {
+  reload(reason) {
     if (typeof NativeDevSettings.reloadWithReason === 'function') {
       NativeDevSettings.reloadWithReason(reason || 'Uncategorized from JS');
     } else {
@@ -58,7 +58,7 @@ class DevSettings extends NativeEventEmitter {
 
 // Avoid including the full `NativeDevSettings` class in prod.
 class NoopDevSettings {
-  addMenuItem(title: string, handler: () => mixed) {}
+  addMenuItem(title, handler) {}
   reload() {}
 }
 

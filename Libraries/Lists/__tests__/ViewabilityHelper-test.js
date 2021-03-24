@@ -14,11 +14,11 @@ const ViewabilityHelper = require('../ViewabilityHelper');
 
 let rowFrames;
 let data;
-function getFrameMetrics(index: number) {
+function getFrameMetrics(index) {
   const frame = rowFrames[data[index].key];
   return {length: frame.height, offset: frame.y};
 }
-function createViewToken(index: number, isViewable: boolean) {
+function createViewToken(index, isViewable) {
   return {key: data[index].key, isViewable};
 }
 

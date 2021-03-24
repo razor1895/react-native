@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *      
+ *
  * @format
  */
 
@@ -19,143 +19,7 @@ const StyleSheet = require('../StyleSheet/StyleSheet');
 
 const invariant = require('invariant');
 
-import {                        } from '../Components/ScrollView/ScrollView';
-                                                                                                             
-                                                            
-             
-            
-                                
-                             
-                                                                       
-
-                              
-     
-                                                                                           
-                                                                   
-     
-                               
-   
-                              
-     
-                                                                           
-    
-                  
-                                                                                    
-                                                                               
-             
-                                                       
-                                                
-                                
-                                                  
-                                                    
-                                                       
-                                                        
-                                          
-                      
-                                  
-             
-           
-    
-                                                                                        
-                                                                                                
-                                                                                            
-                                                                                                   
-                   
-     
-                                      
-
-     
-                                                                             
-     
-                                     
-     
-                                                                                                  
-                                                                                               
-                                                       
-     
-                  
-     
-                                                                                                    
-                                                                                                 
-                                                     
-    
-                                          
-                                                                    
-           
-    
-                                                                                                
-                                                                                             
-                                      
-     
-                   
-                        
-                  
-        
-                   
-                   
-                  
-       
-    
-     
-                                                                                          
-     
-                        
-     
-                                                                                                    
-                                                                                                   
-                                                               
-     
-                             
-     
-                                                                                            
-                                                                                              
-                                                                                               
-                                       
-     
-                               
-     
-                                                                   
-     
-                      
-     
-                                                                                                  
-                                                                                                  
-                                                    
-     
-                                                       
-     
-                                                                                            
-                                                                                                
-     
-                     
-     
-                                                              
-     
-                             
-   
-
-                              
-                          
-                          
-   
-
-                                                                        
-
-                            
-           
-                         
-     
-                                                              
-                                                                        
-                                                                          
-                                                                    
-                                                                        
-         
-      
-    
-                          
-     
-  
+import {} from '../Components/ScrollView/ScrollView';
 
 const defaultProps = {
   ...VirtualizedList.defaultProps,
@@ -167,7 +31,6 @@ const defaultProps = {
    */
   removeClippedSubviews: Platform.OS === 'android',
 };
-                                               
 
 /**
  * A performant interface for rendering simple, flat lists, supporting the most handy features:
@@ -227,7 +90,7 @@ const defaultProps = {
  *
  *       _keyExtractor = (item, index) => item.id;
  *
- *       _onPressItem = (id: string) => {
+ *       _onPressItem = (id) => {
  *         // updater functions are preferred for transactional updates
  *         this.setState((state) => {
  *           // copy the map rather than modifying state.
@@ -277,13 +140,13 @@ const defaultProps = {
  *
  * Also inherits [ScrollView Props](docs/scrollview.html#props), unless it is nested in another FlatList of same orientation.
  */
-class FlatList        extends React.PureComponent                     {
-  static defaultProps               = defaultProps;
-  props              ;
+class FlatList extends React.PureComponent {
+  static defaultProps = defaultProps;
+  props;
   /**
    * Scrolls to the end of the content. May be janky without `getItemLayout` prop.
    */
-  scrollToEnd(params                              ) {
+  scrollToEnd(params) {
     if (this._listRef) {
       this._listRef.scrollToEnd(params);
     }
@@ -297,13 +160,7 @@ class FlatList        extends React.PureComponent                     {
    * Note: cannot scroll to locations outside the render window without specifying the
    * `getItemLayout` prop.
    */
-  scrollToIndex(params   
-                        
-                  
-                        
-                          
-       
-   ) {
+  scrollToIndex(params) {
     if (this._listRef) {
       this._listRef.scrollToIndex(params);
     }
@@ -315,12 +172,7 @@ class FlatList        extends React.PureComponent                     {
    * Note: cannot scroll to locations outside the render window without specifying the
    * `getItemLayout` prop.
    */
-  scrollToItem(params   
-                        
-                
-                          
-       
-   ) {
+  scrollToItem(params) {
     if (this._listRef) {
       this._listRef.scrollToItem(params);
     }
@@ -331,7 +183,7 @@ class FlatList        extends React.PureComponent                     {
    *
    * Check out [scrollToOffset](docs/virtualizedlist.html#scrolltooffset) of VirtualizedList
    */
-  scrollToOffset(params                                            ) {
+  scrollToOffset(params) {
     if (this._listRef) {
       this._listRef.scrollToOffset(params);
     }
@@ -362,7 +214,7 @@ class FlatList        extends React.PureComponent                     {
   /**
    * Provides a handle to the underlying scroll responder.
    */
-  getScrollResponder()                       {
+  getScrollResponder() {
     if (this._listRef) {
       return this._listRef.getScrollResponder();
     }
@@ -371,27 +223,25 @@ class FlatList        extends React.PureComponent                     {
   /**
    * Provides a reference to the underlying host component
    */
-  getNativeScrollRef() 
-                                    
-                                                       {
+  getNativeScrollRef() {
     if (this._listRef) {
       return this._listRef.getScrollRef();
     }
   }
 
-  getScrollableNode()      {
+  getScrollableNode() {
     if (this._listRef) {
       return this._listRef.getScrollableNode();
     }
   }
 
-  setNativeProps(props                        ) {
+  setNativeProps(props) {
     if (this._listRef) {
       this._listRef.setNativeProps(props);
     }
   }
 
-  constructor(props              ) {
+  constructor(props) {
     super(props);
     this._checkProps(this.props);
     if (this.props.viewabilityConfigCallbackPairs) {
@@ -416,7 +266,7 @@ class FlatList        extends React.PureComponent                     {
     }
   }
 
-  componentDidUpdate(prevProps              ) {
+  componentDidUpdate(prevProps) {
     invariant(
       prevProps.numColumns === this.props.numColumns,
       'Changing numColumns on the fly is not supported. Change the key prop on FlatList when ' +
@@ -439,14 +289,14 @@ class FlatList        extends React.PureComponent                     {
     this._checkProps(this.props);
   }
 
-  _listRef                                           ;
-  _virtualizedListPairs                                       = [];
+  _listRef;
+  _virtualizedListPairs = [];
 
   _captureRef = ref => {
     this._listRef = ref;
   };
 
-  _checkProps(props              ) {
+  _checkProps(props) {
     const {
       // $FlowFixMe this prop doesn't exist, is only used for an invariant
       getItem,
@@ -477,7 +327,7 @@ class FlatList        extends React.PureComponent                     {
     );
   }
 
-  _getItem = (data              , index        ) => {
+  _getItem = (data, index) => {
     const {numColumns} = this.props;
     if (numColumns > 1) {
       const ret = [];
@@ -493,7 +343,7 @@ class FlatList        extends React.PureComponent                     {
     }
   };
 
-  _getItemCount = (data               )         => {
+  _getItemCount = data => {
     if (data) {
       const {numColumns} = this.props;
       return numColumns > 1 ? Math.ceil(data.length / numColumns) : data.length;
@@ -502,7 +352,7 @@ class FlatList        extends React.PureComponent                     {
     }
   };
 
-  _keyExtractor = (items                      , index        ) => {
+  _keyExtractor = (items, index) => {
     const {keyExtractor, numColumns} = this.props;
     if (numColumns > 1) {
       invariant(
@@ -520,7 +370,7 @@ class FlatList        extends React.PureComponent                     {
     }
   };
 
-  _pushMultiColumnViewable(arr                  , v           )       {
+  _pushMultiColumnViewable(arr, v) {
     const {numColumns, keyExtractor} = this.props;
     v.item.forEach((item, ii) => {
       invariant(v.index != null, 'Missing index!');
@@ -529,18 +379,8 @@ class FlatList        extends React.PureComponent                     {
     });
   }
 
-  _createOnViewableItemsChanged(
-    onViewableItemsChanged           
-                                      
-                                
-         
-              ,
-  ) {
-    return (info   
-                                      
-                                
-         
-     ) => {
+  _createOnViewableItemsChanged(onViewableItemsChanged) {
+    return info => {
       const {numColumns} = this.props;
       if (onViewableItemsChanged) {
         if (numColumns > 1) {
@@ -570,7 +410,7 @@ class FlatList        extends React.PureComponent                     {
       ? 'ListItemComponent'
       : 'renderItem';
 
-    const renderer = (props)             => {
+    const renderer = props => {
       if (ListItemComponent) {
         // $FlowFixMe Component isn't valid
         return <ListItemComponent {...props} />;
@@ -585,7 +425,7 @@ class FlatList        extends React.PureComponent                     {
       /* $FlowFixMe(>=0.111.0 site=react_native_fb) This comment suppresses an
        * error found when Flow v0.111 was deployed. To see the error, delete
        * this comment and run Flow. */
-      [virtualizedListRenderKey]: (info                        ) => {
+      [virtualizedListRenderKey]: info => {
         if (numColumns > 1) {
           const {item, index} = info;
           invariant(
@@ -617,7 +457,7 @@ class FlatList        extends React.PureComponent                     {
     };
   };
 
-  render()             {
+  render() {
     const {numColumns, columnWrapperStyle, ...restProps} = this.props;
 
     return (
