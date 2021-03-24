@@ -6,7 +6,7 @@
  *
  * @emails oncall+react_native
  * @format
- * @flow-strict
+ *      -strict
  */
 
 'use strict';

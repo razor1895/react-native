@@ -4,13 +4,13 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow strict-local
+ *       strict-local
  * @format
  */
 
 'use strict';
 import Colors from './Colors';
-import type {Node} from 'react';
+                                
 import openURLInBrowser from 'react-native/Libraries/Core/Devtools/openURLInBrowser';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
@@ -70,7 +70,7 @@ const links = [
   },
 ];
 
-const LinkList = (): Node => (
+const LinkList = ()       => (
   <View style={styles.container}>
     {links.map(({id, title, link, description}) => {
       return (

@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -16,26 +16,26 @@ const invariant = require('invariant');
 
 import NativeSettingsManager from './NativeSettingsManager';
 
-const subscriptions: Array<{
-  keys: Array<string>,
-  callback: ?Function,
-  ...
-}> = [];
+const subscriptions         
+                      
+                      
+     
+   = [];
 
 const Settings = {
   _settings: (NativeSettingsManager &&
-    NativeSettingsManager.getConstants().settings: any),
+    NativeSettingsManager.getConstants().settings     ),
 
-  get(key: string): mixed {
+  get(key        )        {
     return this._settings[key];
   },
 
-  set(settings: Object) {
+  set(settings        ) {
     this._settings = Object.assign(this._settings, settings);
     NativeSettingsManager.setValues(settings);
   },
 
-  watchKeys(keys: string | Array<string>, callback: Function): number {
+  watchKeys(keys                        , callback          )         {
     if (typeof keys === 'string') {
       keys = [keys];
     }
@@ -50,13 +50,13 @@ const Settings = {
     return sid;
   },
 
-  clearWatch(watchId: number) {
+  clearWatch(watchId        ) {
     if (watchId < subscriptions.length) {
       subscriptions[watchId] = {keys: [], callback: null};
     }
   },
 
-  _sendObservations(body: Object) {
+  _sendObservations(body        ) {
     Object.keys(body).forEach(key => {
       const newValue = body[key];
       const didChange = this._settings[key] !== newValue;

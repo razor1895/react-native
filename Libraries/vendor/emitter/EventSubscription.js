@@ -5,27 +5,27 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
 'use strict';
 
-import type EventSubscriptionVendor from './EventSubscriptionVendor';
+                                                                     
 
 /**
  * EventSubscription represents a subscription to a particular event. It can
  * remove its own subscription.
  */
 class EventSubscription {
-  eventType: string;
-  key: number;
-  subscriber: EventSubscriptionVendor;
+  eventType        ;
+  key        ;
+  subscriber                         ;
 
   /**
    * @param {EventSubscriptionVendor} subscriber the subscriber that controls
    *   this subscription.
    */
-  constructor(subscriber: EventSubscriptionVendor) {
+  constructor(subscriber                         ) {
     this.subscriber = subscriber;
   }
 

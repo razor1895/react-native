@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -23,7 +23,7 @@ const invariant = require('invariant');
 const ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 class StyleSheetValidation {
-  static validateStyleProp(prop: string, style: Object, caller: string) {
+  static validateStyleProp(prop        , style        , caller        ) {
     if (!__DEV__ || global.__RCTProfileIsProfiling) {
       return;
     }
@@ -47,7 +47,7 @@ class StyleSheetValidation {
     }
   }
 
-  static validateStyle(name: string, styles: Object) {
+  static validateStyle(name        , styles        ) {
     if (!__DEV__ || global.__RCTProfileIsProfiling) {
       return;
     }
@@ -77,7 +77,7 @@ class StyleSheetValidation {
   }
 }
 
-const styleError = function(message1, style, caller?, message2?) {
+const styleError = function(message1, style, caller , message2 ) {
   invariant(
     false,
     message1 +

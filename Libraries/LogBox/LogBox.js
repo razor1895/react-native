@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
@@ -15,7 +15,7 @@ import RCTLog from '../Utilities/RCTLog';
 import * as LogBoxData from './Data/LogBoxData';
 import {parseLogBoxLog, parseInterpolation} from './Data/parseLogBoxLog';
 
-import type {IgnorePattern} from './Data/LogBoxData';
+                                                     
 
 let LogBox;
 
@@ -29,29 +29,29 @@ if (__DEV__) {
   let errorImpl = error.bind(console);
   let warnImpl = warn.bind(console);
 
-  (console: any).error = function(...args) {
+  (console     ).error = function(...args) {
     errorImpl(...args);
   };
-  (console: any).warn = function(...args) {
+  (console     ).warn = function(...args) {
     warnImpl(...args);
   };
 
   LogBox = {
-    ignoreLogs: (patterns: $ReadOnlyArray<IgnorePattern>): void => {
+    ignoreLogs: (patterns                               )       => {
       LogBoxData.addIgnorePatterns(patterns);
     },
 
-    ignoreAllLogs: (value?: ?boolean): void => {
+    ignoreAllLogs: (value           )       => {
       LogBoxData.setDisabled(value == null ? true : value);
     },
 
-    uninstall: (): void => {
+    uninstall: ()       => {
       errorImpl = error;
       warnImpl = warn;
-      delete (console: any).disableLogBox;
+      delete (console     ).disableLogBox;
     },
 
-    install: (): void => {
+    install: ()       => {
       // Trigger lazy initialization of module.
       require('../NativeModules/specs/NativeLogBox');
 
@@ -63,14 +63,14 @@ if (__DEV__) {
         registerWarning(...args);
       };
 
-      if ((console: any).disableYellowBox === true) {
+      if ((console     ).disableYellowBox === true) {
         LogBoxData.setDisabled(true);
         console.warn(
           'console.disableYellowBox has been deprecated and will be removed in a future release. Please use LogBox.ignoreAllLogs(value) instead.',
         );
       }
 
-      (Object.defineProperty: any)(console, 'disableYellowBox', {
+      (Object.defineProperty     )(console, 'disableYellowBox', {
         configurable: true,
         get: () => LogBoxData.isDisabled(),
         set: value => {
@@ -101,7 +101,7 @@ if (__DEV__) {
     return typeof args[0] === 'string' && args[0].startsWith('Warning: ');
   };
 
-  const registerWarning = (...args): void => {
+  const registerWarning = (...args)       => {
     // Let warnings within LogBox itself fall through.
     if (LogBoxData.isLogBoxErrorMessage(String(args[0]))) {
       error.call(console, ...args);
@@ -129,7 +129,7 @@ if (__DEV__) {
     }
   };
 
-  const registerError = (...args): void => {
+  const registerError = (...args)       => {
     // Let errors within LogBox itself fall through.
     if (LogBoxData.isLogBoxErrorMessage(args[0])) {
       error.call(console, ...args);
@@ -185,28 +185,28 @@ if (__DEV__) {
   };
 } else {
   LogBox = {
-    ignoreLogs: (patterns: $ReadOnlyArray<IgnorePattern>): void => {
+    ignoreLogs: (patterns                               )       => {
       // Do nothing.
     },
 
-    ignoreAllLogs: (value?: ?boolean): void => {
+    ignoreAllLogs: (value           )       => {
       // Do nothing.
     },
 
-    install: (): void => {
+    install: ()       => {
       // Do nothing.
     },
 
-    uninstall: (): void => {
+    uninstall: ()       => {
       // Do nothing.
     },
   };
 }
 
-module.exports = (LogBox: {
-  ignoreLogs($ReadOnlyArray<IgnorePattern>): void,
-  ignoreAllLogs(?boolean): void,
-  install(): void,
-  uninstall(): void,
-  ...
-});
+module.exports = (LogBox   
+                                                  
+                                
+                  
+                    
+     
+ );

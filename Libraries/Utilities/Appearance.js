@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -13,20 +13,20 @@
 import EventEmitter from '../vendor/emitter/EventEmitter';
 import NativeEventEmitter from '../EventEmitter/NativeEventEmitter';
 import NativeAppearance, {
-  type AppearancePreferences,
-  type ColorSchemeName,
+                             
+                       
 } from './NativeAppearance';
 import invariant from 'invariant';
 import {isAsyncDebugging} from './DebugEnvironment';
 
-type AppearanceListener = (preferences: AppearancePreferences) => void;
+                                                                       
 const eventEmitter = new EventEmitter();
 
 if (NativeAppearance) {
   const nativeEventEmitter = new NativeEventEmitter(NativeAppearance);
   nativeEventEmitter.addListener(
     'appearanceChanged',
-    (newAppearance: AppearancePreferences) => {
+    (newAppearance                       ) => {
       const {colorScheme} = newAppearance;
       invariant(
         colorScheme === 'dark' ||
@@ -50,7 +50,7 @@ module.exports = {
    *
    * @returns {?ColorSchemeName} Value for the color scheme preference.
    */
-  getColorScheme(): ?ColorSchemeName {
+  getColorScheme()                   {
     if (__DEV__) {
       if (isAsyncDebugging) {
         // Hard code light theme when using the async debugger as
@@ -60,7 +60,7 @@ module.exports = {
     }
 
     // TODO: (hramos) T52919652 Use ?ColorSchemeName once codegen supports union
-    const nativeColorScheme: ?string =
+    const nativeColorScheme          =
       NativeAppearance == null
         ? null
         : NativeAppearance.getColorScheme() || null;
@@ -75,13 +75,13 @@ module.exports = {
   /**
    * Add an event handler that is fired when appearance preferences change.
    */
-  addChangeListener(listener: AppearanceListener): void {
+  addChangeListener(listener                    )       {
     eventEmitter.addListener('change', listener);
   },
   /**
    * Remove an event handler.
    */
-  removeChangeListener(listener: AppearanceListener): void {
+  removeChangeListener(listener                    )       {
     eventEmitter.removeListener('change', listener);
   },
 };

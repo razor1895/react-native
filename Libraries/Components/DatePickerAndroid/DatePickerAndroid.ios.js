@@ -5,26 +5,26 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
 'use strict';
 
-import type {Options, DatePickerOpenAction} from './DatePickerAndroidTypes';
+                                                                            
 
 class DatePickerAndroid {
-  static async open(options: ?Options): Promise<DatePickerOpenAction> {
+  static async open(options          )                                {
     throw new Error('DatePickerAndroid is not supported on this platform.');
   }
 
   /**
    * A date has been selected.
    */
-  static +dateSetAction: 'dateSetAction' = 'dateSetAction';
+  static +dateSetAction                  = 'dateSetAction';
   /**
    * The dialog has been dismissed.
    */
-  static +dismissedAction: 'dismissedAction' = 'dismissedAction';
+  static +dismissedAction                    = 'dismissedAction';
 }
 
 module.exports = DatePickerAndroid;

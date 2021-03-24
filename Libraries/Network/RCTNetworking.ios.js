@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -15,8 +15,8 @@ const NativeEventEmitter = require('../EventEmitter/NativeEventEmitter');
 const convertRequestBody = require('./convertRequestBody');
 
 import NativeNetworkingIOS from './NativeNetworkingIOS';
-import type {NativeResponseType} from './XMLHttpRequest';
-import type {RequestBody} from './convertRequestBody';
+                                                         
+                                                      
 
 class RCTNetworking extends NativeEventEmitter {
   constructor() {
@@ -24,16 +24,16 @@ class RCTNetworking extends NativeEventEmitter {
   }
 
   sendRequest(
-    method: string,
-    trackingName: string,
-    url: string,
-    headers: Object,
-    data: RequestBody,
-    responseType: NativeResponseType,
-    incrementalUpdates: boolean,
-    timeout: number,
-    callback: (requestId: number) => void,
-    withCredentials: boolean,
+    method        ,
+    trackingName        ,
+    url        ,
+    headers        ,
+    data             ,
+    responseType                    ,
+    incrementalUpdates         ,
+    timeout        ,
+    callback                             ,
+    withCredentials         ,
   ) {
     const body = convertRequestBody(data);
     NativeNetworkingIOS.sendRequest(
@@ -51,13 +51,13 @@ class RCTNetworking extends NativeEventEmitter {
     );
   }
 
-  abortRequest(requestId: number) {
+  abortRequest(requestId        ) {
     NativeNetworkingIOS.abortRequest(requestId);
   }
 
-  clearCookies(callback: (result: boolean) => void) {
+  clearCookies(callback                           ) {
     NativeNetworkingIOS.clearCookies(callback);
   }
 }
 
-module.exports = (new RCTNetworking(): RCTNetworking);
+module.exports = (new RCTNetworking()               );

@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
@@ -18,9 +18,9 @@ const NativeAnimatedHelper = require('../NativeAnimatedHelper');
 const flattenStyle = require('../../../StyleSheet/flattenStyle');
 
 class AnimatedStyle extends AnimatedWithChildren {
-  _style: Object;
+  _style        ;
 
-  constructor(style: any) {
+  constructor(style     ) {
     super();
     style = flattenStyle(style) || {};
     if (style.transform) {
@@ -53,7 +53,7 @@ class AnimatedStyle extends AnimatedWithChildren {
     return updatedStyle;
   }
 
-  __getValue(): Object {
+  __getValue()         {
     return this._walkStyleAndGetValues(this._style);
   }
 
@@ -72,11 +72,11 @@ class AnimatedStyle extends AnimatedWithChildren {
     return updatedStyle;
   }
 
-  __getAnimatedValue(): Object {
+  __getAnimatedValue()         {
     return this._walkStyleAndGetAnimatedValues(this._style);
   }
 
-  __attach(): void {
+  __attach()       {
     for (const key in this._style) {
       const value = this._style[key];
       if (value instanceof AnimatedNode) {
@@ -85,7 +85,7 @@ class AnimatedStyle extends AnimatedWithChildren {
     }
   }
 
-  __detach(): void {
+  __detach()       {
     for (const key in this._style) {
       const value = this._style[key];
       if (value instanceof AnimatedNode) {
@@ -105,7 +105,7 @@ class AnimatedStyle extends AnimatedWithChildren {
     super.__makeNative();
   }
 
-  __getNativeConfig(): Object {
+  __getNativeConfig()         {
     const styleConfig = {};
     for (const styleKey in this._style) {
       if (this._style[styleKey] instanceof AnimatedNode) {

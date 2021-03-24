@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
@@ -18,17 +18,17 @@ const invariant = require('invariant');
 
 const {shouldUseNativeDriver} = require('./NativeAnimatedHelper');
 
-export type Mapping = {[key: string]: Mapping, ...} | AnimatedValue;
-export type EventConfig = {
-  listener?: ?Function,
-  useNativeDriver: boolean,
-};
+                                                                    
+                           
+                       
+                           
+  
 
 function attachNativeEvent(
-  viewRef: any,
-  eventName: string,
-  argMapping: $ReadOnlyArray<?Mapping>,
-): {detach: () => void} {
+  viewRef     ,
+  eventName        ,
+  argMapping                          ,
+)                       {
   // Find animated values in `argMapping` and create an array representing their
   // key path inside the `nativeEvent` object. Ex.: ['contentOffset', 'x'].
   const eventMappings = [];
@@ -128,13 +128,13 @@ function validateMapping(argMapping, args) {
 }
 
 class AnimatedEvent {
-  _argMapping: $ReadOnlyArray<?Mapping>;
-  _listeners: Array<Function> = [];
-  _callListeners: Function;
-  _attachedEvent: ?{detach: () => void, ...};
-  __isNative: boolean;
+  _argMapping                          ;
+  _listeners                  = [];
+  _callListeners          ;
+  _attachedEvent                            ;
+  __isNative         ;
 
-  constructor(argMapping: $ReadOnlyArray<?Mapping>, config: EventConfig) {
+  constructor(argMapping                          , config             ) {
     this._argMapping = argMapping;
 
     if (config == null) {
@@ -150,15 +150,15 @@ class AnimatedEvent {
     this.__isNative = shouldUseNativeDriver(config);
   }
 
-  __addListener(callback: Function): void {
+  __addListener(callback          )       {
     this._listeners.push(callback);
   }
 
-  __removeListener(callback: Function): void {
+  __removeListener(callback          )       {
     this._listeners = this._listeners.filter(listener => listener !== callback);
   }
 
-  __attach(viewRef: any, eventName: string) {
+  __attach(viewRef     , eventName        ) {
     invariant(
       this.__isNative,
       'Only native driven events need to be attached.',
@@ -171,7 +171,7 @@ class AnimatedEvent {
     );
   }
 
-  __detach(viewTag: any, eventName: string) {
+  __detach(viewTag     , eventName        ) {
     invariant(
       this.__isNative,
       'Only native driven events need to be detached.',
@@ -180,11 +180,11 @@ class AnimatedEvent {
     this._attachedEvent && this._attachedEvent.detach();
   }
 
-  __getHandler(): any | ((...args: any) => void) {
+  __getHandler()                                 {
     if (this.__isNative) {
       if (__DEV__) {
         let validatedMapping = false;
-        return (...args: any) => {
+        return (...args     ) => {
           if (!validatedMapping) {
             validateMapping(this._argMapping, args);
             validatedMapping = true;
@@ -197,7 +197,7 @@ class AnimatedEvent {
     }
 
     let validatedMapping = false;
-    return (...args: any) => {
+    return (...args     ) => {
       if (__DEV__ && !validatedMapping) {
         validateMapping(this._argMapping, args);
         validatedMapping = true;
@@ -225,7 +225,7 @@ class AnimatedEvent {
     };
   }
 
-  _callListeners(...args: any) {
+  _callListeners(...args     ) {
     this._listeners.forEach(listener => listener(...args));
   }
 }

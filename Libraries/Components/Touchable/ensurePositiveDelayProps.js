@@ -5,14 +5,14 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
 
 const invariant = require('invariant');
 
-const ensurePositiveDelayProps = function(props: any) {
+const ensurePositiveDelayProps = function(props     ) {
   invariant(
     !(
       props.delayPressIn < 0 ||

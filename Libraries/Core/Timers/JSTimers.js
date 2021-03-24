@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -32,12 +32,12 @@ function performanceNow() {
  * callback.
  */
 
-export type JSTimerType =
-  | 'setTimeout'
-  | 'setInterval'
-  | 'requestAnimationFrame'
-  | 'setImmediate'
-  | 'requestIdleCallback';
+                         
+                
+                 
+                           
+                  
+                          
 
 // These timing constants should be kept in sync with the ones in native ios and
 // android `RCTTiming` module.
@@ -53,20 +53,20 @@ const ANDROID_LONG_TIMER_MESSAGE =
   'See https://github.com/facebook/react-native/issues/12981 for more info.';
 
 // Parallel arrays
-const callbacks: Array<?Function> = [];
-const types: Array<?JSTimerType> = [];
-const timerIDs: Array<?number> = [];
-let immediates: Array<number> = [];
-let requestIdleCallbacks: Array<number> = [];
-const requestIdleCallbackTimeouts: {[number]: number, ...} = {};
+const callbacks                   = [];
+const types                      = [];
+const timerIDs                 = [];
+let immediates                = [];
+let requestIdleCallbacks                = [];
+const requestIdleCallbackTimeouts                          = {};
 
 let GUID = 1;
-let errors: ?Array<Error> = null;
+let errors                = null;
 
 let hasEmittedTimeDriftWarning = false;
 
 // Returns a free index if one is available, and the next consecutive index otherwise.
-function _getFreeIndex(): number {
+function _getFreeIndex()         {
   let freeIndex = timerIDs.indexOf(null);
   if (freeIndex === -1) {
     freeIndex = timerIDs.length;
@@ -74,7 +74,7 @@ function _getFreeIndex(): number {
   return freeIndex;
 }
 
-function _allocateCallback(func: Function, type: JSTimerType): number {
+function _allocateCallback(func          , type             )         {
   const id = GUID++;
   const freeIndex = _getFreeIndex();
   timerIDs[freeIndex] = id;
@@ -88,7 +88,7 @@ function _allocateCallback(func: Function, type: JSTimerType): number {
  * if it was a one time timer (setTimeout), and not unregister it if it was
  * recurring (setInterval).
  */
-function _callTimer(timerID: number, frameTime: number, didTimeout: ?boolean) {
+function _callTimer(timerID        , frameTime        , didTimeout          ) {
   require('fbjs/lib/warning')(
     timerID <= GUID,
     'Tried to call timer with ID %s but no such timer exists.',
@@ -187,13 +187,13 @@ function _callImmediatesPass() {
   return immediates.length > 0;
 }
 
-function _clearIndex(i: number) {
+function _clearIndex(i        ) {
   timerIDs[i] = null;
   callbacks[i] = null;
   types[i] = null;
 }
 
-function _freeCallback(timerID: number) {
+function _freeCallback(timerID        ) {
   // timerIDs contains nulls after timers have been removed;
   // ignore nulls upfront so indexOf doesn't find them
   if (timerID == null) {
@@ -221,7 +221,7 @@ const JSTimers = {
    * @param {function} func Callback to be invoked after `duration` ms.
    * @param {number} duration Number of milliseconds.
    */
-  setTimeout: function(func: Function, duration: number, ...args: any): number {
+  setTimeout: function(func          , duration        , ...args     )         {
     if (__DEV__ && IS_ANDROID && duration > MAX_TIMER_DURATION_MS) {
       console.warn(
         ANDROID_LONG_TIMER_MESSAGE +
@@ -244,10 +244,10 @@ const JSTimers = {
    * @param {number} duration Number of milliseconds.
    */
   setInterval: function(
-    func: Function,
-    duration: number,
-    ...args: any
-  ): number {
+    func          ,
+    duration        ,
+    ...args     
+  )         {
     if (__DEV__ && IS_ANDROID && duration > MAX_TIMER_DURATION_MS) {
       console.warn(
         ANDROID_LONG_TIMER_MESSAGE +
@@ -269,7 +269,7 @@ const JSTimers = {
    * @param {function} func Callback to be invoked before the end of the
    * current JavaScript execution loop.
    */
-  setImmediate: function(func: Function, ...args: any) {
+  setImmediate: function(func          , ...args     ) {
     const id = _allocateCallback(
       () => func.apply(undefined, args),
       'setImmediate',
@@ -281,7 +281,7 @@ const JSTimers = {
   /**
    * @param {function} func Callback to be invoked every frame.
    */
-  requestAnimationFrame: function(func: Function) {
+  requestAnimationFrame: function(func          ) {
     const id = _allocateCallback(func, 'requestAnimationFrame');
     createTimer(id, 1, Date.now(), /* recurring */ false);
     return id;
@@ -292,7 +292,7 @@ const JSTimers = {
    * with time remaining in frame.
    * @param {?object} options
    */
-  requestIdleCallback: function(func: Function, options: ?Object) {
+  requestIdleCallback: function(func          , options         ) {
     if (requestIdleCallbacks.length === 0) {
       setSendIdleEvents(true);
     }
@@ -330,7 +330,7 @@ const JSTimers = {
     return id;
   },
 
-  cancelIdleCallback: function(timerID: number) {
+  cancelIdleCallback: function(timerID        ) {
     _freeCallback(timerID);
     const index = requestIdleCallbacks.indexOf(timerID);
     if (index !== -1) {
@@ -348,15 +348,15 @@ const JSTimers = {
     }
   },
 
-  clearTimeout: function(timerID: number) {
+  clearTimeout: function(timerID        ) {
     _freeCallback(timerID);
   },
 
-  clearInterval: function(timerID: number) {
+  clearInterval: function(timerID        ) {
     _freeCallback(timerID);
   },
 
-  clearImmediate: function(timerID: number) {
+  clearImmediate: function(timerID        ) {
     _freeCallback(timerID);
     const index = immediates.indexOf(timerID);
     if (index !== -1) {
@@ -364,7 +364,7 @@ const JSTimers = {
     }
   },
 
-  cancelAnimationFrame: function(timerID: number) {
+  cancelAnimationFrame: function(timerID        ) {
     _freeCallback(timerID);
   },
 
@@ -372,13 +372,13 @@ const JSTimers = {
    * This is called from the native side. We are passed an array of timerIDs,
    * and
    */
-  callTimers: function(timersToCall: Array<number>) {
+  callTimers: function(timersToCall               ) {
     invariant(
       timersToCall.length !== 0,
       'Cannot call `callTimers` with an empty list of IDs.',
     );
 
-    errors = (null: ?Array<Error>);
+    errors = (null               );
     for (let i = 0; i < timersToCall.length; i++) {
       _callTimer(timersToCall[i], 0);
     }
@@ -401,7 +401,7 @@ const JSTimers = {
     }
   },
 
-  callIdleCallbacks: function(frameTime: number) {
+  callIdleCallbacks: function(frameTime        ) {
     if (
       FRAME_DURATION - (performanceNow() - frameTime) <
       IDLE_CALLBACK_FRAME_DEADLINE
@@ -409,7 +409,7 @@ const JSTimers = {
       return;
     }
 
-    errors = (null: ?Array<Error>);
+    errors = (null               );
     if (requestIdleCallbacks.length > 0) {
       const passIdleCallbacks = requestIdleCallbacks;
       requestIdleCallbacks = [];
@@ -437,7 +437,7 @@ const JSTimers = {
    * before we hand control back to native.
    */
   callImmediates() {
-    errors = (null: ?Array<Error>);
+    errors = (null               );
     while (_callImmediatesPass()) {}
     if (errors) {
       errors.forEach(error =>
@@ -451,7 +451,7 @@ const JSTimers = {
   /**
    * Called from native (in development) when environment times are out-of-sync.
    */
-  emitTimeDriftWarning(warningMessage: string) {
+  emitTimeDriftWarning(warningMessage        ) {
     if (hasEmittedTimeDriftWarning) {
       return;
     }
@@ -461,41 +461,41 @@ const JSTimers = {
 };
 
 function createTimer(
-  callbackID: number,
-  duration: number,
-  jsSchedulingTime: number,
-  repeats: boolean,
-): void {
+  callbackID        ,
+  duration        ,
+  jsSchedulingTime        ,
+  repeats         ,
+)       {
   invariant(NativeTiming, 'NativeTiming is available');
   NativeTiming.createTimer(callbackID, duration, jsSchedulingTime, repeats);
 }
 
-function deleteTimer(timerID: number): void {
+function deleteTimer(timerID        )       {
   invariant(NativeTiming, 'NativeTiming is available');
   NativeTiming.deleteTimer(timerID);
 }
 
-function setSendIdleEvents(sendIdleEvents: boolean): void {
+function setSendIdleEvents(sendIdleEvents         )       {
   invariant(NativeTiming, 'NativeTiming is available');
   NativeTiming.setSendIdleEvents(sendIdleEvents);
 }
 
-let ExportedJSTimers: {|
-  callIdleCallbacks: (frameTime: number) => any | void,
-  callImmediates: () => void,
-  callTimers: (timersToCall: Array<number>) => any | void,
-  cancelAnimationFrame: (timerID: number) => void,
-  cancelIdleCallback: (timerID: number) => void,
-  clearImmediate: (timerID: number) => void,
-  clearInterval: (timerID: number) => void,
-  clearTimeout: (timerID: number) => void,
-  emitTimeDriftWarning: (warningMessage: string) => any | void,
-  requestAnimationFrame: (func: any) => any | number,
-  requestIdleCallback: (func: any, options: ?any) => any | number,
-  setImmediate: (func: any, ...args: any) => number,
-  setInterval: (func: any, duration: number, ...args: any) => number,
-  setTimeout: (func: any, duration: number, ...args: any) => number,
-|};
+let ExportedJSTimers    
+                                                       
+                             
+                                                          
+                                                  
+                                                
+                                            
+                                           
+                                          
+                                                               
+                                                     
+                                                                  
+                                                    
+                                                                     
+                                                                    
+  ;
 
 if (!NativeTiming) {
   console.warn("Timing native module is not available, can't set timers.");
@@ -503,7 +503,7 @@ if (!NativeTiming) {
   ExportedJSTimers = ({
     callImmediates: JSTimers.callImmediates,
     setImmediate: JSTimers.setImmediate,
-  }: typeof JSTimers);
+  }                 );
 } else {
   ExportedJSTimers = JSTimers;
 }

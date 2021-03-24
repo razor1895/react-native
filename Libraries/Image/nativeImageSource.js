@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow strict-local
+ *       strict-local
  * @format
  */
 
@@ -12,18 +12,18 @@
 
 import Platform from '../Utilities/Platform';
 
-import type {ImageURISource} from './ImageSource';
+                                                  
 
-type NativeImageSourceSpec = $ReadOnly<{|
-  android?: string,
-  ios?: string,
-  default?: string,
+                                         
+                   
+               
+                   
 
-  // For more details on width and height, see
-  // https://reactnative.dev/docs/images.html#why-not-automatically-size-everything
-  height: number,
-  width: number,
-|}>;
+                                              
+                                                                                   
+                 
+                
+    
 
 /**
  * In hybrid apps, use `nativeImageSource` to access images that are already
@@ -41,7 +41,7 @@ type NativeImageSourceSpec = $ReadOnly<{|
  *   https://reactnative.dev/docs/images.html
  *
  */
-function nativeImageSource(spec: NativeImageSourceSpec): ImageURISource {
+function nativeImageSource(spec                       )                 {
   let uri = Platform.select({
     android: spec.android,
     default: spec.default,

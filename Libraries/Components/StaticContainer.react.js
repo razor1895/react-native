@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
 'use strict';
@@ -28,22 +28,22 @@ const React = require('react');
  * React reconciliation.
  */
 
-type Props = $ReadOnly<{|
-  /**
-   * Whether or not this component should update.
-   */
-  shouldUpdate?: ?boolean,
-  /**
-   * Content short-circuited by React reconciliation process.
-   */
-  children: React.Node,
-|}>;
-class StaticContainer extends React.Component<Props> {
-  shouldComponentUpdate(nextProps: Props): boolean {
+                         
+     
+                                                 
+     
+                          
+     
+                                                             
+     
+                       
+    
+class StaticContainer extends React.Component        {
+  shouldComponentUpdate(nextProps       )          {
     return !!nextProps.shouldUpdate;
   }
 
-  render(): React.Node {
+  render()             {
     return this.props.children;
   }
 }

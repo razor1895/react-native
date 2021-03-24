@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
@@ -17,14 +17,14 @@ const React = require('react');
 const invariant = require('invariant');
 const setAndForwardRef = require('../../Utilities/setAndForwardRef');
 
-export type AnimatedComponentType<
-  Props: {+[string]: mixed, ...},
-  Instance,
-> = React.AbstractComponent<$ObjMap<Props, () => any>, Instance>;
+                                  
+                                 
+           
+                                                                 
 
-function createAnimatedComponent<Props: {+[string]: mixed, ...}, Instance>(
-  Component: React.AbstractComponent<Props, Instance>,
-): AnimatedComponentType<Props, Instance> {
+function createAnimatedComponent                                          (
+  Component                                          ,
+)                                         {
   invariant(
     typeof Component !== 'function' ||
       (Component.prototype && Component.prototype.isReactComponent),
@@ -32,12 +32,12 @@ function createAnimatedComponent<Props: {+[string]: mixed, ...}, Instance>(
       'use a class component instead.',
   );
 
-  class AnimatedComponent extends React.Component<Object> {
-    _component: any; // TODO T53738161: flow type this, and the whole file
-    _invokeAnimatedPropsCallbackOnMount: boolean = false;
-    _prevComponent: any;
-    _propsAnimated: AnimatedProps;
-    _eventDetachers: Array<Function> = [];
+  class AnimatedComponent extends React.Component         {
+    _component     ; // TODO T53738161: flow type this, and the whole file
+    _invokeAnimatedPropsCallbackOnMount          = false;
+    _prevComponent     ;
+    _propsAnimated               ;
+    _eventDetachers                  = [];
 
     _attachNativeEvents() {
       // Make sure to get the scrollable node for components that implement

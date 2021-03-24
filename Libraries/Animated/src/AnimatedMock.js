@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
@@ -20,25 +20,25 @@ const AnimatedValueXY = require('./nodes/AnimatedValueXY');
 
 const createAnimatedComponent = require('./createAnimatedComponent');
 
-import type {EndCallback} from './animations/Animation';
-import type {TimingAnimationConfig} from './animations/TimingAnimation';
-import type {DecayAnimationConfig} from './animations/DecayAnimation';
-import type {SpringAnimationConfig} from './animations/SpringAnimation';
-import type {Mapping, EventConfig} from './AnimatedEvent';
+                                                        
+                                                                        
+                                                                      
+                                                                        
+                                                          
 
 /**
  * Animations are a source of flakiness in snapshot testing. This mock replaces
  * animation functions from AnimatedImplementation with empty animations for
  * predictability in tests.
  */
-export type CompositeAnimation = {
-  start: (callback?: ?EndCallback) => void,
-  stop: () => void,
-  reset: () => void,
-  _startNativeLoop: (iterations?: number) => void,
-  _isUsingNativeDriver: () => boolean,
-  ...
-};
+                                  
+                                           
+                   
+                    
+                                                  
+                                      
+     
+  
 
 const emptyAnimation = {
   start: () => {},
@@ -51,13 +51,13 @@ const emptyAnimation = {
 };
 
 const spring = function(
-  value: AnimatedValue | AnimatedValueXY,
-  config: SpringAnimationConfig,
-): CompositeAnimation {
-  const anyValue: any = value;
+  value                                 ,
+  config                       ,
+)                     {
+  const anyValue      = value;
   return {
     ...emptyAnimation,
-    start: (callback?: ?EndCallback): void => {
+    start: (callback               )       => {
       anyValue.setValue(config.toValue);
       callback && callback({finished: true});
     },
@@ -65,13 +65,13 @@ const spring = function(
 };
 
 const timing = function(
-  value: AnimatedValue | AnimatedValueXY,
-  config: TimingAnimationConfig,
-): CompositeAnimation {
-  const anyValue: any = value;
+  value                                 ,
+  config                       ,
+)                     {
+  const anyValue      = value;
   return {
     ...emptyAnimation,
-    start: (callback?: ?EndCallback): void => {
+    start: (callback               )       => {
       anyValue.setValue(config.toValue);
       callback && callback({finished: true});
     },
@@ -79,51 +79,51 @@ const timing = function(
 };
 
 const decay = function(
-  value: AnimatedValue | AnimatedValueXY,
-  config: DecayAnimationConfig,
-): CompositeAnimation {
+  value                                 ,
+  config                      ,
+)                     {
   return emptyAnimation;
 };
 
 const sequence = function(
-  animations: Array<CompositeAnimation>,
-): CompositeAnimation {
+  animations                           ,
+)                     {
   return emptyAnimation;
 };
 
-type ParallelConfig = {stopTogether?: boolean, ...};
+                                                    
 const parallel = function(
-  animations: Array<CompositeAnimation>,
-  config?: ?ParallelConfig,
-): CompositeAnimation {
+  animations                           ,
+  config                  ,
+)                     {
   return emptyAnimation;
 };
 
-const delay = function(time: number): CompositeAnimation {
+const delay = function(time        )                     {
   return emptyAnimation;
 };
 
 const stagger = function(
-  time: number,
-  animations: Array<CompositeAnimation>,
-): CompositeAnimation {
+  time        ,
+  animations                           ,
+)                     {
   return emptyAnimation;
 };
 
-type LoopAnimationConfig = {
-  iterations: number,
-  resetBeforeIteration?: boolean,
-  ...
-};
+                            
+                     
+                                 
+     
+  
 
 const loop = function(
-  animation: CompositeAnimation,
-  {iterations = -1}: LoopAnimationConfig = {},
-): CompositeAnimation {
+  animation                    ,
+  {iterations = -1}                      = {},
+)                     {
   return emptyAnimation;
 };
 
-const event = function(argMapping: Array<?Mapping>, config: EventConfig): any {
+const event = function(argMapping                 , config             )      {
   return null;
 };
 

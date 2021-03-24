@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
 'use strict';
@@ -14,18 +14,18 @@ const React = require('react');
 
 const requireNativeComponent = require('../../../ReactNative/requireNativeComponent');
 
-import type {HostComponent} from '../../../Renderer/shims/ReactNativeTypes';
+                                                                            
 
-const RCTRefreshControl: HostComponent<mixed> = requireNativeComponent<mixed>(
+const RCTRefreshControl                       = requireNativeComponent       (
   'RCTRefreshControl',
 );
 
-class RefreshControlMock extends React.Component<{...}> {
-  static latestRef: ?RefreshControlMock;
+class RefreshControlMock extends React.Component        {
+  static latestRef                     ;
   componentDidMount() {
     RefreshControlMock.latestRef = this;
   }
-  render(): React.Element<typeof RCTRefreshControl> {
+  render()                                          {
     return <RCTRefreshControl />;
   }
 }

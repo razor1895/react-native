@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -18,47 +18,47 @@ const RootTagContext = require('./RootTagContext');
 const StyleSheet = require('../StyleSheet/StyleSheet');
 const View = require('../Components/View/View');
 
-type Context = {rootTag: number, ...};
+                                      
 
-type Props = $ReadOnly<{|
-  children?: React.Node,
-  fabric?: boolean,
-  rootTag: number,
-  showArchitectureIndicator?: boolean,
-  WrapperComponent?: ?React.ComponentType<any>,
-  internal_excludeLogBox?: ?boolean,
-|}>;
+                         
+                        
+                   
+                  
+                                      
+                                               
+                                    
+    
 
-type State = {|
-  inspector: ?React.Node,
-  mainKey: number,
-  hasError: boolean,
-|};
+               
+                         
+                  
+                    
+   
 
-class AppContainer extends React.Component<Props, State> {
-  state: State = {
+class AppContainer extends React.Component               {
+  state        = {
     inspector: null,
     mainKey: 1,
     hasError: false,
   };
-  _mainRef: ?React.ElementRef<typeof View>;
-  _subscription: ?EmitterSubscription = null;
+  _mainRef                                ;
+  _subscription                       = null;
 
-  static getDerivedStateFromError: any = undefined;
+  static getDerivedStateFromError      = undefined;
 
-  static childContextTypes:
-    | any
-    | {|rootTag: React$PropType$Primitive<number>|} = {
+  static childContextTypes 
+         
+                                                    = {
     rootTag: PropTypes.number,
   };
 
-  getChildContext(): Context {
+  getChildContext()          {
     return {
       rootTag: this.props.rootTag,
     };
   }
 
-  componentDidMount(): void {
+  componentDidMount()       {
     if (__DEV__) {
       if (!global.__RCTProfileIsProfiling) {
         this._subscription = RCTDeviceEventEmitter.addListener(
@@ -83,13 +83,13 @@ class AppContainer extends React.Component<Props, State> {
     }
   }
 
-  componentWillUnmount(): void {
+  componentWillUnmount()       {
     if (this._subscription != null) {
       this._subscription.remove();
     }
   }
 
-  render(): React.Node {
+  render()             {
     let logBox = null;
     if (__DEV__) {
       if (

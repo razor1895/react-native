@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow strict
+ *       strict
  * @format
  */
 
@@ -12,4 +12,4 @@
 
 const React = require('react');
 
-module.exports = (React.createContext<number>(0): React$Context<number>);
+module.exports = (React.createContext        (0)                       );

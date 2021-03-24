@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow strict-local
+ *       strict-local
  * @format
  */
 
@@ -12,40 +12,40 @@
 
 import invariant from 'invariant';
 import {Commands} from '../View/ViewNativeComponent';
-import type {ColorValue} from '../../StyleSheet/StyleSheetTypes';
-import type {PressEvent} from '../../Types/CoreEventTypes';
+                                                                 
+                                                           
 import {Platform, View, processColor} from 'react-native';
 import * as React from 'react';
 import {useMemo} from 'react';
 
-type NativeBackgroundProp = $ReadOnly<{|
-  type: 'RippleAndroid',
-  color: ?number,
-  borderless: boolean,
-  rippleRadius: ?number,
-|}>;
+                                        
+                        
+                 
+                      
+                        
+    
 
-export type RippleConfig = {|
-  color?: ?ColorValue,
-  borderless?: ?boolean,
-  radius?: ?number,
-|};
+                             
+                      
+                        
+                   
+   
 
 /**
  * Provides the event handlers and props for configuring the ripple effect on
  * supported versions of Android.
  */
 export default function useAndroidRippleForView(
-  rippleConfig: ?RippleConfig,
-  viewRef: {|current: null | React.ElementRef<typeof View>|},
-): ?$ReadOnly<{|
-  onPressIn: (event: PressEvent) => void,
-  onPressMove: (event: PressEvent) => void,
-  onPressOut: (event: PressEvent) => void,
-  viewProps: $ReadOnly<{|
-    nativeBackgroundAndroid: NativeBackgroundProp,
-  |}>,
-|}> {
+  rippleConfig               ,
+  viewRef                                                   ,
+)               
+                                         
+                                           
+                                          
+                         
+                                                  
+      
+    {
   const {color, borderless, radius} = rippleConfig ?? {};
   const normalizedBorderless = borderless === true;
 
@@ -71,7 +71,7 @@ export default function useAndroidRippleForView(
             rippleRadius: radius,
           },
         },
-        onPressIn(event: PressEvent): void {
+        onPressIn(event            )       {
           const view = viewRef.current;
           if (view != null) {
             Commands.setPressed(view, true);
@@ -82,7 +82,7 @@ export default function useAndroidRippleForView(
             );
           }
         },
-        onPressMove(event: PressEvent): void {
+        onPressMove(event            )       {
           const view = viewRef.current;
           if (view != null) {
             Commands.hotspotUpdate(
@@ -92,7 +92,7 @@ export default function useAndroidRippleForView(
             );
           }
         },
-        onPressOut(event: PressEvent): void {
+        onPressOut(event            )       {
           const view = viewRef.current;
           if (view != null) {
             Commands.setPressed(view, false);

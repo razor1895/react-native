@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -16,107 +16,107 @@ const Platform = require('../../Utilities/Platform');
 const React = require('react');
 const UnimplementedView = require('../UnimplementedViews/UnimplementedView');
 
-import type {TextStyleProp} from '../../StyleSheet/StyleSheet';
-import type {ColorValue} from '../../StyleSheet/StyleSheetTypes';
+                                                               
+                                                                 
 
 const MODE_DIALOG = 'dialog';
 const MODE_DROPDOWN = 'dropdown';
 
-type PickerItemProps = $ReadOnly<{|
-  /**
-   * Text to display for this item.
-   */
-  label: string,
+                                   
+     
+                                   
+     
+                
 
-  /**
-   * The value to be passed to picker's `onValueChange` callback when
-   * this item is selected. Can be a string or an integer.
-   */
-  value?: ?(number | string),
+     
+                                                                     
+                                                          
+     
+                             
 
-  /**
-   * Color of this item's text.
-   * @platform android
-   */
-  color?: ColorValue,
+     
+                               
+                      
+     
+                     
 
-  /**
-   * Used to locate the item in end-to-end tests.
-   */
-  testID?: string,
-|}>;
+     
+                                                 
+     
+                  
+    
 
 /**
  * Individual selectable item in a Picker.
  */
-export type {PickerItem};
-class PickerItem extends React.Component<PickerItemProps> {
+                         
+class PickerItem extends React.Component                  {
   render() {
     // The items are not rendered directly
     throw null;
   }
 }
 
-type PickerProps = $ReadOnly<{|
-  children?: React.Node,
-  style?: ?TextStyleProp,
+                               
+                        
+                         
 
-  /**
-   * Value matching value of one of the items. Can be a string or an integer.
-   */
-  selectedValue?: ?(number | string),
+     
+                                                                             
+     
+                                     
 
-  /**
-   * Callback for when an item is selected. This is called with the following parameters:
-   *   - `itemValue`: the `value` prop of the item that was selected
-   *   - `itemIndex`: the index of the selected item in this picker
-   */
-  onValueChange?: ?(itemValue: string | number, itemIndex: number) => mixed,
+     
+                                                                                         
+                                                                    
+                                                                   
+     
+                                                                            
 
-  /**
-   * If set to false, the picker will be disabled, i.e. the user will not be able to make a
-   * selection.
-   * @platform android
-   */
-  enabled?: ?boolean,
+     
+                                                                                           
+               
+                      
+     
+                     
 
-  /**
-   * On Android, specifies how to display the selection items when the user taps on the picker:
-   *
-   *   - 'dialog': Show a modal dialog. This is the default.
-   *   - 'dropdown': Shows a dropdown anchored to the picker view
-   *
-   * @platform android
-   */
-  mode?: ?('dialog' | 'dropdown'),
+     
+                                                                                               
+    
+                                                            
+                                                                 
+    
+                      
+     
+                                  
 
-  /**
-   * Style to apply to each of the item labels.
-   * @platform ios
-   */
-  itemStyle?: ?TextStyleProp,
+     
+                                               
+                  
+     
+                             
 
-  /**
-   * Color of the item background.
-   * @platform android
-   */
-  backgroundColor?: ColorValue,
+     
+                                  
+                      
+     
+                               
 
-  /**
-   * Prompt string for this picker, used on Android in dialog mode as the title of the dialog.
-   * @platform android
-   */
-  prompt?: ?string,
+     
+                                                                                              
+                      
+     
+                   
 
-  /**
-   * Used to locate this view in end-to-end tests.
-   */
-  testID?: ?string,
-  /**
-   * The string used for the accessibility label. Will be read once focused on the picker but not on change.
-   */
-  accessibilityLabel?: ?string,
-|}>;
+     
+                                                  
+     
+                   
+     
+                                                                                                            
+     
+                               
+    
 
 /**
  * Renders the native picker component on iOS and Android. Example:
@@ -128,24 +128,24 @@ type PickerProps = $ReadOnly<{|
  *       <Picker.Item label="JavaScript" value="js" />
  *     </Picker>
  */
-class Picker extends React.Component<PickerProps> {
+class Picker extends React.Component              {
   /**
    * On Android, display the options in a dialog.
    */
-  static MODE_DIALOG: $TEMPORARY$string<'dialog'> = MODE_DIALOG;
+  static MODE_DIALOG                              = MODE_DIALOG;
 
   /**
    * On Android, display the options in a dropdown (this is the default).
    */
-  static MODE_DROPDOWN: $TEMPORARY$string<'dropdown'> = MODE_DROPDOWN;
+  static MODE_DROPDOWN                                = MODE_DROPDOWN;
 
-  static Item: typeof PickerItem = PickerItem;
+  static Item                    = PickerItem;
 
-  static defaultProps: {|mode: $TEMPORARY$string<'dialog'>|} = {
+  static defaultProps                                        = {
     mode: MODE_DIALOG,
   };
 
-  render(): React.Node {
+  render()             {
     if (Platform.OS === 'ios') {
       /* $FlowFixMe(>=0.81.0 site=react_native_ios_fb) This suppression was
        * added when renaming suppression sites. */

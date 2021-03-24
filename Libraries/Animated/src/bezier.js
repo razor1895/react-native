@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow strict
+ *       strict
  * @format
  */
 
@@ -82,11 +82,11 @@ function newtonRaphsonIterate(aX, _aGuessT, mX1, mX2) {
 }
 
 module.exports = function bezier(
-  mX1: number,
-  mY1: number,
-  mX2: number,
-  mY2: number,
-): (x: number) => number {
+  mX1        ,
+  mY1        ,
+  mX2        ,
+  mY2        ,
+)                        {
   if (!(mX1 >= 0 && mX1 <= 1 && mX2 >= 0 && mX2 <= 1)) {
     throw new Error('bezier x values must be in [0, 1] range');
   }
@@ -137,7 +137,7 @@ module.exports = function bezier(
     }
   }
 
-  return function BezierEasing(x: number): number {
+  return function BezierEasing(x        )         {
     if (mX1 === mY1 && mX2 === mY2) {
       return x; // linear
     }

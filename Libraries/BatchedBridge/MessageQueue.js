@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
@@ -18,13 +18,13 @@ const invariant = require('invariant');
 const stringifySafe = require('../Utilities/stringifySafe').default;
 const warnOnce = require('../Utilities/warnOnce');
 
-export type SpyData = {
-  type: number,
-  module: ?string,
-  method: string | number,
-  args: any[],
-  ...
-};
+                       
+               
+                  
+                          
+              
+     
+  
 
 const TO_JS = 0;
 const TO_NATIVE = 1;
@@ -40,20 +40,20 @@ const TRACE_TAG_REACT_APPS = 1 << 17;
 const DEBUG_INFO_LIMIT = 32;
 
 class MessageQueue {
-  _lazyCallableModules: {[key: string]: (void) => Object, ...};
-  _queue: [number[], number[], any[], number];
-  _successCallbacks: Map<number, ?Function>;
-  _failureCallbacks: Map<number, ?Function>;
-  _callID: number;
-  _lastFlush: number;
-  _eventLoopStartTime: number;
-  _immediatesCallback: ?() => void;
+  _lazyCallableModules                                        ;
+  _queue                                     ;
+  _successCallbacks                        ;
+  _failureCallbacks                        ;
+  _callID        ;
+  _lastFlush        ;
+  _eventLoopStartTime        ;
+  _immediatesCallback             ;
 
-  _debugInfo: {[number]: [number, number], ...};
-  _remoteModuleTable: {[number]: string, ...};
-  _remoteMethodTable: {[number]: $ReadOnlyArray<string>, ...};
+  _debugInfo                                   ;
+  _remoteModuleTable                         ;
+  _remoteMethodTable                                         ;
 
-  __spy: ?(data: SpyData) => void;
+  __spy                          ;
 
   constructor() {
     this._lazyCallableModules = {};
@@ -71,11 +71,11 @@ class MessageQueue {
       this._remoteMethodTable = {};
     }
 
-    (this: any).callFunctionReturnFlushedQueue = this.callFunctionReturnFlushedQueue.bind(
+    (this     ).callFunctionReturnFlushedQueue = this.callFunctionReturnFlushedQueue.bind(
       this,
     );
-    (this: any).flushedQueue = this.flushedQueue.bind(this);
-    (this: any).invokeCallbackAndReturnFlushedQueue = this.invokeCallbackAndReturnFlushedQueue.bind(
+    (this     ).flushedQueue = this.flushedQueue.bind(this);
+    (this     ).invokeCallbackAndReturnFlushedQueue = this.invokeCallbackAndReturnFlushedQueue.bind(
       this,
     );
   }
@@ -84,7 +84,7 @@ class MessageQueue {
    * Public APIs
    */
 
-  static spy(spyOrToggle: boolean | ((data: SpyData) => void)) {
+  static spy(spyOrToggle                                     ) {
     if (spyOrToggle === true) {
       MessageQueue.prototype.__spy = info => {
         console.log(
@@ -101,10 +101,10 @@ class MessageQueue {
   }
 
   callFunctionReturnFlushedQueue(
-    module: string,
-    method: string,
-    args: any[],
-  ): null | [Array<number>, Array<number>, Array<any>, number] {
+    module        ,
+    method        ,
+    args       ,
+  )                                                            {
     this.__guard(() => {
       this.__callFunction(module, method, args);
     });
@@ -114,15 +114,15 @@ class MessageQueue {
 
   // Deprecated. T61834641: Remove me once native clients have updated
   callFunctionReturnResultAndFlushedQueue(
-    module: string,
-    method: string,
-    args: any[],
-  ): void {}
+    module        ,
+    method        ,
+    args       ,
+  )       {}
 
   invokeCallbackAndReturnFlushedQueue(
-    cbID: number,
-    args: any[],
-  ): null | [Array<number>, Array<number>, Array<any>, number] {
+    cbID        ,
+    args       ,
+  )                                                            {
     this.__guard(() => {
       this.__invokeCallback(cbID, args);
     });
@@ -130,7 +130,7 @@ class MessageQueue {
     return this.flushedQueue();
   }
 
-  flushedQueue(): null | [Array<number>, Array<number>, Array<any>, number] {
+  flushedQueue()                                                            {
     this.__guard(() => {
       this.__callImmediates();
     });
@@ -140,17 +140,17 @@ class MessageQueue {
     return queue[0].length ? queue : null;
   }
 
-  getEventLoopRunningTime(): number {
+  getEventLoopRunningTime()         {
     return Date.now() - this._eventLoopStartTime;
   }
 
-  registerCallableModule(name: string, module: Object) {
+  registerCallableModule(name        , module        ) {
     this._lazyCallableModules[name] = () => module;
   }
 
-  registerLazyCallableModule(name: string, factory: void => Object) {
-    let module: Object;
-    let getValue: ?(void) => Object = factory;
+  registerLazyCallableModule(name        , factory                ) {
+    let module        ;
+    let getValue                    = factory;
     this._lazyCallableModules[name] = () => {
       if (getValue) {
         module = getValue();
@@ -160,18 +160,18 @@ class MessageQueue {
     };
   }
 
-  getCallableModule(name: string): any | null {
+  getCallableModule(name        )             {
     const getValue = this._lazyCallableModules[name];
     return getValue ? getValue() : null;
   }
 
   callNativeSyncHook(
-    moduleID: number,
-    methodID: number,
-    params: any[],
-    onFail: ?Function,
-    onSucc: ?Function,
-  ): any {
+    moduleID        ,
+    methodID        ,
+    params       ,
+    onFail           ,
+    onSucc           ,
+  )      {
     if (__DEV__) {
       invariant(
         global.nativeCallSyncHook,
@@ -186,11 +186,11 @@ class MessageQueue {
   }
 
   processCallbacks(
-    moduleID: number,
-    methodID: number,
-    params: any[],
-    onFail: ?Function,
-    onSucc: ?Function,
+    moduleID        ,
+    methodID        ,
+    params       ,
+    onFail           ,
+    onSucc           ,
   ) {
     if (onFail || onSucc) {
       if (__DEV__) {
@@ -237,11 +237,11 @@ class MessageQueue {
   }
 
   enqueueNativeCall(
-    moduleID: number,
-    methodID: number,
-    params: any[],
-    onFail: ?Function,
-    onSucc: ?Function,
+    moduleID        ,
+    methodID        ,
+    params       ,
+    onFail           ,
+    onSucc           ,
   ) {
     this.processCallbacks(moduleID, methodID, params, onFail, onSucc);
 
@@ -302,7 +302,7 @@ class MessageQueue {
       );
 
       // The params object should not be mutated after being queued
-      deepFreezeAndThrowOnMutationInDev((params: any));
+      deepFreezeAndThrowOnMutationInDev((params     ));
     }
     this._queue[PARAMS].push(params);
 
@@ -335,9 +335,9 @@ class MessageQueue {
   }
 
   createDebugLookup(
-    moduleID: number,
-    name: string,
-    methods: ?$ReadOnlyArray<string>,
+    moduleID        ,
+    name        ,
+    methods                         ,
   ) {
     if (__DEV__) {
       this._remoteModuleTable[moduleID] = name;
@@ -348,7 +348,7 @@ class MessageQueue {
   // For JSTimers to register its callback. Otherwise a circular dependency
   // between modules is introduced. Note that only one callback may be
   // registered at a time.
-  setImmediatesCallback(fn: () => void) {
+  setImmediatesCallback(fn            ) {
     this._immediatesCallback = fn;
   }
 
@@ -356,7 +356,7 @@ class MessageQueue {
    * Private methods
    */
 
-  __guard(fn: () => void) {
+  __guard(fn            ) {
     if (this.__shouldPauseOnThrow()) {
       fn();
     } else {
@@ -373,7 +373,7 @@ class MessageQueue {
   // This makes stacktraces to be placed at MessageQueue rather than at where they were launched
   // The parameter DebuggerInternal.shouldPauseOnThrow is used to check before catching all exceptions and
   // can be configured by the VM or any Inspector
-  __shouldPauseOnThrow(): boolean {
+  __shouldPauseOnThrow()          {
     return (
       // $FlowFixMe
       typeof DebuggerInternal !== 'undefined' &&
@@ -389,7 +389,7 @@ class MessageQueue {
     Systrace.endEvent();
   }
 
-  __callFunction(module: string, method: string, args: any[]): void {
+  __callFunction(module        , method        , args       )       {
     this._lastFlush = Date.now();
     this._eventLoopStartTime = this._lastFlush;
     if (__DEV__ || this.__spy) {
@@ -417,7 +417,7 @@ class MessageQueue {
     Systrace.endEvent();
   }
 
-  __invokeCallback(cbID: number, args: any[]) {
+  __invokeCallback(cbID        , args       ) {
     this._lastFlush = Date.now();
     this._eventLoopStartTime = this._lastFlush;
 

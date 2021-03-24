@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
@@ -15,13 +15,13 @@ const AnimatedNode = require('./AnimatedNode');
 const AnimatedValue = require('./AnimatedValue');
 const AnimatedWithChildren = require('./AnimatedWithChildren');
 
-import type {InterpolationConfigType} from './AnimatedInterpolation';
+                                                                     
 
 class AnimatedSubtraction extends AnimatedWithChildren {
-  _a: AnimatedNode;
-  _b: AnimatedNode;
+  _a              ;
+  _b              ;
 
-  constructor(a: AnimatedNode | number, b: AnimatedNode | number) {
+  constructor(a                       , b                       ) {
     super();
     this._a = typeof a === 'number' ? new AnimatedValue(a) : a;
     this._b = typeof b === 'number' ? new AnimatedValue(b) : b;
@@ -33,26 +33,26 @@ class AnimatedSubtraction extends AnimatedWithChildren {
     super.__makeNative();
   }
 
-  __getValue(): number {
+  __getValue()         {
     return this._a.__getValue() - this._b.__getValue();
   }
 
-  interpolate(config: InterpolationConfigType): AnimatedInterpolation {
+  interpolate(config                         )                        {
     return new AnimatedInterpolation(this, config);
   }
 
-  __attach(): void {
+  __attach()       {
     this._a.__addChild(this);
     this._b.__addChild(this);
   }
 
-  __detach(): void {
+  __detach()       {
     this._a.__removeChild(this);
     this._b.__removeChild(this);
     super.__detach();
   }
 
-  __getNativeConfig(): any {
+  __getNativeConfig()      {
     return {
       type: 'subtraction',
       input: [this._a.__getNativeTag(), this._b.__getNativeTag()],

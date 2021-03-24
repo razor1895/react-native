@@ -5,12 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict
+ *       strict
  */
 
 'use strict';
 
-import type {PackagerAsset} from './AssetRegistry';
+                                                   
 
 const androidScaleSuffix = {
   '0.75': 'ldpi',
@@ -25,7 +25,7 @@ const androidScaleSuffix = {
  * FIXME: using number to represent discrete scale numbers is fragile in essence because of
  * floating point numbers imprecision.
  */
-function getAndroidAssetSuffix(scale: number): string {
+function getAndroidAssetSuffix(scale        )         {
   if (scale.toString() in androidScaleSuffix) {
     return androidScaleSuffix[scale.toString()];
   }
@@ -45,9 +45,9 @@ const drawableFileTypes = new Set([
 ]);
 
 function getAndroidResourceFolderName(
-  asset: PackagerAsset,
-  scale: number,
-): string | $TEMPORARY$string<'raw'> {
+  asset               ,
+  scale        ,
+)                                    {
   if (!drawableFileTypes.has(asset.type)) {
     return 'raw';
   }
@@ -66,7 +66,7 @@ function getAndroidResourceFolderName(
   return androidFolder;
 }
 
-function getAndroidResourceIdentifier(asset: PackagerAsset): string {
+function getAndroidResourceIdentifier(asset               )         {
   var folderPath = getBasePath(asset);
   return (folderPath + '/' + asset.name)
     .toLowerCase()
@@ -75,7 +75,7 @@ function getAndroidResourceIdentifier(asset: PackagerAsset): string {
     .replace(/^assets_/, ''); // Remove "assets_" prefix
 }
 
-function getBasePath(asset: PackagerAsset): string {
+function getBasePath(asset               )         {
   var basePath = asset.httpServerLocation;
   if (basePath[0] === '/') {
     basePath = basePath.substr(1);

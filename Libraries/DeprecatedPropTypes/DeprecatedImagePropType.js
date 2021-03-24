@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
@@ -19,7 +19,7 @@ const PropTypes = require('prop-types');
 module.exports = {
   style: (DeprecatedStyleSheetPropType(
     DeprecatedImageStylePropTypes,
-  ): ReactPropsCheckType),
+  )                     ),
   source: DeprecatedImageSourcePropType,
   defaultSource: (PropTypes.oneOfType([
     PropTypes.shape({
@@ -29,16 +29,16 @@ module.exports = {
       scale: PropTypes.number,
     }),
     PropTypes.number,
-  ]): React$PropType$Primitive<
-    | {
-        height?: number,
-        scale?: number,
-        uri?: string,
-        width?: number,
-        ...
-      }
-    | number,
-  >),
+  ])                           
+       
+                        
+                       
+                     
+                       
+           
+       
+             
+   ),
 
   accessible: PropTypes.bool,
 
@@ -52,7 +52,7 @@ module.exports = {
     'auto',
     'resize',
     'scale',
-  ]): React$PropType$Primitive<'auto' | 'resize' | 'scale'>),
+  ])                                                       ),
 
   resizeMode: (PropTypes.oneOf([
     'cover',
@@ -60,9 +60,9 @@ module.exports = {
     'stretch',
     'repeat',
     'center',
-  ]): React$PropType$Primitive<
-    'cover' | 'contain' | 'stretch' | 'repeat' | 'center',
-  >),
+  ])                           
+                                                          
+   ),
 
   testID: PropTypes.string,
 

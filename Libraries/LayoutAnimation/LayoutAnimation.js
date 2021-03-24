@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
@@ -14,35 +14,35 @@ const UIManager = require('../ReactNative/UIManager');
 
 import Platform from '../Utilities/Platform';
 
-type Type =
-  | 'spring'
-  | 'linear'
-  | 'easeInEaseOut'
-  | 'easeIn'
-  | 'easeOut'
-  | 'keyboard';
+           
+            
+            
+                   
+            
+             
+               
 
-type Property = 'opacity' | 'scaleX' | 'scaleY' | 'scaleXY';
+                                                            
 
-type AnimationConfig = $ReadOnly<{|
-  duration?: number,
-  delay?: number,
-  springDamping?: number,
-  initialVelocity?: number,
-  type?: Type,
-  property?: Property,
-|}>;
+                                   
+                    
+                 
+                         
+                           
+              
+                      
+    
 
-export type LayoutAnimationConfig = $ReadOnly<{|
-  duration: number,
-  create?: AnimationConfig,
-  update?: AnimationConfig,
-  delete?: AnimationConfig,
-|}>;
+                                                
+                   
+                           
+                           
+                           
+    
 
 function configureNext(
-  config: LayoutAnimationConfig,
-  onAnimationDidEnd?: Function,
+  config                       ,
+  onAnimationDidEnd           ,
 ) {
   if (!Platform.isTesting) {
     UIManager.configureNextLayoutAnimation(
@@ -54,10 +54,10 @@ function configureNext(
 }
 
 function create(
-  duration: number,
-  type: Type,
-  property: Property,
-): LayoutAnimationConfig {
+  duration        ,
+  type      ,
+  property          ,
+)                        {
   return {
     duration,
     create: {type, property},
@@ -71,8 +71,8 @@ const Presets = {
     300,
     'easeInEaseOut',
     'opacity',
-  ): LayoutAnimationConfig),
-  linear: (create(500, 'linear', 'opacity'): LayoutAnimationConfig),
+  )                       ),
+  linear: (create(500, 'linear', 'opacity')                       ),
   spring: {
     duration: 700,
     create: {
@@ -133,19 +133,19 @@ const LayoutAnimation = {
     scaleY: 'scaleY',
     scaleXY: 'scaleXY',
   }),
-  checkConfig(...args: Array<mixed>) {
+  checkConfig(...args              ) {
     console.error('LayoutAnimation.checkConfig(...) has been disabled.');
   },
   Presets,
-  easeInEaseOut: (configureNext.bind(null, Presets.easeInEaseOut): (
-    onAnimationDidEnd?: any,
-  ) => void),
-  linear: (configureNext.bind(null, Presets.linear): (
-    onAnimationDidEnd?: any,
-  ) => void),
-  spring: (configureNext.bind(null, Presets.spring): (
-    onAnimationDidEnd?: any,
-  ) => void),
+  easeInEaseOut: (configureNext.bind(null, Presets.easeInEaseOut)   
+                            
+           ),
+  linear: (configureNext.bind(null, Presets.linear)   
+                            
+           ),
+  spring: (configureNext.bind(null, Presets.spring)   
+                            
+           ),
 };
 
 module.exports = LayoutAnimation;

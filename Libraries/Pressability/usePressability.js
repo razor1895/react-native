@@ -4,22 +4,22 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow strict-local
+ *       strict-local
  * @format
  */
 
 'use strict';
 
 import Pressability, {
-  type EventHandlers,
-  type PressabilityConfig,
+                     
+                          
 } from './Pressability';
 import {useEffect, useRef} from 'react';
 
 export default function usePressability(
-  config: PressabilityConfig,
-): EventHandlers {
-  const pressabilityRef = useRef<?Pressability>(null);
+  config                    ,
+)                {
+  const pressabilityRef = useRef               (null);
   if (pressabilityRef.current == null) {
     pressabilityRef.current = new Pressability(config);
   }

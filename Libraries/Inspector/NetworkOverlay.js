@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -25,35 +25,35 @@ const LISTVIEW_CELL_HEIGHT = 15;
 // Global id for the intercepted XMLHttpRequest objects.
 let nextXHRId = 0;
 
-type NetworkRequestInfo = {
-  id: number,
-  type?: string,
-  url?: string,
-  method?: string,
-  status?: number,
-  dataSent?: any,
-  responseContentType?: string,
-  responseSize?: number,
-  requestHeaders?: Object,
-  responseHeaders?: string,
-  response?: Object | string,
-  responseURL?: string,
-  responseType?: string,
-  timeout?: number,
-  closeReason?: string,
-  messages?: string,
-  serverClose?: Object,
-  serverError?: Object,
-  ...
-};
+                           
+             
+                
+               
+                  
+                  
+                 
+                               
+                        
+                          
+                           
+                             
+                       
+                        
+                   
+                       
+                    
+                       
+                       
+     
+  
 
-type Props = $ReadOnly<{||}>;
-type State = {|
-  detailRowId: ?number,
-  requests: Array<NetworkRequestInfo>,
-|};
+                             
+               
+                       
+                                      
+   
 
-function getStringByValue(value: any): string {
+function getStringByValue(value     )         {
   if (value === undefined) {
     return 'undefined';
   }
@@ -68,7 +68,7 @@ function getStringByValue(value: any): string {
   return value;
 }
 
-function getTypeShortName(type: any): string {
+function getTypeShortName(type     )         {
   if (type === 'XMLHttpRequest') {
     return 'XHR';
   } else if (type === 'WebSocket') {
@@ -78,16 +78,16 @@ function getTypeShortName(type: any): string {
   return '';
 }
 
-function keyExtractor(request: NetworkRequestInfo): string {
+function keyExtractor(request                    )         {
   return String(request.id);
 }
 
 /**
  * Show all the intercepted network requests over the InspectorPanel.
  */
-class NetworkOverlay extends React.Component<Props, State> {
-  _requestsListView: ?React.ElementRef<typeof FlatList>;
-  _detailScrollView: ?React.ElementRef<typeof ScrollView>;
+class NetworkOverlay extends React.Component               {
+  _requestsListView                                    ;
+  _detailScrollView                                      ;
 
   // Metrics are used to decide when if the request list should be sticky, and
   // scroll to the bottom as new network requests come in, or if the user has
@@ -102,14 +102,14 @@ class NetworkOverlay extends React.Component<Props, State> {
   // Map of `socketId` -> `index in `this.state.requests`.
   _socketIdMap = {};
   // Map of `xhr._index` -> `index in `this.state.requests`.
-  _xhrIdMap: {[key: number]: number, ...} = {};
+  _xhrIdMap                               = {};
 
-  state: State = {
+  state        = {
     detailRowId: null,
     requests: [],
   };
 
-  _enableXHRInterception(): void {
+  _enableXHRInterception()       {
     if (XHRInterceptor.isInterceptorEnabled()) {
       return;
     }
@@ -122,7 +122,7 @@ class NetworkOverlay extends React.Component<Props, State> {
       const xhrIndex = this.state.requests.length;
       this._xhrIdMap[xhr._index] = xhrIndex;
 
-      const _xhr: NetworkRequestInfo = {
+      const _xhr                     = {
         id: xhrIndex,
         type: 'XMLHttpRequest',
         method: method,
@@ -206,7 +206,7 @@ class NetworkOverlay extends React.Component<Props, State> {
     XHRInterceptor.enableInterception();
   }
 
-  _enableWebSocketInterception(): void {
+  _enableWebSocketInterception()       {
     if (WebSocketInterceptor.isInterceptorEnabled()) {
       return;
     }
@@ -215,7 +215,7 @@ class NetworkOverlay extends React.Component<Props, State> {
       (url, protocols, options, socketId) => {
         const socketIndex = this.state.requests.length;
         this._socketIdMap[socketId] = socketIndex;
-        const _webSocket: NetworkRequestInfo = {
+        const _webSocket                     = {
           id: socketIndex,
           type: 'WebSocket',
           url: url,
@@ -326,7 +326,7 @@ class NetworkOverlay extends React.Component<Props, State> {
     WebSocketInterceptor.disableInterception();
   }
 
-  _renderItem = ({item, index}): React.Element<any> => {
+  _renderItem = ({item, index})                     => {
     const tableRowViewStyle = [
       styles.tableRow,
       index % 2 === 1 ? styles.tableRowOdd : styles.tableRowEven,
@@ -394,7 +394,7 @@ class NetworkOverlay extends React.Component<Props, State> {
     );
   }
 
-  _indicateAdditionalRequests = (): void => {
+  _indicateAdditionalRequests = ()       => {
     if (this._requestsListView) {
       const distanceFromEndThreshold = LISTVIEW_CELL_HEIGHT * 2;
       const {
@@ -412,11 +412,11 @@ class NetworkOverlay extends React.Component<Props, State> {
     }
   };
 
-  _captureRequestsListView = (listRef: ?FlatList<NetworkRequestInfo>): void => {
+  _captureRequestsListView = (listRef                               )       => {
     this._requestsListView = listRef;
   };
 
-  _requestsListViewOnScroll = (e: Object): void => {
+  _requestsListViewOnScroll = (e        )       => {
     this._requestsListViewScrollMetrics.offset = e.nativeEvent.contentOffset.y;
     this._requestsListViewScrollMetrics.visibleLength =
       e.nativeEvent.layoutMeasurement.height;
@@ -428,11 +428,11 @@ class NetworkOverlay extends React.Component<Props, State> {
    * Popup a scrollView to dynamically show detailed information of
    * the request, when pressing a row in the network flow listView.
    */
-  _pressRow(rowId: number): void {
+  _pressRow(rowId        )       {
     this.setState({detailRowId: rowId}, this._scrollDetailToTop);
   }
 
-  _scrollDetailToTop = (): void => {
+  _scrollDetailToTop = ()       => {
     if (this._detailScrollView) {
       this._detailScrollView.scrollTo({
         y: 0,
@@ -445,7 +445,7 @@ class NetworkOverlay extends React.Component<Props, State> {
     this.setState({detailRowId: null});
   };
 
-  _getRequestIndexByXHRID(index: number): number {
+  _getRequestIndexByXHRID(index        )         {
     if (index === undefined) {
       return -1;
     }
@@ -457,7 +457,7 @@ class NetworkOverlay extends React.Component<Props, State> {
     }
   }
 
-  render(): React.Node {
+  render()             {
     const {requests, detailRowId} = this.state;
 
     return (

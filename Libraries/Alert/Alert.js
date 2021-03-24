@@ -5,35 +5,35 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
 
 import Platform from '../Utilities/Platform';
 import NativeDialogManagerAndroid, {
-  type DialogOptions,
+                     
 } from '../NativeModules/specs/NativeDialogManagerAndroid';
 import RCTAlertManager from './RCTAlertManager';
 
-export type AlertType =
-  | 'default'
-  | 'plain-text'
-  | 'secure-text'
-  | 'login-password';
-export type AlertButtonStyle = 'default' | 'cancel' | 'destructive';
-export type Buttons = Array<{
-  text?: string,
-  onPress?: ?Function,
-  style?: AlertButtonStyle,
-  ...
-}>;
+                       
+             
+                
+                 
+                     
+                                                                    
+                             
+                
+                      
+                           
+     
+   
 
-type Options = {
-  cancelable?: ?boolean,
-  onDismiss?: ?() => void,
-  ...
-};
+                
+                        
+                          
+     
+  
 
 /**
  * Launches an alert dialog with the specified title and message.
@@ -42,11 +42,11 @@ type Options = {
  */
 class Alert {
   static alert(
-    title: ?string,
-    message?: ?string,
-    buttons?: Buttons,
-    options?: Options,
-  ): void {
+    title         ,
+    message          ,
+    buttons          ,
+    options          ,
+  )       {
     if (Platform.OS === 'ios') {
       Alert.prompt(title, message, buttons, 'default');
     } else if (Platform.OS === 'android') {
@@ -55,7 +55,7 @@ class Alert {
       }
       const constants = NativeDialogManagerAndroid.getConstants();
 
-      const config: DialogOptions = {
+      const config                = {
         title: title || '',
         message: message || '',
         cancelable: false,
@@ -67,7 +67,7 @@ class Alert {
       // At most three buttons (neutral, negative, positive). Ignore rest.
       // The text 'OK' should be probably localized. iOS Alert does that in native.
       const defaultPositiveText = 'OK';
-      const validButtons: Buttons = buttons
+      const validButtons          = buttons
         ? buttons.slice(0, 3)
         : [{text: defaultPositiveText}];
       const buttonPositive = validButtons.pop();
@@ -103,13 +103,13 @@ class Alert {
   }
 
   static prompt(
-    title: ?string,
-    message?: ?string,
-    callbackOrButtons?: ?(((text: string) => void) | Buttons),
-    type?: ?AlertType = 'plain-text',
-    defaultValue?: string,
-    keyboardType?: string,
-  ): void {
+    title         ,
+    message          ,
+    callbackOrButtons                                        ,
+    type              = 'plain-text',
+    defaultValue         ,
+    keyboardType         ,
+  )       {
     if (Platform.OS === 'ios') {
       let callbacks = [];
       const buttons = [];

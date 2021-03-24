@@ -5,16 +5,16 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict
+ *       strict
  */
 
 'use strict';
 
-type SpringConfigType = {
-  stiffness: number,
-  damping: number,
-  ...
-};
+                         
+                    
+                  
+     
+  
 
 function stiffnessFromOrigamiValue(oValue) {
   return (oValue - 30) * 3.62 + 194;
@@ -25,9 +25,9 @@ function dampingFromOrigamiValue(oValue) {
 }
 
 function fromOrigamiTensionAndFriction(
-  tension: number,
-  friction: number,
-): SpringConfigType {
+  tension        ,
+  friction        ,
+)                   {
   return {
     stiffness: stiffnessFromOrigamiValue(tension),
     damping: dampingFromOrigamiValue(friction),
@@ -35,9 +35,9 @@ function fromOrigamiTensionAndFriction(
 }
 
 function fromBouncinessAndSpeed(
-  bounciness: number,
-  speed: number,
-): SpringConfigType {
+  bounciness        ,
+  speed        ,
+)                   {
   function normalize(value, startValue, endValue) {
     return (value - startValue) / (endValue - startValue);
   }

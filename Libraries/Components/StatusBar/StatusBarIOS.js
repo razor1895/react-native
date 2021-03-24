@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
 'use strict';
@@ -19,4 +19,4 @@ import NativeStatusBarManagerIOS from './NativeStatusBarManagerIOS';
  */
 class StatusBarIOS extends NativeEventEmitter {}
 
-module.exports = (new StatusBarIOS(NativeStatusBarManagerIOS): StatusBarIOS);
+module.exports = (new StatusBarIOS(NativeStatusBarManagerIOS)              );

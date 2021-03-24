@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
 'use strict';
@@ -21,35 +21,35 @@ import StyleSheet from '../../StyleSheet/StyleSheet';
 import invariant from 'invariant';
 import processColor from '../../StyleSheet/processColor';
 
-import type {ColorValue} from '../../StyleSheet/StyleSheetTypes';
-import type {SyntheticEvent} from '../../Types/CoreEventTypes';
-import type {TextStyleProp} from '../../StyleSheet/StyleSheet';
+                                                                 
+                                                               
+                                                               
 
-type PickerItemSelectSyntheticEvent = SyntheticEvent<
-  $ReadOnly<{|
-    position: number,
-  |}>,
->;
+                                                     
+              
+                     
+      
+  
 
-type PickerItemValue = number | string;
+                                       
 
-type Props = $ReadOnly<{|
-  accessibilityLabel?: ?Stringish,
-  children?: React.Node,
-  style?: ?TextStyleProp,
-  backgroundColor?: ?ColorValue,
-  selectedValue?: ?PickerItemValue,
-  enabled?: ?boolean,
-  mode?: ?('dialog' | 'dropdown'),
-  onValueChange?: ?(itemValue: ?PickerItemValue, itemIndex: number) => mixed,
-  prompt?: ?string,
-  testID?: string,
-|}>;
+                         
+                                  
+                        
+                         
+                                
+                                   
+                     
+                                  
+                                                                             
+                   
+                  
+    
 
 /**
  * Not exposed as a public API - use <Picker> instead.
  */
-function PickerAndroid(props: Props): React.Node {
+function PickerAndroid(props       )             {
   const pickerRef = React.useRef(null);
 
   const [items, selected] = React.useMemo(() => {
@@ -78,7 +78,7 @@ function PickerAndroid(props: Props): React.Node {
   }, [props.children, props.selectedValue]);
 
   const onSelect = React.useCallback(
-    ({nativeEvent}: PickerItemSelectSyntheticEvent) => {
+    ({nativeEvent}                                ) => {
       const {position} = nativeEvent;
       const onValueChange = props.onValueChange;
 

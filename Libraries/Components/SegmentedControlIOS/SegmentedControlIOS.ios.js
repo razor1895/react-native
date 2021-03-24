@@ -5,56 +5,56 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
 'use strict';
 
 import * as React from 'react';
 import StyleSheet from '../../StyleSheet/StyleSheet';
-import type {OnChangeEvent} from './RCTSegmentedControlNativeComponent';
-import type {ViewProps} from '../View/ViewPropTypes';
+                                                                        
+                                                     
 import RCTSegmentedControlNativeComponent from './RCTSegmentedControlNativeComponent';
-import type {SyntheticEvent} from 'react-native/Libraries/Types/CoreEventTypes';
+                                                                                
 
-type SegmentedControlIOSProps = $ReadOnly<{|
-  ...ViewProps,
-  /**
-   * The labels for the control's segment buttons, in order.
-   */
-  values?: $ReadOnlyArray<string>,
-  /**
-   * The index in `props.values` of the segment to be (pre)selected.
-   */
-  selectedIndex?: ?number,
-  /**
-   * If false the user won't be able to interact with the control.
-   */
-  enabled?: boolean,
-  /**
-   * Accent color of the control.
-   */
-  tintColor?: ?string,
-  /**
-   * If true, then selecting a segment won't persist visually.
-   * The `onValueChange` callback will still work as expected.
-   */
-  momentary?: ?boolean,
-  /**
-   * Callback that is called when the user taps a segment
-   */
-  onChange?: ?(event: SyntheticEvent<OnChangeEvent>) => void,
-  /**
-   * Callback that is called when the user taps a segment;
-   * passes the segment's value as an argument
-   */
-  onValueChange?: ?(value: number) => mixed,
-|}>;
+                                            
+               
+     
+                                                            
+     
+                                  
+     
+                                                                    
+     
+                          
+     
+                                                                  
+     
+                    
+     
+                                 
+     
+                      
+     
+                                                              
+                                                              
+     
+                       
+     
+                                                         
+     
+                                                             
+     
+                                                          
+                                              
+     
+                                            
+    
 
-type Props = $ReadOnly<{|
-  ...SegmentedControlIOSProps,
-  forwardedRef: ?React.Ref<typeof RCTSegmentedControlNativeComponent>,
-|}>;
+                         
+                              
+                                                                      
+    
 
 /**
  * Use `SegmentedControlIOS` to render a UISegmentedControl iOS.
@@ -77,13 +77,13 @@ type Props = $ReadOnly<{|
  * ````
  */
 
-class SegmentedControlIOS extends React.Component<Props> {
+class SegmentedControlIOS extends React.Component        {
   static defaultProps = {
     values: [],
     enabled: true,
   };
 
-  _onChange = (event: SyntheticEvent<OnChangeEvent>) => {
+  _onChange = (event                               ) => {
     this.props.onChange && this.props.onChange(event);
     this.props.onValueChange &&
       this.props.onValueChange(event.nativeEvent.value);
@@ -110,8 +110,8 @@ const styles = StyleSheet.create({
 
 const SegmentedControlIOSWithRef = React.forwardRef(
   (
-    props: SegmentedControlIOSProps,
-    forwardedRef: ?React.Ref<typeof RCTSegmentedControlNativeComponent>,
+    props                          ,
+    forwardedRef                                                       ,
   ) => {
     return <SegmentedControlIOS {...props} forwardedRef={forwardedRef} />;
   },
@@ -120,4 +120,4 @@ const SegmentedControlIOSWithRef = React.forwardRef(
 /* $FlowFixMe(>=0.89.0 site=react_native_ios_fb) This comment suppresses an
  * error found when Flow v0.89 was deployed. To see the error, delete this
  * comment and run Flow. */
-module.exports = (SegmentedControlIOSWithRef: NativeSegmentedControlIOS);
+module.exports = (SegmentedControlIOSWithRef                           );

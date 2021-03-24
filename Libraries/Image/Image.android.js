@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
@@ -28,7 +28,7 @@ import NativeImageLoaderAndroid from './NativeImageLoaderAndroid';
 
 const TextInlineImageNativeComponent = require('./TextInlineImageNativeComponent');
 
-import type {ImageProps as ImagePropsType} from './ImageProps';
+                                                               
 
 let _requestId = 1;
 function generateRequestId() {
@@ -39,7 +39,7 @@ const ImageProps = {
   ...DeprecatedViewPropTypes,
   style: (DeprecatedStyleSheetPropType(
     DeprecatedImageStylePropTypes,
-  ): ReactPropsCheckType),
+  )                     ),
   /**
    * See https://reactnative.dev/docs/image.html#source
    */
@@ -59,21 +59,21 @@ const ImageProps = {
         headers: PropTypes.objectOf(PropTypes.string),
       }),
     ),
-  ]): React$PropType$Primitive<
-    | {
-        headers?: {[string]: string, ...},
-        uri?: string,
-        ...
-      }
-    | number
-    | Array<{
-        headers?: {[string]: string, ...},
-        height?: number,
-        uri?: string,
-        width?: number,
-        ...
-      }>,
-  >),
+  ])                           
+       
+                                          
+                     
+           
+       
+            
+             
+                                          
+                        
+                     
+                       
+           
+         
+   ),
   /**
    * blurRadius: the blur radius of the blur filter added to the image
    *
@@ -93,7 +93,7 @@ const ImageProps = {
     }),
     // Opaque type returned by require('./image.jpg')
     PropTypes.number,
-  ]): React$PropType$Primitive<{uri?: string, ...} | number>),
+  ])                                                        ),
   progressiveRenderingEnabled: PropTypes.bool,
   fadeDuration: PropTypes.number,
   /**
@@ -130,7 +130,7 @@ const ImageProps = {
     'auto',
     'resize',
     'scale',
-  ]): React$PropType$Primitive<'auto' | 'resize' | 'scale'>),
+  ])                                                       ),
   /**
    * Determines how to resize the image when the frame doesn't match the raw
    * image dimensions.
@@ -143,9 +143,9 @@ const ImageProps = {
     'stretch',
     'repeat',
     'center',
-  ]): React$PropType$Primitive<
-    'cover' | 'contain' | 'stretch' | 'repeat' | 'center',
-  >),
+  ])                           
+                                                          
+   ),
 };
 
 /**
@@ -154,10 +154,10 @@ const ImageProps = {
  * See https://reactnative.dev/docs/image.html#getsize
  */
 function getSize(
-  url: string,
-  success: (width: number, height: number) => void,
-  failure?: (error: any) => void,
-): any {
+  url        ,
+  success                                         ,
+  failure                       ,
+)      {
   return NativeImageLoaderAndroid.getSize(url)
     .then(function(sizes) {
       success(sizes.width, sizes.height);
@@ -177,11 +177,11 @@ function getSize(
  * See https://reactnative.dev/docs/image.html#getsizewithheaders
  */
 function getSizeWithHeaders(
-  url: string,
-  headers: {[string]: string, ...},
-  success: (width: number, height: number) => void,
-  failure?: (error: any) => void,
-): any {
+  url        ,
+  headers                         ,
+  success                                         ,
+  failure                       ,
+)      {
   return NativeImageLoaderAndroid.getSizeWithHeaders(url, headers)
     .then(function(sizes) {
       success(sizes.width, sizes.height);
@@ -194,13 +194,13 @@ function getSizeWithHeaders(
     );
 }
 
-function prefetch(url: string, callback: ?Function): any {
+function prefetch(url        , callback           )      {
   const requestId = generateRequestId();
   callback && callback(requestId);
   return NativeImageLoaderAndroid.prefetchImage(url, requestId);
 }
 
-function abortPrefetch(requestId: number) {
+function abortPrefetch(requestId        ) {
   NativeImageLoaderAndroid.abortRequest(requestId);
 }
 
@@ -210,20 +210,20 @@ function abortPrefetch(requestId: number) {
  * See https://reactnative.dev/docs/image.html#querycache
  */
 async function queryCache(
-  urls: Array<string>,
-): Promise<{[string]: 'memory' | 'disk' | 'disk/memory', ...}> {
+  urls               ,
+)                                                              {
   return await NativeImageLoaderAndroid.queryCache(urls);
 }
 
-type ImageComponentStatics = $ReadOnly<{|
-  getSize: typeof getSize,
-  getSizeWithHeaders: typeof getSizeWithHeaders,
-  prefetch: typeof prefetch,
-  abortPrefetch: typeof abortPrefetch,
-  queryCache: typeof queryCache,
-  resolveAssetSource: typeof resolveAssetSource,
-  propTypes: typeof ImageProps,
-|}>;
+                                         
+                          
+                                                
+                            
+                                      
+                                
+                                                
+                               
+    
 
 /**
  * A React component for displaying different types of images,
@@ -232,7 +232,7 @@ type ImageComponentStatics = $ReadOnly<{|
  *
  * See https://reactnative.dev/docs/image.html
  */
-let Image = (props: ImagePropsType, forwardedRef) => {
+let Image = (props                , forwardedRef) => {
   let source = resolveAssetSource(props.source);
   const defaultSource = resolveAssetSource(props.defaultSource);
   const loadingIndicatorSource = resolveAssetSource(
@@ -318,11 +318,11 @@ let Image = (props: ImagePropsType, forwardedRef) => {
   );
 };
 
-Image = React.forwardRef<
-  ImagePropsType,
-  | React.ElementRef<typeof TextInlineImageNativeComponent>
-  | React.ElementRef<typeof ImageViewNativeComponent>,
->(Image);
+Image = React.forwardRef 
+                 
+                                                           
+                                                      
+ (Image);
 
 Image.displayName = 'Image';
 
@@ -399,9 +399,9 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = ((Image: any): React.AbstractComponent<
-  ImagePropsType,
-  | React.ElementRef<typeof TextInlineImageNativeComponent>
-  | React.ElementRef<typeof ImageViewNativeComponent>,
-> &
-  ImageComponentStatics);
+module.exports = ((Image     )                          
+                 
+                                                           
+                                                      
+   
+                       );

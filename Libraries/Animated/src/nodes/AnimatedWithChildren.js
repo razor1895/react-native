@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow strict-local
+ *       strict-local
  * @format
  */
 
@@ -14,7 +14,7 @@ const AnimatedNode = require('./AnimatedNode');
 const NativeAnimatedHelper = require('../NativeAnimatedHelper');
 
 class AnimatedWithChildren extends AnimatedNode {
-  _children: Array<AnimatedNode>;
+  _children                     ;
 
   constructor() {
     super();
@@ -35,7 +35,7 @@ class AnimatedWithChildren extends AnimatedNode {
     super.__makeNative();
   }
 
-  __addChild(child: AnimatedNode): void {
+  __addChild(child              )       {
     if (this._children.length === 0) {
       this.__attach();
     }
@@ -50,7 +50,7 @@ class AnimatedWithChildren extends AnimatedNode {
     }
   }
 
-  __removeChild(child: AnimatedNode): void {
+  __removeChild(child              )       {
     const index = this._children.indexOf(child);
     if (index === -1) {
       console.warn("Trying to remove a child that doesn't exist");
@@ -68,11 +68,11 @@ class AnimatedWithChildren extends AnimatedNode {
     }
   }
 
-  __getChildren(): Array<AnimatedNode> {
+  __getChildren()                      {
     return this._children;
   }
 
-  __callListeners(value: number): void {
+  __callListeners(value        )       {
     super.__callListeners(value);
     if (!this.__isNative) {
       for (const child of this._children) {

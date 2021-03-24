@@ -5,14 +5,14 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
 
 const base64 = require('base64-js');
 
-function binaryToBase64(data: ArrayBuffer | $ArrayBufferView): any {
+function binaryToBase64(data                                )      {
   if (data instanceof ArrayBuffer) {
     data = new Uint8Array(data);
   }

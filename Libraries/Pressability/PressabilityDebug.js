@@ -4,28 +4,28 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow strict-local
+ *       strict-local
  * @format
  */
 
 'use strict';
 
 import normalizeColor from '../StyleSheet/normalizeColor';
-import type {ColorValue} from '../StyleSheet/StyleSheetTypes';
+                                                              
 
 import Touchable from '../Components/Touchable/Touchable';
 import View from '../Components/View/View';
 import * as React from 'react';
 
-type Props = $ReadOnly<{|
-  color: ColorValue,
-  hitSlop: ?$ReadOnly<{|
-    bottom?: ?number,
-    left?: ?number,
-    right?: ?number,
-    top?: ?number,
-  |}>,
-|}>;
+                         
+                    
+                        
+                     
+                   
+                    
+                  
+      
+    
 
 /**
  * Displays a debug overlay to visualize press targets when enabled via the
@@ -42,7 +42,7 @@ type Props = $ReadOnly<{|
  *   );
  *
  */
-export function PressabilityDebugView({color, hitSlop}: Props): React.Node {
+export function PressabilityDebugView({color, hitSlop}       )             {
   if (__DEV__) {
     if (isEnabled()) {
       const normalizedColor = normalizeColor(color);
@@ -73,7 +73,7 @@ export function PressabilityDebugView({color, hitSlop}: Props): React.Node {
   return null;
 }
 
-export function isEnabled(): boolean {
+export function isEnabled()          {
   if (__DEV__) {
     return Touchable.TOUCH_TARGET_DEBUG;
   }

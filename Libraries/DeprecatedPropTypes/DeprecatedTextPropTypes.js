@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
@@ -16,7 +16,7 @@ const DeprecatedStyleSheetPropType = require('./DeprecatedStyleSheetPropType');
 const PropTypes = require('prop-types');
 const DeprecatedTextStylePropTypes = require('./DeprecatedTextStylePropTypes');
 
-const stylePropType: ReactPropsCheckType = DeprecatedStyleSheetPropType(
+const stylePropType                      = DeprecatedStyleSheetPropType(
   DeprecatedTextStylePropTypes,
 );
 
@@ -34,7 +34,7 @@ module.exports = {
     'middle',
     'tail',
     'clip',
-  ]): React$PropType$Primitive<'head' | 'middle' | 'tail' | 'clip'>),
+  ])                                                               ),
   /**
    * Used to truncate the text with an ellipsis.
    *
@@ -50,7 +50,7 @@ module.exports = {
     'simple',
     'highQuality',
     'balanced',
-  ]): React$PropType$Primitive<'simple' | 'highQuality' | 'balanced'>),
+  ])                                                                 ),
   /**
    * Invoked on mount and layout changes.
    *
@@ -152,7 +152,7 @@ module.exports = {
    */
   dataDetectorType: (PropTypes.oneOf(
     DataDetectorTypes,
-  ): React$PropType$Primitive<
-    'phoneNumber' | 'link' | 'email' | 'none' | 'all',
-  >),
+  )                           
+                                                      
+   ),
 };

@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -14,19 +14,19 @@ const registerGeneratedViewConfig = require('../../Utilities/registerGeneratedVi
 const requireNativeComponent = require('../../ReactNative/requireNativeComponent');
 import ScrollViewViewConfig from './ScrollViewViewConfig';
 
-import type {
-  ScrollViewNativeProps,
-  ScrollViewNativeComponentType,
-} from './ScrollViewNativeComponentType';
+             
+                        
+                                
+                                         
 
 let ScrollViewNativeComponent;
 if (global.RN$Bridgeless) {
   registerGeneratedViewConfig('RCTScrollView', ScrollViewViewConfig);
   ScrollViewNativeComponent = 'RCTScrollView';
 } else {
-  ScrollViewNativeComponent = requireNativeComponent<ScrollViewNativeProps>(
+  ScrollViewNativeComponent = requireNativeComponent                       (
     'RCTScrollView',
   );
 }
 
-export default ((ScrollViewNativeComponent: any): ScrollViewNativeComponentType);
+export default ((ScrollViewNativeComponent     )                               );

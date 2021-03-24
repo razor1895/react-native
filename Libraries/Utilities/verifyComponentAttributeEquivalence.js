@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -13,7 +13,7 @@
 const getNativeComponentAttributes = require('../ReactNative/getNativeComponentAttributes');
 
 import ReactNativeViewViewConfig from '../Components/View/ReactNativeViewViewConfig';
-import type {ReactNativeBaseComponentViewConfig} from '../Renderer/shims/ReactNativeTypes';
+                                                                                           
 
 const IGNORED_KEYS = ['transform', 'hitSlop'];
 /**
@@ -40,8 +40,8 @@ const IGNORED_KEYS = ['transform', 'hitSlop'];
  * years from now...
  */
 function verifyComponentAttributeEquivalence(
-  componentName: string,
-  config: ReactNativeBaseComponentViewConfig<>,
+  componentName        ,
+  config                                      ,
 ) {
   if (!global.RN$Bridgeless) {
     const nativeAttributes = getNativeComponentAttributes(componentName);
@@ -64,7 +64,7 @@ function verifyComponentAttributeEquivalence(
   }
 }
 
-export function lefthandObjectDiff(leftObj: Object, rightObj: Object): Object {
+export function lefthandObjectDiff(leftObj        , rightObj        )         {
   const differentKeys = {};
 
   function compare(leftItem, rightItem, key) {
@@ -103,9 +103,9 @@ export function lefthandObjectDiff(leftObj: Object, rightObj: Object): Object {
 }
 
 export function getConfigWithoutViewProps(
-  viewConfig: ReactNativeBaseComponentViewConfig<>,
-  propName: string,
-): {...} {
+  viewConfig                                      ,
+  propName        ,
+)        {
   if (!viewConfig[propName]) {
     return {};
   }
@@ -118,7 +118,7 @@ export function getConfigWithoutViewProps(
     }, {});
 }
 
-export function stringifyViewConfig(viewConfig: any): string {
+export function stringifyViewConfig(viewConfig     )         {
   return JSON.stringify(
     viewConfig,
     (key, val) => {

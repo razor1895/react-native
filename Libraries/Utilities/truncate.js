@@ -5,17 +5,17 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
 
-type truncateOptions = {
-  breakOnWords: boolean,
-  minDelta: number,
-  elipsis: string,
-  ...
-};
+                        
+                        
+                   
+                  
+     
+  
 
 const defaultOptions = {
   breakOnWords: true,
@@ -25,10 +25,10 @@ const defaultOptions = {
 
 // maxChars (including ellipsis)
 const truncate = function(
-  str: ?string,
-  maxChars: number,
-  options?: truncateOptions,
-): ?string {
+  str         ,
+  maxChars        ,
+  options                  ,
+)          {
   options = Object.assign({}, defaultOptions, options);
   if (
     str &&

@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  * @jsdoc
  */
 
@@ -20,11 +20,11 @@ const Platform = require('../Utilities/Platform');
  * See https://reactnative.dev/docs/vibration.html
  */
 
-let _vibrating: boolean = false;
-let _id: number = 0; // _id is necessary to prevent race condition.
+let _vibrating          = false;
+let _id         = 0; // _id is necessary to prevent race condition.
 const _default_vibration_length = 400;
 
-function vibrateByPattern(pattern: Array<number>, repeat: boolean = false) {
+function vibrateByPattern(pattern               , repeat          = false) {
   if (_vibrating) {
     return;
   }
@@ -42,9 +42,9 @@ function vibrateByPattern(pattern: Array<number>, repeat: boolean = false) {
 
 function vibrateScheduler(
   id,
-  pattern: Array<number>,
-  repeat: boolean,
-  nextIndex: number,
+  pattern               ,
+  repeat         ,
+  nextIndex        ,
 ) {
   if (!_vibrating || id !== _id) {
     return;
@@ -71,8 +71,8 @@ const Vibration = {
    * See https://reactnative.dev/docs/vibration.html#vibrate
    */
   vibrate: function(
-    pattern: number | Array<number> = _default_vibration_length,
-    repeat: boolean = false,
+    pattern                         = _default_vibration_length,
+    repeat          = false,
   ) {
     if (Platform.OS === 'android') {
       if (typeof pattern === 'number') {

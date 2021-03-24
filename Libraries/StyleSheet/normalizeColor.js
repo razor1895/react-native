@@ -5,19 +5,19 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 /* eslint no-bitwise: 0 */
 
 'use strict';
 
-import type {ColorValue} from './StyleSheetTypes';
-import type {ProcessedColorValue} from './processColor';
+                                                  
+                                                        
 
 function normalizeColor(
-  color: ?(ColorValue | ProcessedColorValue),
-): ?ProcessedColorValue {
+  color                                     ,
+)                       {
   const matchers = getMatchers();
   let match;
 
@@ -137,7 +137,7 @@ function normalizeColor(
   return null;
 }
 
-function hue2rgb(p: number, q: number, t: number): number {
+function hue2rgb(p        , q        , t        )         {
   if (t < 0) {
     t += 1;
   }
@@ -156,7 +156,7 @@ function hue2rgb(p: number, q: number, t: number): number {
   return p;
 }
 
-function hslToRgb(h: number, s: number, l: number): number {
+function hslToRgb(h        , s        , l        )         {
   const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
   const p = 2 * l - q;
   const r = hue2rgb(p, q, h + 1 / 3);
@@ -196,7 +196,7 @@ function getMatchers() {
   return cachedMatchers;
 }
 
-function parse255(str: string): number {
+function parse255(str        )         {
   const int = parseInt(str, 10);
   if (int < 0) {
     return 0;
@@ -207,12 +207,12 @@ function parse255(str: string): number {
   return int;
 }
 
-function parse360(str: string): number {
+function parse360(str        )         {
   const int = parseFloat(str);
   return (((int % 360) + 360) % 360) / 360;
 }
 
-function parse1(str: string): number {
+function parse1(str        )         {
   const num = parseFloat(str);
   if (num < 0) {
     return 0;
@@ -223,7 +223,7 @@ function parse1(str: string): number {
   return Math.round(num * 255);
 }
 
-function parsePercentage(str: string): number {
+function parsePercentage(str        )         {
   // parseFloat conveniently ignores the final %
   const int = parseFloat(str);
   if (int < 0) {

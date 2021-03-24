@@ -5,13 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
 'use strict';
 
-import type {ColorValue} from './StyleSheetTypes';
+                                                  
 
-export const ColorAndroid = (color: string): ColorValue => {
+export const ColorAndroid = (color        )             => {
   throw new Error('ColorAndroid is not available on this platform.');
 };

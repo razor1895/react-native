@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
@@ -15,40 +15,40 @@ const React = require('react');
 const StyleSheet = require('../../StyleSheet/StyleSheet');
 const View = require('../View/View');
 
-import type {LayoutEvent} from '../../Types/CoreEventTypes';
+                                                            
 
 const AnimatedView = AnimatedImplementation.createAnimatedComponent(View);
 
-export type Props = {
-  children?: React.Element<any>,
-  nextHeaderLayoutY: ?number,
-  onLayout: (event: LayoutEvent) => void,
-  scrollAnimatedValue: AnimatedImplementation.Value,
-  // Will cause sticky headers to stick at the bottom of the ScrollView instead
-  // of the top.
-  inverted: ?boolean,
-  // The height of the parent ScrollView. Currently only set when inverted.
-  scrollViewHeight: ?number,
-  ...
-};
+                     
+                                
+                             
+                                         
+                                                    
+                                                                               
+                
+                     
+                                                                           
+                            
+     
+  
 
-type State = {
-  measured: boolean,
-  layoutY: number,
-  layoutHeight: number,
-  nextHeaderLayoutY: ?number,
-  ...
-};
+              
+                    
+                  
+                       
+                             
+     
+  
 
-class ScrollViewStickyHeader extends React.Component<Props, State> {
-  state: State = {
+class ScrollViewStickyHeader extends React.Component               {
+  state        = {
     measured: false,
     layoutY: 0,
     layoutHeight: 0,
     nextHeaderLayoutY: this.props.nextHeaderLayoutY,
   };
 
-  setNextHeaderY(y: number) {
+  setNextHeaderY(y        ) {
     this.setState({nextHeaderLayoutY: y});
   }
 
@@ -66,11 +66,11 @@ class ScrollViewStickyHeader extends React.Component<Props, State> {
     }
   };
 
-  render(): React.Node {
+  render()             {
     const {inverted, scrollViewHeight} = this.props;
     const {measured, layoutHeight, layoutY, nextHeaderLayoutY} = this.state;
-    const inputRange: Array<number> = [-1, 0];
-    const outputRange: Array<number> = [0, 0];
+    const inputRange                = [-1, 0];
+    const outputRange                = [0, 0];
 
     if (measured) {
       if (inverted) {

@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -14,13 +14,13 @@ const Platform = require('../../Utilities/Platform');
 const NativeEventEmitter = require('../../EventEmitter/NativeEventEmitter');
 
 import NativeTVNavigationEventEmitter from './NativeTVNavigationEventEmitter';
-import type EmitterSubscription from '../../vendor/emitter/EmitterSubscription';
+                                                                                
 
 class TVEventHandler {
-  __nativeTVNavigationEventListener: ?EmitterSubscription = null;
-  __nativeTVNavigationEventEmitter: ?NativeEventEmitter = null;
+  __nativeTVNavigationEventListener                       = null;
+  __nativeTVNavigationEventEmitter                      = null;
 
-  enable(component: ?any, callback: Function): void {
+  enable(component      , callback          )       {
     if (Platform.OS === 'ios' && !NativeTVNavigationEventEmitter) {
       return;
     }
@@ -38,7 +38,7 @@ class TVEventHandler {
     );
   }
 
-  disable(): void {
+  disable()       {
     if (this.__nativeTVNavigationEventListener) {
       this.__nativeTVNavigationEventListener.remove();
       delete this.__nativeTVNavigationEventListener;

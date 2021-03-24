@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
@@ -14,38 +14,38 @@ const ReactNativeViewConfigRegistry = require('../Renderer/shims/ReactNativeView
 const ReactNativeViewViewConfig = require('../Components/View/ReactNativeViewViewConfig');
 import verifyComponentAttributeEquivalence from './verifyComponentAttributeEquivalence';
 
-export type GeneratedViewConfig = {
-  uiViewClassName: string,
-  bubblingEventTypes?: $ReadOnly<{
-    [eventName: string]: $ReadOnly<{|
-      phasedRegistrationNames: $ReadOnly<{|
-        captured: string,
-        bubbled: string,
-      |}>,
-    |}>,
-    ...,
-  }>,
-  directEventTypes?: $ReadOnly<{
-    [eventName: string]: $ReadOnly<{|
-      registrationName: string,
-    |}>,
-    ...,
-  }>,
-  validAttributes?: {
-    [propName: string]:
-      | true
-      | $ReadOnly<{|
-          diff?: <T>(arg1: any, arg2: any) => boolean,
-          process?: (arg1: any) => any,
-        |}>,
-    ...,
-  },
-  ...
-};
+                                   
+                          
+                                  
+                                     
+                                           
+                         
+                        
+          
+        
+        
+     
+                                
+                                     
+                               
+        
+        
+     
+                     
+                       
+            
+                    
+                                                      
+                                       
+            
+        
+    
+     
+  
 
 function registerGeneratedViewConfig(
-  componentName: string,
-  viewConfig: GeneratedViewConfig,
+  componentName        ,
+  viewConfig                     ,
 ) {
   const mergedViewConfig = {
     uiViewClassName: componentName,

@@ -6,21 +6,21 @@
  *
  * @emails oncall+react_native
  * @format
- * @flow
+ *      
  */
 
 'use strict';
 
-import type {StackFrame} from '../../../Core/NativeExceptionsManager';
+                                                                      
 
 jest.mock('../../../Core/Devtools/symbolicateStackTrace');
 
 const LogBoxSymbolication = require('../LogBoxSymbolication');
 
-const symbolicateStackTrace: JestMockFn<
-  $ReadOnlyArray<Array<StackFrame>>,
-  Promise<Array<StackFrame>>,
-> = (require('../../../Core/Devtools/symbolicateStackTrace'): any);
+const symbolicateStackTrace             
+                                    
+                             
+  = (require('../../../Core/Devtools/symbolicateStackTrace')     );
 
 const createStack = methodNames =>
   methodNames.map(methodName => ({

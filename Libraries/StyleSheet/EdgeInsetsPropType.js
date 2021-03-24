@@ -5,11 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict
+ *       strict
  */
 
 'use strict';
 
-import type {Rect} from './Rect';
+                                 
 
-export type EdgeInsetsProp = Rect;
+                                  

@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  * @emails oncall+react_native
  */
@@ -20,7 +20,7 @@ describe('setAndForwardRef', () => {
   let innerFuncCalled = false;
   let outerFuncCalled = false;
 
-  class ForwardedComponent extends React.Component<{||}> {
+  class ForwardedComponent extends React.Component       {
     testFunc() {
       innerFuncCalled = true;
       return true;
@@ -31,13 +31,13 @@ describe('setAndForwardRef', () => {
     }
   }
 
-  type Props = $ReadOnly<{|
-    callFunc?: ?boolean,
-    forwardedRef: React.Ref<typeof ForwardedComponent>,
-  |}>;
+                           
+                        
+                                                       
+      
 
-  class TestComponent extends React.Component<Props> {
-    _nativeRef: ?React.ElementRef<typeof ForwardedComponent> = null;
+  class TestComponent extends React.Component        {
+    _nativeRef                                               = null;
     _setNativeRef = setAndForwardRef({
       getForwardedRef: () => this.props.forwardedRef,
       setLocalRef: ref => {
@@ -66,7 +66,7 @@ describe('setAndForwardRef', () => {
   });
 
   it('should forward refs (function-based)', () => {
-    let testRef: ?React.ElementRef<typeof ForwardedComponent> = null;
+    let testRef                                               = null;
 
     ReactTestRenderer.create(
       <TestComponentWithRef
@@ -83,7 +83,7 @@ describe('setAndForwardRef', () => {
   });
 
   it('should forward refs (createRef-based)', () => {
-    const createdRef = React.createRef<typeof ForwardedComponent>();
+    const createdRef = React.createRef                           ();
 
     /* $FlowFixMe(>=0.89.0 site=react_native_fb) This comment suppresses an
      * error found when Flow v0.89 was deployed. To see the error, delete this
@@ -100,10 +100,10 @@ describe('setAndForwardRef', () => {
   });
 
   it('should forward refs (string-based)', () => {
-    class Test extends React.Component<{||}> {
-      refs: $ReadOnly<{|
-        stringRef?: ?React.ElementRef<typeof ForwardedComponent>,
-      |}>;
+    class Test extends React.Component       {
+      refs              
+                                                                 
+         ;
 
       componentDidMount() {
         /* eslint-disable react/no-string-refs */

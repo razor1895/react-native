@@ -5,23 +5,23 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
 
 const EventSubscription = require('./EventSubscription');
 
-import type EventEmitter from './EventEmitter';
-import type EventSubscriptionVendor from './EventSubscriptionVendor';
+                                               
+                                                                     
 
 /**
  * EmitterSubscription represents a subscription with listener and context data.
  */
 class EmitterSubscription extends EventSubscription {
-  emitter: EventEmitter;
-  listener: Function;
-  context: ?Object;
+  emitter              ;
+  listener          ;
+  context         ;
 
   /**
    * @param {EventEmitter} emitter - The event emitter that registered this
@@ -34,10 +34,10 @@ class EmitterSubscription extends EventSubscription {
    *   listener
    */
   constructor(
-    emitter: EventEmitter,
-    subscriber: EventSubscriptionVendor,
-    listener: Function,
-    context: ?Object,
+    emitter              ,
+    subscriber                         ,
+    listener          ,
+    context         ,
   ) {
     super(subscriber);
     this.emitter = emitter;

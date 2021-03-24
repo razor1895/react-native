@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
 'use strict';
@@ -14,20 +14,20 @@ const Platform = require('../Utilities/Platform');
 
 import NativeDialogManagerAndroid from '../NativeModules/specs/NativeDialogManagerAndroid';
 import NativePermissionsAndroid from './NativePermissionsAndroid';
-import type {
-  PermissionStatus,
-  PermissionType,
-} from './NativePermissionsAndroid';
+             
+                   
+                 
+                                    
 import invariant from 'invariant';
 
-export type Rationale = {
-  title: string,
-  message: string,
-  buttonPositive?: string,
-  buttonNegative?: string,
-  buttonNeutral?: string,
-  ...
-};
+                         
+                
+                  
+                          
+                          
+                         
+     
+  
 
 const PERMISSION_REQUEST_RESULT = Object.freeze({
   GRANTED: 'granted',
@@ -70,38 +70,38 @@ const PERMISSIONS = Object.freeze({
  */
 
 class PermissionsAndroid {
-  PERMISSIONS: {|
-    ACCESS_BACKGROUND_LOCATION: string,
-    ACCESS_COARSE_LOCATION: string,
-    ACCESS_FINE_LOCATION: string,
-    ADD_VOICEMAIL: string,
-    BODY_SENSORS: string,
-    CALL_PHONE: string,
-    CAMERA: string,
-    GET_ACCOUNTS: string,
-    PROCESS_OUTGOING_CALLS: string,
-    READ_CALENDAR: string,
-    READ_CALL_LOG: string,
-    READ_CONTACTS: string,
-    READ_EXTERNAL_STORAGE: string,
-    READ_PHONE_STATE: string,
-    READ_SMS: string,
-    RECEIVE_MMS: string,
-    RECEIVE_SMS: string,
-    RECEIVE_WAP_PUSH: string,
-    RECORD_AUDIO: string,
-    SEND_SMS: string,
-    USE_SIP: string,
-    WRITE_CALENDAR: string,
-    WRITE_CALL_LOG: string,
-    WRITE_CONTACTS: string,
-    WRITE_EXTERNAL_STORAGE: string,
-  |} = PERMISSIONS;
-  RESULTS: {|
-    DENIED: $TEMPORARY$string<'denied'>,
-    GRANTED: $TEMPORARY$string<'granted'>,
-    NEVER_ASK_AGAIN: $TEMPORARY$string<'never_ask_again'>,
-  |} = PERMISSION_REQUEST_RESULT;
+  PERMISSIONS    
+                                       
+                                   
+                                 
+                          
+                         
+                       
+                   
+                         
+                                   
+                          
+                          
+                          
+                                  
+                             
+                     
+                        
+                        
+                             
+                         
+                     
+                    
+                           
+                           
+                           
+                                   
+     = PERMISSIONS;
+  RESULTS    
+                                        
+                                          
+                                                          
+     = PERMISSION_REQUEST_RESULT;
 
   /**
    * DEPRECATED - use check
@@ -111,7 +111,7 @@ class PermissionsAndroid {
    *
    * @deprecated
    */
-  checkPermission(permission: PermissionType): Promise<boolean> {
+  checkPermission(permission                )                   {
     console.warn(
       '"PermissionsAndroid.checkPermission" is deprecated. Use "PermissionsAndroid.check" instead',
     );
@@ -136,7 +136,7 @@ class PermissionsAndroid {
    *
    * See https://reactnative.dev/docs/permissionsandroid.html#check
    */
-  check(permission: PermissionType): Promise<boolean> {
+  check(permission                )                   {
     if (Platform.OS !== 'android') {
       console.warn(
         '"PermissionsAndroid" module works only for Android platform.',
@@ -167,9 +167,9 @@ class PermissionsAndroid {
    * @deprecated
    */
   async requestPermission(
-    permission: PermissionType,
-    rationale?: Rationale,
-  ): Promise<boolean> {
+    permission                ,
+    rationale            ,
+  )                   {
     console.warn(
       '"PermissionsAndroid.requestPermission" is deprecated. Use "PermissionsAndroid.request" instead',
     );
@@ -191,9 +191,9 @@ class PermissionsAndroid {
    * See https://reactnative.dev/docs/permissionsandroid.html#request
    */
   async request(
-    permission: PermissionType,
-    rationale?: Rationale,
-  ): Promise<PermissionStatus> {
+    permission                ,
+    rationale            ,
+  )                            {
     if (Platform.OS !== 'android') {
       console.warn(
         '"PermissionsAndroid" module works only for Android platform.',
@@ -239,8 +239,8 @@ class PermissionsAndroid {
    * See https://reactnative.dev/docs/permissionsandroid.html#requestmultiple
    */
   requestMultiple(
-    permissions: Array<PermissionType>,
-  ): Promise<{[permission: PermissionType]: PermissionStatus, ...}> {
+    permissions                       ,
+  )                                                                 {
     if (Platform.OS !== 'android') {
       console.warn(
         '"PermissionsAndroid" module works only for Android platform.',
@@ -257,6 +257,6 @@ class PermissionsAndroid {
   }
 }
 
-const PermissionsAndroidInstance: PermissionsAndroid = new PermissionsAndroid();
+const PermissionsAndroidInstance                     = new PermissionsAndroid();
 
 module.exports = PermissionsAndroidInstance;

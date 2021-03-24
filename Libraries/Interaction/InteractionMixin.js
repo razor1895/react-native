@@ -5,13 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
 
 const InteractionManager = require('./InteractionManager');
-import {type Handle} from './InteractionManager';
+import {           } from './InteractionManager';
 
 /**
  * This mixin provides safe versions of InteractionManager start/end methods
@@ -27,15 +27,15 @@ const InteractionMixin = {
     }
   },
 
-  _interactionMixinHandles: ([]: Array<number>),
+  _interactionMixinHandles: ([]               ),
 
-  createInteractionHandle: function(): Handle {
+  createInteractionHandle: function()         {
     const handle = InteractionManager.createInteractionHandle();
     this._interactionMixinHandles.push(handle);
     return handle;
   },
 
-  clearInteractionHandle: function(clearHandle: number): void {
+  clearInteractionHandle: function(clearHandle        )       {
     InteractionManager.clearInteractionHandle(clearHandle);
     this._interactionMixinHandles = this._interactionMixinHandles.filter(
       handle => handle !== clearHandle,
@@ -47,7 +47,7 @@ const InteractionMixin = {
    *
    * @param {function} callback
    */
-  runAfterInteractions: function(callback: Function): void {
+  runAfterInteractions: function(callback          )       {
     InteractionManager.runAfterInteractions(callback);
   },
 };

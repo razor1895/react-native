@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
@@ -16,8 +16,8 @@ const ReactNativeViewConfig = {
   uiViewClassName: 'RCTView',
   baseModuleName: null,
   Manager: 'ViewManager',
-  Commands: ({}: {...}),
-  Constants: ({}: {...}),
+  Commands: ({}       ),
+  Constants: ({}       ),
   bubblingEventTypes: {
     ...ReactNativeViewViewConfigAndroid.bubblingEventTypes,
     topBlur: {
@@ -171,7 +171,7 @@ const ReactNativeViewConfig = {
     flexShrink: true,
     flexWrap: true,
     height: true,
-    hitSlop: {diff: (require('../../Utilities/differ/insetsDiffer'): any)},
+    hitSlop: {diff: (require('../../Utilities/differ/insetsDiffer')     )},
     importantForAccessibility: true,
     justifyContent: true,
     left: true,
@@ -324,7 +324,7 @@ const ReactNativeViewConfig = {
       top: true,
       transform: ((Platform.OS === 'ios'
         ? {diff: require('../../Utilities/differ/matricesDiffer')}
-        : {process: require('../../StyleSheet/processTransform')}): any),
+        : {process: require('../../StyleSheet/processTransform')})     ),
       transformMatrix: true,
       translateX: true,
       translateY: true,
@@ -336,7 +336,7 @@ const ReactNativeViewConfig = {
     top: true,
     transform: ((Platform.OS === 'ios'
       ? {diff: require('../../Utilities/differ/matricesDiffer')}
-      : {process: require('../../StyleSheet/processTransform')}): any),
+      : {process: require('../../StyleSheet/processTransform')})     ),
     translateX: true,
     translateY: true,
     width: true,

@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
 'use strict';
@@ -17,53 +17,53 @@ const dismissKeyboard = require('../../Utilities/dismissKeyboard');
 const invariant = require('invariant');
 
 import NativeKeyboardObserver from './NativeKeyboardObserver';
-const KeyboardEventEmitter: NativeEventEmitter = new NativeEventEmitter(
+const KeyboardEventEmitter                     = new NativeEventEmitter(
   NativeKeyboardObserver,
 );
 
-export type KeyboardEventName =
-  | 'keyboardWillShow'
-  | 'keyboardDidShow'
-  | 'keyboardWillHide'
-  | 'keyboardDidHide'
-  | 'keyboardWillChangeFrame'
-  | 'keyboardDidChangeFrame';
+                               
+                      
+                     
+                      
+                     
+                             
+                             
 
-export type KeyboardEventEasing =
-  | 'easeIn'
-  | 'easeInEaseOut'
-  | 'easeOut'
-  | 'linear'
-  | 'keyboard';
+                                 
+            
+                   
+             
+            
+               
 
-export type KeyboardEventCoordinates = $ReadOnly<{|
-  screenX: number,
-  screenY: number,
-  width: number,
-  height: number,
-|}>;
+                                                   
+                  
+                  
+                
+                 
+    
 
-export type KeyboardEvent = AndroidKeyboardEvent | IOSKeyboardEvent;
+                                                                    
 
-type BaseKeyboardEvent = {|
-  duration: number,
-  easing: KeyboardEventEasing,
-  endCoordinates: KeyboardEventCoordinates,
-|};
+                           
+                   
+                              
+                                           
+   
 
-export type AndroidKeyboardEvent = $ReadOnly<{|
-  ...BaseKeyboardEvent,
-  duration: 0,
-  easing: 'keyboard',
-|}>;
+                                               
+                       
+              
+                     
+    
 
-export type IOSKeyboardEvent = $ReadOnly<{|
-  ...BaseKeyboardEvent,
-  startCoordinates: KeyboardEventCoordinates,
-  isEventFromThisApp: boolean,
-|}>;
+                                           
+                       
+                                             
+                              
+    
 
-type KeyboardEventListener = (e: KeyboardEvent) => void;
+                                                        
 
 // The following object exists for documentation purposes
 // Actual work happens in
@@ -135,7 +135,7 @@ const Keyboard = {
    *
    * @param {function} callback function to be called when the event fires.
    */
-  addListener(eventName: KeyboardEventName, callback: KeyboardEventListener) {
+  addListener(eventName                   , callback                       ) {
     invariant(false, 'Dummy method used for documentation');
   },
 
@@ -146,8 +146,8 @@ const Keyboard = {
    * @param {function} callback function to be called when the event fires.
    */
   removeListener(
-    eventName: KeyboardEventName,
-    callback: KeyboardEventListener,
+    eventName                   ,
+    callback                       ,
   ) {
     invariant(false, 'Dummy method used for documentation');
   },
@@ -157,7 +157,7 @@ const Keyboard = {
    *
    * @param {string} eventType The native event string listeners are watching which will be removed.
    */
-  removeAllListeners(eventName: KeyboardEventName) {
+  removeAllListeners(eventName                   ) {
     invariant(false, 'Dummy method used for documentation');
   },
 
@@ -172,14 +172,14 @@ const Keyboard = {
    * Useful for syncing TextInput (or other keyboard accessory view) size of
    * position changes with keyboard movements.
    */
-  scheduleLayoutAnimation(event: KeyboardEvent) {
+  scheduleLayoutAnimation(event               ) {
     invariant(false, 'Dummy method used for documentation');
   },
 };
 
 // Throw away the dummy object and reassign it to original module
 KeyboardEventEmitter.dismiss = dismissKeyboard;
-KeyboardEventEmitter.scheduleLayoutAnimation = function(event: KeyboardEvent) {
+KeyboardEventEmitter.scheduleLayoutAnimation = function(event               ) {
   const {duration, easing} = event;
   if (duration != null && duration !== 0) {
     LayoutAnimation.configureNext({

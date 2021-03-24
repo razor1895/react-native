@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
@@ -18,58 +18,58 @@ const performanceNow =
   global.nativePerformanceNow ||
   require('fbjs/lib/performanceNow');
 
-type Timespan = {
-  description?: string,
-  totalTime?: number,
-  startTime?: number,
-  endTime?: number,
-  ...
-};
+                 
+                       
+                     
+                     
+                   
+     
+  
 
-export type IPerformanceLogger = {
-  addTimespan(string, number, string | void): void,
-  startTimespan(string, string | void): void,
-  stopTimespan(string, options?: {update?: boolean}): void,
-  clear(): void,
-  clearCompleted(): void,
-  clearExceptTimespans(Array<string>): void,
-  currentTimestamp(): number,
-  getTimespans(): {[key: string]: Timespan, ...},
-  hasTimespan(string): boolean,
-  logTimespans(): void,
-  addTimespans(Array<number>, Array<string>): void,
-  setExtra(string, any): void,
-  getExtras(): {[key: string]: any, ...},
-  removeExtra(string): ?any,
-  logExtras(): void,
-  markPoint(string, number | void): void,
-  getPoints(): {[key: string]: number, ...},
-  logPoints(): void,
-  logEverything(): void,
-  ...
-};
+                                  
+                                                   
+                                             
+                                                           
+                
+                         
+                                            
+                             
+                                                 
+                               
+                       
+                                                   
+                              
+                                         
+                            
+                    
+                                         
+                                            
+                    
+                        
+     
+  
 
-const _cookies: {[key: string]: number, ...} = {};
+const _cookies                               = {};
 
-const PRINT_TO_CONSOLE: false = false; // Type as false to prevent accidentally committing `true`;
+const PRINT_TO_CONSOLE        = false; // Type as false to prevent accidentally committing `true`;
 
 /**
  * This function creates performance loggers that can be used to collect and log
  * various performance data such as timespans, points and extras.
  * The loggers need to have minimal overhead since they're used in production.
  */
-function createPerformanceLogger(): IPerformanceLogger {
-  const result: IPerformanceLogger & {
-    _timespans: {[key: string]: Timespan, ...},
-    _extras: {[key: string]: any, ...},
-    _points: {[key: string]: number, ...},
-    ...
-  } = {
+function createPerformanceLogger()                     {
+  const result                        
+                                               
+                                       
+                                          
+       
+    = {
     _timespans: {},
     _extras: {},
     _points: {},
 
-    addTimespan(key: string, lengthInMs: number, description?: string) {
+    addTimespan(key        , lengthInMs        , description         ) {
       if (this._timespans[key]) {
         if (PRINT_TO_CONSOLE && __DEV__) {
           infoLog(
@@ -86,7 +86,7 @@ function createPerformanceLogger(): IPerformanceLogger {
       };
     },
 
-    startTimespan(key: string, description?: string) {
+    startTimespan(key        , description         ) {
       if (this._timespans[key]) {
         if (PRINT_TO_CONSOLE && __DEV__) {
           infoLog(
@@ -107,7 +107,7 @@ function createPerformanceLogger(): IPerformanceLogger {
       }
     },
 
-    stopTimespan(key: string, options?: {update?: boolean}) {
+    stopTimespan(key        , options                     ) {
       const timespan = this._timespans[key];
       if (!timespan || !timespan.startTime) {
         if (PRINT_TO_CONSOLE && __DEV__) {
@@ -162,7 +162,7 @@ function createPerformanceLogger(): IPerformanceLogger {
       }
     },
 
-    clearExceptTimespans(keys: Array<string>) {
+    clearExceptTimespans(keys               ) {
       this._timespans = Object.keys(this._timespans).reduce(function(
         previous,
         key,
@@ -188,7 +188,7 @@ function createPerformanceLogger(): IPerformanceLogger {
       return this._timespans;
     },
 
-    hasTimespan(key: string) {
+    hasTimespan(key        ) {
       return !!this._timespans[key];
     },
 
@@ -202,14 +202,14 @@ function createPerformanceLogger(): IPerformanceLogger {
       }
     },
 
-    addTimespans(newTimespans: Array<number>, labels: Array<string>) {
+    addTimespans(newTimespans               , labels               ) {
       for (let ii = 0, l = newTimespans.length; ii < l; ii += 2) {
         const label = labels[ii / 2];
         this.addTimespan(label, newTimespans[ii + 1] - newTimespans[ii], label);
       }
     },
 
-    setExtra(key: string, value: any) {
+    setExtra(key        , value     ) {
       if (this._extras[key]) {
         if (PRINT_TO_CONSOLE && __DEV__) {
           infoLog(
@@ -226,7 +226,7 @@ function createPerformanceLogger(): IPerformanceLogger {
       return this._extras;
     },
 
-    removeExtra(key: string): ?any {
+    removeExtra(key        )       {
       const value = this._extras[key];
       delete this._extras[key];
       return value;
@@ -238,7 +238,7 @@ function createPerformanceLogger(): IPerformanceLogger {
       }
     },
 
-    markPoint(key: string, timestamp?: number) {
+    markPoint(key        , timestamp         ) {
       if (this._points[key]) {
         if (PRINT_TO_CONSOLE && __DEV__) {
           infoLog(

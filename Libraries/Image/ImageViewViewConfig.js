@@ -5,13 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
 'use strict';
 
 import ReactNativeViewViewConfig from '../Components/View/ReactNativeViewViewConfig';
-import type {ReactNativeBaseComponentViewConfig} from '../Renderer/shims/ReactNativeTypes';
+                                                                                           
 
 const ImageViewViewConfig = {
   uiViewClassName: 'RCTImageView',
@@ -40,7 +40,7 @@ const ImageViewViewConfig = {
     ...ReactNativeViewViewConfig.validAttributes,
     blurRadius: true,
     // flowlint-next-line unclear-type:off
-    capInsets: {diff: (require('../Utilities/differ/insetsDiffer'): any)},
+    capInsets: {diff: (require('../Utilities/differ/insetsDiffer')     )},
     defaultSource: {
       process: require('./resolveAssetSource'),
     },
@@ -65,4 +65,4 @@ const ImageViewViewConfig = {
   },
 };
 
-module.exports = (ImageViewViewConfig: ReactNativeBaseComponentViewConfig<>);
+module.exports = (ImageViewViewConfig                                      );

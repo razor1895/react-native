@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
@@ -14,13 +14,13 @@ const AnimatedInterpolation = require('./AnimatedInterpolation');
 const AnimatedNode = require('./AnimatedNode');
 const AnimatedWithChildren = require('./AnimatedWithChildren');
 
-import type {InterpolationConfigType} from './AnimatedInterpolation';
+                                                                     
 
 class AnimatedModulo extends AnimatedWithChildren {
-  _a: AnimatedNode;
-  _modulus: number;
+  _a              ;
+  _modulus        ;
 
-  constructor(a: AnimatedNode, modulus: number) {
+  constructor(a              , modulus        ) {
     super();
     this._a = a;
     this._modulus = modulus;
@@ -31,26 +31,26 @@ class AnimatedModulo extends AnimatedWithChildren {
     super.__makeNative();
   }
 
-  __getValue(): number {
+  __getValue()         {
     return (
       ((this._a.__getValue() % this._modulus) + this._modulus) % this._modulus
     );
   }
 
-  interpolate(config: InterpolationConfigType): AnimatedInterpolation {
+  interpolate(config                         )                        {
     return new AnimatedInterpolation(this, config);
   }
 
-  __attach(): void {
+  __attach()       {
     this._a.__addChild(this);
   }
 
-  __detach(): void {
+  __detach()       {
     this._a.__removeChild(this);
     super.__detach();
   }
 
-  __getNativeConfig(): any {
+  __getNativeConfig()      {
     return {
       type: 'modulus',
       input: this._a.__getNativeTag(),

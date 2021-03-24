@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
@@ -39,8 +39,8 @@ const View = require('../Components/View/View');
  * AppRegistry.registerComponent('DisplayAnImageBackground', () => DisplayAnImageBackground);
  * ```
  */
-class ImageBackground extends React.Component<$FlowFixMeProps> {
-  setNativeProps(props: Object) {
+class ImageBackground extends React.Component                  {
+  setNativeProps(props        ) {
     // Work-around flow
     const viewRef = this._viewRef;
     if (viewRef) {
@@ -48,13 +48,13 @@ class ImageBackground extends React.Component<$FlowFixMeProps> {
     }
   }
 
-  _viewRef: ?React.ElementRef<typeof View> = null;
+  _viewRef                                 = null;
 
   _captureRef = ref => {
     this._viewRef = ref;
   };
 
-  render(): React.Node {
+  render()             {
     const {children, style, imageStyle, imageRef, ...props} = this.props;
 
     return (

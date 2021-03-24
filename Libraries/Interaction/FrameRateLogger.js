@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
 'use strict';
@@ -35,11 +35,11 @@ const FrameRateLogger = {
    * Enable `debug` to see local logs of what's going on. `reportStackTraces` will grab stack traces
    * during UI thread stalls and upload them if the native module supports it.
    */
-  setGlobalOptions: function(options: {
-    debug?: boolean,
-    reportStackTraces?: boolean,
-    ...
-  }) {
+  setGlobalOptions: function(options   
+                    
+                                
+       
+   ) {
     if (options.debug !== undefined) {
       invariant(
         NativeFrameRateLogger,
@@ -60,7 +60,7 @@ const FrameRateLogger = {
    * Must call `setContext` before any events can be properly tracked, which is done automatically
    * in `AppRegistry`, but navigation is also a common place to hook in.
    */
-  setContext: function(context: string) {
+  setContext: function(context        ) {
     NativeFrameRateLogger && NativeFrameRateLogger.setContext(context);
   },
 

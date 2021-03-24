@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -13,19 +13,19 @@
 const infoLog = require('../Utilities/infoLog');
 const invariant = require('invariant');
 
-type SimpleTask = {
-  name: string,
-  run: () => void,
-  ...
-};
-type PromiseTask = {
-  name: string,
-  gen: () => Promise<any>,
-  ...
-};
-export type Task = Function | SimpleTask | PromiseTask;
+                   
+               
+                  
+     
+  
+                    
+               
+                          
+     
+  
+                                                       
 
-const DEBUG: false = false;
+const DEBUG        = false;
 
 /**
  * TaskQueue - A system for queueing and executing a mix of simple callbacks and
@@ -51,7 +51,7 @@ class TaskQueue {
    * `onMoreTasks` is invoked when `PromiseTask`s resolve if there are more
    * tasks to process.
    */
-  constructor({onMoreTasks}: {onMoreTasks: () => void, ...}) {
+  constructor({onMoreTasks}                                ) {
     this._onMoreTasks = onMoreTasks;
     this._queueStack = [{tasks: [], popable: false}];
   }
@@ -61,15 +61,15 @@ class TaskQueue {
    * async debugging. Tasks will not be executed until `processNext` is called
    * explicitly.
    */
-  enqueue(task: Task): void {
+  enqueue(task      )       {
     this._getCurrentQueue().push(task);
   }
 
-  enqueueTasks(tasks: Array<Task>): void {
+  enqueueTasks(tasks             )       {
     tasks.forEach(task => this.enqueue(task));
   }
 
-  cancelTasks(tasksToCancel: Array<Task>): void {
+  cancelTasks(tasksToCancel             )       {
     // search through all tasks and remove them.
     this._queueStack = this._queueStack
       .map(queue => ({
@@ -89,21 +89,21 @@ class TaskQueue {
    * `onMoreTasks` will be called after each `PromiseTask` resolves if there are
    * tasks ready to run at that point.
    */
-  hasTasksToProcess(): boolean {
+  hasTasksToProcess()          {
     return this._getCurrentQueue().length > 0;
   }
 
   /**
    * Executes the next task in the queue.
    */
-  processNext(): void {
+  processNext()       {
     const queue = this._getCurrentQueue();
     if (queue.length) {
       const task = queue.shift();
       try {
         if (task.gen) {
           DEBUG && infoLog('TaskQueue: genPromise for task ' + task.name);
-          this._genPromise((task: any)); // Rather than annoying tagged union
+          this._genPromise((task     )); // Rather than annoying tagged union
         } else if (task.run) {
           DEBUG && infoLog('TaskQueue: run task ' + task.name);
           task.run();
@@ -124,14 +124,14 @@ class TaskQueue {
     }
   }
 
-  _queueStack: Array<{
-    tasks: Array<Task>,
-    popable: boolean,
-    ...
-  }>;
-  _onMoreTasks: () => void;
+  _queueStack         
+                       
+                     
+       
+    ;
+  _onMoreTasks            ;
 
-  _getCurrentQueue(): Array<Task> {
+  _getCurrentQueue()              {
     const stackIdx = this._queueStack.length - 1;
     const queue = this._queueStack[stackIdx];
     if (
@@ -151,7 +151,7 @@ class TaskQueue {
     }
   }
 
-  _genPromise(task: PromiseTask) {
+  _genPromise(task             ) {
     // Each async task pushes it's own queue onto the queue stack. This
     // effectively defers execution of previously queued tasks until the promise
     // resolves, at which point we allow the new queue to be popped, which

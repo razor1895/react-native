@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
@@ -19,11 +19,11 @@ const ReactNative = require('../../../Renderer/shims/ReactNative');
 const invariant = require('invariant');
 
 class AnimatedProps extends AnimatedNode {
-  _props: Object;
-  _animatedView: any;
-  _callback: () => void;
+  _props        ;
+  _animatedView     ;
+  _callback            ;
 
-  constructor(props: Object, callback: () => void) {
+  constructor(props        , callback            ) {
     super();
     if (props.style) {
       props = {
@@ -36,7 +36,7 @@ class AnimatedProps extends AnimatedNode {
     this.__attach();
   }
 
-  __getValue(): Object {
+  __getValue()         {
     const props = {};
     for (const key in this._props) {
       const value = this._props[key];
@@ -55,7 +55,7 @@ class AnimatedProps extends AnimatedNode {
     return props;
   }
 
-  __getAnimatedValue(): Object {
+  __getAnimatedValue()         {
     const props = {};
     for (const key in this._props) {
       const value = this._props[key];
@@ -66,7 +66,7 @@ class AnimatedProps extends AnimatedNode {
     return props;
   }
 
-  __attach(): void {
+  __attach()       {
     for (const key in this._props) {
       const value = this._props[key];
       if (value instanceof AnimatedNode) {
@@ -75,7 +75,7 @@ class AnimatedProps extends AnimatedNode {
     }
   }
 
-  __detach(): void {
+  __detach()       {
     if (this.__isNative && this._animatedView) {
       this.__disconnectAnimatedView();
     }
@@ -88,11 +88,11 @@ class AnimatedProps extends AnimatedNode {
     super.__detach();
   }
 
-  update(): void {
+  update()       {
     this._callback();
   }
 
-  __makeNative(): void {
+  __makeNative()       {
     if (!this.__isNative) {
       this.__isNative = true;
       for (const key in this._props) {
@@ -107,7 +107,7 @@ class AnimatedProps extends AnimatedNode {
     }
   }
 
-  setNativeView(animatedView: any): void {
+  setNativeView(animatedView     )       {
     if (this._animatedView === animatedView) {
       return;
     }
@@ -117,9 +117,9 @@ class AnimatedProps extends AnimatedNode {
     }
   }
 
-  __connectAnimatedView(): void {
+  __connectAnimatedView()       {
     invariant(this.__isNative, 'Expected node to be marked as "native"');
-    const nativeViewTag: ?number = ReactNative.findNodeHandle(
+    const nativeViewTag          = ReactNative.findNodeHandle(
       this._animatedView,
     );
     invariant(
@@ -132,9 +132,9 @@ class AnimatedProps extends AnimatedNode {
     );
   }
 
-  __disconnectAnimatedView(): void {
+  __disconnectAnimatedView()       {
     invariant(this.__isNative, 'Expected node to be marked as "native"');
-    const nativeViewTag: ?number = ReactNative.findNodeHandle(
+    const nativeViewTag          = ReactNative.findNodeHandle(
       this._animatedView,
     );
     invariant(
@@ -147,7 +147,7 @@ class AnimatedProps extends AnimatedNode {
     );
   }
 
-  __restoreDefaultValues(): void {
+  __restoreDefaultValues()       {
     // When using the native driver, view properties need to be restored to
     // their default values manually since react no longer tracks them. This
     // is needed to handle cases where a prop driven by native animated is removed
@@ -157,7 +157,7 @@ class AnimatedProps extends AnimatedNode {
     }
   }
 
-  __getNativeConfig(): Object {
+  __getNativeConfig()         {
     const propsConfig = {};
     for (const propKey in this._props) {
       const value = this._props[propKey];

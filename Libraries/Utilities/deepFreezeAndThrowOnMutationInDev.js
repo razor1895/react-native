@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -27,7 +27,7 @@
  * Freezing the object and adding the throw mechanism is expensive and will
  * only be used in DEV.
  */
-function deepFreezeAndThrowOnMutationInDev<T: Object>(object: T): T {
+function deepFreezeAndThrowOnMutationInDev           (object   )    {
   if (__DEV__) {
     if (
       typeof object !== 'object' ||

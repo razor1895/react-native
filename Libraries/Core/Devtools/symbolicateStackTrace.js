@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -17,30 +17,30 @@ import NativeSourceCode from '../../NativeModules/specs/NativeSourceCode';
 // Avoid requiring fetch on load of this module; see symbolicateStackTrace
 let fetch;
 
-import type {StackFrame} from '../NativeExceptionsManager';
+                                                           
 
-export type CodeFrame = $ReadOnly<{|
-  content: string,
-  location: ?{
-    row: number,
-    column: number,
-    ...
-  },
-  fileName: string,
-|}>;
+                                    
+                  
+              
+                
+                   
+       
+    
+                   
+    
 
-export type SymbolicatedStackTrace = $ReadOnly<{|
-  stack: Array<StackFrame>,
-  codeFrame: ?CodeFrame,
-|}>;
+                                                 
+                           
+                        
+    
 
-function isSourcedFromDisk(sourcePath: string): boolean {
+function isSourcedFromDisk(sourcePath        )          {
   return !/^http/.test(sourcePath) && /[\\/]/.test(sourcePath);
 }
 
 async function symbolicateStackTrace(
-  stack: Array<StackFrame>,
-): Promise<SymbolicatedStackTrace> {
+  stack                   ,
+)                                  {
   // RN currently lazy loads whatwg-fetch using a custom fetch module, which,
   // when called for the first time, requires and re-exports 'whatwg-fetch'.
   // However, when a dependency of the project tries to require whatwg-fetch
@@ -65,8 +65,8 @@ async function symbolicateStackTrace(
 
   const {scriptURL} = NativeSourceCode.getConstants();
   if (scriptURL) {
-    let foundInternalSource: boolean = false;
-    stackCopy = stack.map((frame: StackFrame) => {
+    let foundInternalSource          = false;
+    stackCopy = stack.map((frame            ) => {
       if (frame.file == null) {
         return frame;
       }

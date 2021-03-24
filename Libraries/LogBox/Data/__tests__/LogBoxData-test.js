@@ -6,7 +6,7 @@
  *
  * @emails oncall+react_native
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -17,7 +17,7 @@ jest.mock('../../../Core/Devtools/parseErrorStack', () => {
 jest.mock('../../../Core/ExceptionsManager');
 
 const LogBoxData = require('../LogBoxData');
-const ExceptionsManager: any = require('../../../Core/ExceptionsManager');
+const ExceptionsManager      = require('../../../Core/ExceptionsManager');
 
 const registry = () => {
   const observer = jest.fn();

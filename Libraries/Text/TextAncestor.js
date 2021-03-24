@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow strict
+ *       strict
  * @format
  */
 
@@ -15,4 +15,4 @@ const React = require('react');
 /**
  * Whether the current element is the descendant of a <Text> element.
  */
-module.exports = (React.createContext(false): React$Context<$FlowFixMe>);
+module.exports = (React.createContext(false)                           );

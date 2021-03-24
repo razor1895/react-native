@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
@@ -13,23 +13,23 @@
 const React = require('react');
 const SectionList = require('../SectionList');
 
-function renderMyListItem(info: {
-  item: {title: string, ...},
-  index: number,
-  ...
-}) {
+function renderMyListItem(info   
+                             
+                
+     
+ ) {
   return <span />;
 }
 
 const renderMyHeader = ({
   section,
-}: {
-  section: {fooNumber: number, ...} & Object,
-  ...
-}) => <span />;
+}   
+                                             
+     
+ ) => <span />;
 
 module.exports = {
-  testGoodDataWithGoodItem(): React.Node {
+  testGoodDataWithGoodItem()             {
     const sections = [
       {
         key: 'a',
@@ -44,7 +44,7 @@ module.exports = {
     return <SectionList renderItem={renderMyListItem} sections={sections} />;
   },
 
-  testBadRenderItemFunction(): $TEMPORARY$array<React.Node> {
+  testBadRenderItemFunction()                               {
     const sections = [
       {
         key: 'a',
@@ -59,23 +59,23 @@ module.exports = {
     return [
       <SectionList
         // $FlowExpectedError - title should be inside `item`
-        renderItem={(info: {title: string, ...}) => <span />}
+        renderItem={(info                      ) => <span />}
         sections={sections}
       />,
       <SectionList
         // $FlowExpectedError - bad index type string, should be number
-        renderItem={(info: {index: string}) => <span />}
+        renderItem={(info                 ) => <span />}
         sections={sections}
       />,
       // EverythingIsFine
       <SectionList
-        renderItem={(info: {item: {title: string, ...}, ...}) => <span />}
+        renderItem={(info                                   ) => <span />}
         sections={sections}
       />,
     ];
   },
 
-  testBadInheritedDefaultProp(): React.Element<*> {
+  testBadInheritedDefaultProp()                   {
     const sections = [];
     return (
       <SectionList
@@ -87,12 +87,12 @@ module.exports = {
     );
   },
 
-  testMissingData(): React.Element<*> {
+  testMissingData()                   {
     // $FlowExpectedError - missing `sections` prop
     return <SectionList renderItem={renderMyListItem} />;
   },
 
-  testBadSectionsShape(): React.Element<*> {
+  testBadSectionsShape()                   {
     const sections = [
       {
         key: 'a',
@@ -108,7 +108,7 @@ module.exports = {
     return <SectionList renderItem={renderMyListItem} sections={sections} />;
   },
 
-  testBadSectionsMetadata(): React.Element<*> {
+  testBadSectionsMetadata()                   {
     const sections = [
       {
         key: 'a',

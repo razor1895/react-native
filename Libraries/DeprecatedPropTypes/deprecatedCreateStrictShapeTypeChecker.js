@@ -5,23 +5,23 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
 
 const invariant = require('invariant');
 
-function deprecatedCreateStrictShapeTypeChecker(shapeTypes: {
-  [key: string]: ReactPropsCheckType,
-  ...,
-}): ReactPropsChainableTypeChecker {
+function deprecatedCreateStrictShapeTypeChecker(shapeTypes   
+                                     
+      
+ )                                 {
   function checkType(
     isRequired,
     props,
     propName,
     componentName,
-    location?,
+    location ,
     ...rest
   ) {
     if (!props[propName]) {
@@ -71,12 +71,12 @@ function deprecatedCreateStrictShapeTypeChecker(shapeTypes: {
     }
   }
   function chainedCheckType(
-    props: {[key: string]: any, ...},
-    propName: string,
-    componentName: string,
-    location?: string,
+    props                           ,
+    propName        ,
+    componentName        ,
+    location         ,
     ...rest
-  ): ?Error {
+  )         {
     return checkType(false, props, propName, componentName, location, ...rest);
   }
   chainedCheckType.isRequired = checkType.bind(null, true);

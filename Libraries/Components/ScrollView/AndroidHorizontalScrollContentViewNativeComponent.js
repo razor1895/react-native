@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -13,8 +13,8 @@
 const registerGeneratedViewConfig = require('../../Utilities/registerGeneratedViewConfig');
 const requireNativeComponent = require('../../ReactNative/requireNativeComponent');
 
-import type {HostComponent} from '../../Renderer/shims/ReactNativeTypes';
-import type {ViewProps} from '../View/ViewPropTypes';
+                                                                         
+                                                     
 
 const AndroidHorizontalScrollContentViewViewConfig = {
   uiViewClassName: 'AndroidHorizontalScrollContentView',
@@ -32,9 +32,9 @@ if (global.RN$Bridgeless) {
   AndroidHorizontalScrollContentViewNativeComponent =
     'AndroidHorizontalScrollContentView';
 } else {
-  AndroidHorizontalScrollContentViewNativeComponent = requireNativeComponent<ViewProps>(
+  AndroidHorizontalScrollContentViewNativeComponent = requireNativeComponent           (
     'AndroidHorizontalScrollContentView',
   );
 }
 
-export default ((AndroidHorizontalScrollContentViewNativeComponent: any): HostComponent<ViewProps>);
+export default ((AndroidHorizontalScrollContentViewNativeComponent     )                          );

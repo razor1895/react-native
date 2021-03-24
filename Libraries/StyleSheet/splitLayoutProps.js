@@ -5,12 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
 'use strict';
 
-import type {DangerouslyImpreciseStyle} from './StyleSheet';
+                                                            
 
 const OUTER_PROPS = Object.assign(Object.create(null), {
   margin: true,
@@ -40,17 +40,17 @@ const OUTER_PROPS = Object.assign(Object.create(null), {
 });
 
 function splitLayoutProps(
-  props: ?DangerouslyImpreciseStyle,
-): {
-  outer: DangerouslyImpreciseStyle,
-  inner: DangerouslyImpreciseStyle,
-  ...
-} {
+  props                            ,
+)   
+                                   
+                                   
+     
+  {
   const inner = {};
   const outer = {};
   if (props) {
     Object.keys(props).forEach(k => {
-      const value: $ElementType<DangerouslyImpreciseStyle, typeof k> = props[k];
+      const value                                                    = props[k];
       if (OUTER_PROPS[k]) {
         outer[k] = value;
       } else {

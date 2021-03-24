@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
@@ -18,16 +18,16 @@ const invariant = require('invariant');
  * area.
  */
 function elementsThatOverlapOffsets(
-  offsets: Array<number>,
-  itemCount: number,
-  getFrameMetrics: (
-    index: number,
-  ) => {
-    length: number,
-    offset: number,
-    ...
-  },
-): Array<number> {
+  offsets               ,
+  itemCount        ,
+  getFrameMetrics   
+                  
+        
+                   
+                   
+       
+   ,
+)                {
   const out = [];
   let outLength = 0;
   for (let ii = 0; ii < itemCount; ii++) {
@@ -58,17 +58,17 @@ function elementsThatOverlapOffsets(
  * faster.
  */
 function newRangeCount(
-  prev: {
-    first: number,
-    last: number,
-    ...
-  },
-  next: {
-    first: number,
-    last: number,
-    ...
-  },
-): number {
+  prev   
+                  
+                 
+       
+   ,
+  next   
+                  
+                 
+       
+   ,
+)         {
   return (
     next.last -
     next.first +
@@ -87,37 +87,37 @@ function newRangeCount(
  * biased in the direction of scroll.
  */
 function computeWindowedRenderLimits(
-  props: {
-    data: any,
-    getItemCount: (data: any) => number,
-    maxToRenderPerBatch: number,
-    windowSize: number,
-    ...
-  },
-  prev: {
-    first: number,
-    last: number,
-    ...
-  },
-  getFrameMetricsApprox: (
-    index: number,
-  ) => {
-    length: number,
-    offset: number,
-    ...
-  },
-  scrollMetrics: {
-    dt: number,
-    offset: number,
-    velocity: number,
-    visibleLength: number,
-    ...
-  },
-): {
-  first: number,
-  last: number,
-  ...
-} {
+  props   
+              
+                                        
+                                
+                       
+       
+   ,
+  prev   
+                  
+                 
+       
+   ,
+  getFrameMetricsApprox   
+                  
+        
+                   
+                   
+       
+   ,
+  scrollMetrics   
+               
+                   
+                     
+                          
+       
+   ,
+)   
+                
+               
+     
+  {
   const {data, getItemCount, maxToRenderPerBatch, windowSize} = props;
   const itemCount = getItemCount(data);
   if (itemCount === 0) {

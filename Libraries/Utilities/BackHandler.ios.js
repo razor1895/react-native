@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
@@ -16,9 +16,9 @@
 const Platform = require('./Platform');
 const TVEventHandler = require('../Components/AppleTV/TVEventHandler');
 
-type BackPressEventName = 'backPress' | 'hardwareBackPress';
+                                                            
 
-function emptyFunction(): void {}
+function emptyFunction()       {}
 
 /**
  * Detect hardware button presses for back navigation.
@@ -50,19 +50,19 @@ function emptyFunction(): void {}
  * });
  * ```
  */
-type TBackHandler = {|
-  +exitApp: () => void,
-  +addEventListener: (
-    eventName: BackPressEventName,
-    handler: Function,
-  ) => {remove: () => void, ...},
-  +removeEventListener: (
-    eventName: BackPressEventName,
-    handler: Function,
-  ) => void,
-|};
+                      
+                       
+                      
+                                  
+                      
+                                 
+                         
+                                  
+                      
+            
+   
 
-let BackHandler: TBackHandler;
+let BackHandler              ;
 
 if (Platform.isTV) {
   const _tvEventHandler = new TVEventHandler();
@@ -92,9 +92,9 @@ if (Platform.isTV) {
     exitApp: emptyFunction,
 
     addEventListener: function(
-      eventName: BackPressEventName,
-      handler: Function,
-    ): {remove: () => void, ...} {
+      eventName                    ,
+      handler          ,
+    )                            {
       _backPressSubscriptions.add(handler);
       return {
         remove: () => BackHandler.removeEventListener(eventName, handler),
@@ -102,21 +102,21 @@ if (Platform.isTV) {
     },
 
     removeEventListener: function(
-      eventName: BackPressEventName,
-      handler: Function,
-    ): void {
+      eventName                    ,
+      handler          ,
+    )       {
       _backPressSubscriptions.delete(handler);
     },
   };
 } else {
   BackHandler = {
     exitApp: emptyFunction,
-    addEventListener(_eventName: BackPressEventName, _handler: Function) {
+    addEventListener(_eventName                    , _handler          ) {
       return {
         remove: emptyFunction,
       };
     },
-    removeEventListener(_eventName: BackPressEventName, _handler: Function) {},
+    removeEventListener(_eventName                    , _handler          ) {},
   };
 }
 

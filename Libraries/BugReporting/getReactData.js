@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -16,7 +16,7 @@
  * This is shamelessly stolen from react-devtools:
  * https://github.com/facebook/react-devtools/blob/master/backend/getData.js
  */
-function getData(element: Object): Object {
+function getData(element        )         {
   let children = null;
   let props = null;
   let state = null;
@@ -121,7 +121,7 @@ function getData(element: Object): Object {
   };
 }
 
-function setInProps(internalInst, path: Array<string | number>, value: any) {
+function setInProps(internalInst, path                        , value     ) {
   const element = internalInst._currentElement;
   internalInst._currentElement = {
     ...element,
@@ -130,17 +130,17 @@ function setInProps(internalInst, path: Array<string | number>, value: any) {
   internalInst._instance.forceUpdate();
 }
 
-function setInState(inst, path: Array<string | number>, value: any) {
+function setInState(inst, path                        , value     ) {
   setIn(inst.state, path, value);
   inst.forceUpdate();
 }
 
-function setInContext(inst, path: Array<string | number>, value: any) {
+function setInContext(inst, path                        , value     ) {
   setIn(inst.context, path, value);
   inst.forceUpdate();
 }
 
-function setIn(obj: Object, path: Array<string | number>, value: any) {
+function setIn(obj        , path                        , value     ) {
   const last = path.pop();
   const parent = path.reduce((obj_, attr) => (obj_ ? obj_[attr] : null), obj);
   if (parent) {
@@ -168,10 +168,10 @@ function copyWithSetImpl(obj, path, idx, value) {
 }
 
 function copyWithSet(
-  obj: Object | Array<any>,
-  path: Array<string | number>,
-  value: any,
-): Object | Array<any> {
+  obj                     ,
+  path                        ,
+  value     ,
+)                      {
   return copyWithSetImpl(obj, path, 0, value);
 }
 

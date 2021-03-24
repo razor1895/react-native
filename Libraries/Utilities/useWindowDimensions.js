@@ -5,16 +5,16 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
 'use strict';
 
 import Dimensions from './Dimensions';
-import {type DisplayMetrics} from './NativeDeviceInfo';
+import {                   } from './NativeDeviceInfo';
 import {useEffect, useState} from 'react';
 
-export default function useWindowDimensions(): DisplayMetrics {
+export default function useWindowDimensions()                 {
   const [dimensions, setDimensions] = useState(() => Dimensions.get('window'));
   useEffect(() => {
     function handleChange({window}) {

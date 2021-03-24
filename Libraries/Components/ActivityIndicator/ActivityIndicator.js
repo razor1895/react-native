@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -14,9 +14,9 @@ const Platform = require('../../Utilities/Platform');
 const React = require('react');
 const StyleSheet = require('../../StyleSheet/StyleSheet');
 const View = require('../View/View');
-import type {HostComponent} from '../../Renderer/shims/ReactNativeTypes';
-import type {ViewProps} from '../View/ViewPropTypes';
-import type {ColorValue} from '../../StyleSheet/StyleSheetTypes';
+                                                                         
+                                                     
+                                                                 
 
 const PlatformActivityIndicator =
   Platform.OS === 'android'
@@ -25,49 +25,49 @@ const PlatformActivityIndicator =
 
 const GRAY = '#999999';
 
-type IndicatorSize = number | 'small' | 'large';
+                                                
 
-type IOSProps = $ReadOnly<{|
-  /**
-   * Whether the indicator should hide when not animating (true by default).
-   *
-   * See https://reactnative.dev/docs/activityindicator.html#hideswhenstopped
-   */
-  hidesWhenStopped?: ?boolean,
-|}>;
-type Props = $ReadOnly<{|
-  ...ViewProps,
-  ...IOSProps,
+                            
+     
+                                                                            
+    
+                                                                             
+     
+                              
+    
+                         
+               
+              
 
-  /**
-   * Whether to show the indicator (true, the default) or hide it (false).
-   *
-   * See https://reactnative.dev/docs/activityindicator.html#animating
-   */
-  animating?: ?boolean,
+     
+                                                                          
+    
+                                                                      
+     
+                       
 
-  /**
-   * The foreground color of the spinner (default is gray).
-   *
-   * See https://reactnative.dev/docs/activityindicator.html#color
-   */
-  color?: ?ColorValue,
+     
+                                                           
+    
+                                                                  
+     
+                      
 
-  /**
-   * Size of the indicator (default is 'small').
-   * Passing a number to the size prop is only supported on Android.
-   *
-   * See https://reactnative.dev/docs/activityindicator.html#size
-   */
-  size?: ?IndicatorSize,
-|}>;
+     
+                                                
+                                                                    
+    
+                                                                 
+     
+                        
+    
 
 /**
  * Displays a circular loading indicator.
  *
  * See https://reactnative.dev/docs/activityindicator.html
  */
-const ActivityIndicator = (props: Props, forwardedRef?: any) => {
+const ActivityIndicator = (props       , forwardedRef      ) => {
   const {onLayout, style, size, ...restProps} = props;
   let sizeStyle;
   let sizeProp;
@@ -118,10 +118,10 @@ const ActivityIndicator = (props: Props, forwardedRef?: any) => {
   );
 };
 
-const ActivityIndicatorWithRef: React.AbstractComponent<
-  Props,
-  HostComponent<mixed>,
-> = React.forwardRef(ActivityIndicator);
+const ActivityIndicatorWithRef                          
+        
+                       
+  = React.forwardRef(ActivityIndicator);
 ActivityIndicatorWithRef.displayName = 'ActivityIndicator';
 
 /* $FlowFixMe(>=0.89.0 site=react_native_fb) This comment suppresses an error

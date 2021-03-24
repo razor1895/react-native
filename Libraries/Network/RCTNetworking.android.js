@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -17,13 +17,13 @@ const NativeEventEmitter = require('../EventEmitter/NativeEventEmitter');
 const convertRequestBody = require('./convertRequestBody');
 
 import NativeNetworkingAndroid from './NativeNetworkingAndroid';
-import type {RequestBody} from './convertRequestBody';
+                                                      
 
-type Header = [string, string];
+                               
 
 // Convert FormData headers to arrays, which are easier to consume in
 // native on Android.
-function convertHeadersMapToArray(headers: Object): Array<Header> {
+function convertHeadersMapToArray(headers        )                {
   const headerArray = [];
   for (const name in headers) {
     headerArray.push([name, headers[name]]);
@@ -32,7 +32,7 @@ function convertHeadersMapToArray(headers: Object): Array<Header> {
 }
 
 let _requestId = 1;
-function generateRequestId(): number {
+function generateRequestId()         {
   return _requestId++;
 }
 
@@ -46,16 +46,16 @@ class RCTNetworking extends NativeEventEmitter {
   }
 
   sendRequest(
-    method: string,
-    trackingName: string,
-    url: string,
-    headers: Object,
-    data: RequestBody,
-    responseType: 'text' | 'base64',
-    incrementalUpdates: boolean,
-    timeout: number,
-    callback: (requestId: number) => mixed,
-    withCredentials: boolean,
+    method        ,
+    trackingName        ,
+    url        ,
+    headers        ,
+    data             ,
+    responseType                   ,
+    incrementalUpdates         ,
+    timeout        ,
+    callback                              ,
+    withCredentials         ,
   ) {
     const body = convertRequestBody(data);
     if (body && body.formData) {
@@ -79,13 +79,13 @@ class RCTNetworking extends NativeEventEmitter {
     callback(requestId);
   }
 
-  abortRequest(requestId: number) {
+  abortRequest(requestId        ) {
     NativeNetworkingAndroid.abortRequest(requestId);
   }
 
-  clearCookies(callback: (result: boolean) => any) {
+  clearCookies(callback                          ) {
     NativeNetworkingAndroid.clearCookies(callback);
   }
 }
 
-module.exports = (new RCTNetworking(): RCTNetworking);
+module.exports = (new RCTNetworking()               );

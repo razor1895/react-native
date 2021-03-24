@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
@@ -12,17 +12,17 @@
 
 const UIManager = require('./UIManager');
 
-type OnSuccessCallback = (
-  left: number,
-  top: number,
-  width: number,
-  height: number,
-  pageX: number,
-  pageY: number,
-) => void;
+                          
+               
+              
+                
+                 
+                
+                
+          
 
 // I don't know what type error is...
-type OnErrorCallback = (error: any) => void;
+                                            
 
 /**
  * Queries the layout of a view. The layout does not reflect the element as
@@ -44,10 +44,10 @@ type OnErrorCallback = (error: any) => void;
  * @param {function} onSuccess `func(left, top, width, height, pageX, pageY)`
  */
 const queryLayoutByID = function(
-  tag: ?number,
-  onError: OnErrorCallback,
-  onSuccess: OnSuccessCallback,
-): void {
+  tag         ,
+  onError                 ,
+  onSuccess                   ,
+)       {
   if (tag == null) {
     return;
   }

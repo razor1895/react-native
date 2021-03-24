@@ -5,17 +5,17 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
-export type CapturedError = {
-  +componentStack: string,
-  +error: mixed,
-  +errorBoundary: ?{...},
-  ...
-};
+                             
+                          
+                
+                         
+     
+  
 
-import type {ExtendedError} from './Devtools/parseErrorStack';
+                                                              
 
 import {handleException, SyntheticError} from './ExceptionsManager';
 
@@ -23,18 +23,18 @@ import {handleException, SyntheticError} from './ExceptionsManager';
  * Intercept lifecycle errors and ensure they are shown with the correct stack
  * trace within the native redbox component.
  */
-function showErrorDialog(capturedError: CapturedError): boolean {
+function showErrorDialog(capturedError               )          {
   const {componentStack, error} = capturedError;
 
   let errorToHandle;
 
   // Typically Errors are thrown but eg strings or null can be thrown as well.
   if (error instanceof Error) {
-    errorToHandle = (error: ExtendedError);
+    errorToHandle = (error               );
   } else if (typeof error === 'string') {
-    errorToHandle = (new SyntheticError(error): ExtendedError);
+    errorToHandle = (new SyntheticError(error)               );
   } else {
-    errorToHandle = (new SyntheticError('Unspecified error'): ExtendedError);
+    errorToHandle = (new SyntheticError('Unspecified error')               );
   }
   try {
     errorToHandle.componentStack = componentStack;

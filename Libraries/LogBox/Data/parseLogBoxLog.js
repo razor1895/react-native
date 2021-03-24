@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow strict-local
+ *       strict-local
  * @format
  */
 
@@ -12,47 +12,47 @@
 
 import UTFSequence from '../../UTFSequence';
 import stringifySafe from '../../Utilities/stringifySafe';
-import type {ExceptionData} from '../../Core/NativeExceptionsManager';
-import type {LogBoxLogData} from './LogBoxLog';
+                                                                      
+                                               
 
 const BABEL_TRANSFORM_ERROR_FORMAT = /^(?:TransformError )?(?:SyntaxError: |ReferenceError: )(.*): (.*) \((\d+):(\d+)\)\n\n([\s\S]+)/;
 const BABEL_CODE_FRAME_ERROR_FORMAT = /^(?:TransformError )?(?:.*):? (?:.*?)(\/.*): ([\s\S]+?)\n([ >]{2}[\d\s]+ \|[\s\S]+|\u{001b}[\s\S]+)/u;
 const METRO_ERROR_FORMAT = /^(?:InternalError Metro has encountered an error:) (.*): (.*) \((\d+):(\d+)\)\n\n([\s\S]+)/u;
 
-export type ExtendedExceptionData = ExceptionData & {
-  isComponentError: boolean,
-  ...
-};
-export type Category = string;
-export type CodeFrame = $ReadOnly<{|
-  content: string,
-  location: ?{
-    row: number,
-    column: number,
-    ...
-  },
-  fileName: string,
-|}>;
-export type Message = $ReadOnly<{|
-  content: string,
-  substitutions: $ReadOnlyArray<
-    $ReadOnly<{|
-      length: number,
-      offset: number,
-    |}>,
-  >,
-|}>;
+                                                     
+                            
+     
+  
+                              
+                                    
+                  
+              
+                
+                   
+       
+    
+                   
+    
+                                  
+                  
+                                
+                
+                     
+                     
+        
+    
+    
 
-export type ComponentStack = $ReadOnlyArray<CodeFrame>;
+                                                       
 
 const SUBSTITUTION = UTFSequence.BOM + '%s';
 
 export function parseInterpolation(
-  args: $ReadOnlyArray<mixed>,
-): $ReadOnly<{|
-  category: Category,
-  message: Message,
-|}> {
+  args                       ,
+)              
+                     
+                   
+    {
   const categoryParts = [];
   const contentParts = [];
   const substitutionOffsets = [];
@@ -124,7 +124,7 @@ export function parseInterpolation(
   };
 }
 
-export function parseComponentStack(message: string): ComponentStack {
+export function parseComponentStack(message        )                 {
   return message
     .split(/\n {4}in /g)
     .map(s => {
@@ -147,8 +147,8 @@ export function parseComponentStack(message: string): ComponentStack {
 }
 
 export function parseLogBoxException(
-  error: ExtendedExceptionData,
-): LogBoxLogData {
+  error                       ,
+)                {
   const message =
     error.originalMessage != null ? error.originalMessage : 'Unknown';
 
@@ -287,12 +287,12 @@ export function parseLogBoxException(
 }
 
 export function parseLogBoxLog(
-  args: $ReadOnlyArray<mixed>,
-): {|
-  componentStack: ComponentStack,
-  category: Category,
-  message: Message,
-|} {
+  args                       ,
+)    
+                                 
+                     
+                   
+   {
   const message = args[0];
   let argsWithoutComponentStack = [];
   let componentStack = [];

@@ -5,26 +5,26 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
-export type Options = $ReadOnly<{|
-  date?: ?(Date | number),
-  minDate?: ?(Date | number),
-  maxDate?: ?(Date | number),
-  mode?: ?('calendar' | 'spinner' | 'default'),
-|}>;
+                                  
+                          
+                             
+                             
+                                               
+    
 
-export type DatePickerOpenAction =
-  | {|
-      action: 'dateSetAction',
-      year: number,
-      month: number,
-      day: number,
-    |}
-  | {|
-      action: 'dismissedAction',
-      year: void,
-      month: void,
-      day: void,
-    |};
+                                  
+      
+                              
+                   
+                    
+                  
+      
+      
+                                
+                 
+                  
+                
+       

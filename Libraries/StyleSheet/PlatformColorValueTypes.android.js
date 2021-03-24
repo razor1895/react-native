@@ -5,29 +5,29 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
 'use strict';
 
-import type {ColorValue} from './StyleSheetTypes';
-import type {ProcessedColorValue} from './processColor';
+                                                  
+                                                        
 
-export opaque type NativeColorValue = {
-  resource_paths?: Array<string>,
-};
+                                       
+                                 
+  
 
-export const PlatformColor = (...names: Array<string>): ColorValue => {
+export const PlatformColor = (...names               )             => {
   return {resource_paths: names};
 };
 
-export const ColorAndroidPrivate = (color: string): ColorValue => {
+export const ColorAndroidPrivate = (color        )             => {
   return {resource_paths: [color]};
 };
 
 export const normalizeColorObject = (
-  color: NativeColorValue,
-): ?ProcessedColorValue => {
+  color                  ,
+)                       => {
   if ('resource_paths' in color) {
     return color;
   }
@@ -35,7 +35,7 @@ export const normalizeColorObject = (
 };
 
 export const processColorObject = (
-  color: NativeColorValue,
-): ?NativeColorValue => {
+  color                  ,
+)                    => {
   return color;
 };

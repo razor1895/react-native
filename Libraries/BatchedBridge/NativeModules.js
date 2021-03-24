@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -14,26 +14,26 @@ const BatchedBridge = require('./BatchedBridge');
 
 const invariant = require('invariant');
 
-import type {ExtendedError} from '../Core/Devtools/parseErrorStack';
+                                                                    
 
-export type ModuleConfig = [
-  string /* name */,
-  ?Object /* constants */,
-  ?$ReadOnlyArray<string> /* functions */,
-  ?$ReadOnlyArray<number> /* promise method IDs */,
-  ?$ReadOnlyArray<number> /* sync method IDs */,
-];
+                            
+                    
+                          
+                                          
+                                                   
+                                                
+  
 
-export type MethodType = 'async' | 'promise' | 'sync';
+                                                      
 
 function genModule(
-  config: ?ModuleConfig,
-  moduleID: number,
-): ?{
-  name: string,
-  module?: Object,
-  ...
-} {
+  config               ,
+  moduleID        ,
+)    
+               
+                  
+     
+  {
   if (!config) {
     return null;
   }
@@ -85,7 +85,7 @@ function genModule(
 // export this method as a global so we can call it from native
 global.__fbGenNativeModule = genModule;
 
-function loadModule(name: string, moduleID: number): ?Object {
+function loadModule(name        , moduleID        )          {
   invariant(
     global.nativeRequireModuleConfig,
     "Can't lazily create module without nativeRequireModuleConfig",
@@ -95,12 +95,12 @@ function loadModule(name: string, moduleID: number): ?Object {
   return info && info.module;
 }
 
-function genMethod(moduleID: number, methodID: number, type: MethodType) {
+function genMethod(moduleID        , methodID        , type            ) {
   let fn = null;
   if (type === 'promise') {
-    fn = function promiseMethodWrapper(...args: Array<any>) {
+    fn = function promiseMethodWrapper(...args            ) {
       // In case we reject, capture a useful stack trace here.
-      const enqueueingFrameError: ExtendedError = new Error();
+      const enqueueingFrameError                = new Error();
       return new Promise((resolve, reject) => {
         BatchedBridge.enqueueNativeCall(
           moduleID,
@@ -113,7 +113,7 @@ function genMethod(moduleID: number, methodID: number, type: MethodType) {
       });
     };
   } else {
-    fn = function nonPromiseMethodWrapper(...args: Array<any>) {
+    fn = function nonPromiseMethodWrapper(...args            ) {
       const lastArg = args.length > 0 ? args[args.length - 1] : null;
       const secondLastArg = args.length > 1 ? args[args.length - 2] : null;
       const hasSuccessCallback = typeof lastArg === 'function';
@@ -150,18 +150,18 @@ function genMethod(moduleID: number, methodID: number, type: MethodType) {
   return fn;
 }
 
-function arrayContains<T>(array: $ReadOnlyArray<T>, value: T): boolean {
+function arrayContains   (array                   , value   )          {
   return array.indexOf(value) !== -1;
 }
 
 function updateErrorWithErrorData(
-  errorData: {message: string, ...},
-  error: ExtendedError,
-): ExtendedError {
+  errorData                        ,
+  error               ,
+)                {
   return Object.assign(error, errorData || {});
 }
 
-let NativeModules: {[moduleName: string]: Object, ...} = {};
+let NativeModules                                      = {};
 if (global.nativeModuleProxy) {
   NativeModules = global.nativeModuleProxy;
 } else if (!global.nativeExtensions) {
@@ -173,7 +173,7 @@ if (global.nativeModuleProxy) {
 
   const defineLazyObjectProperty = require('../Utilities/defineLazyObjectProperty');
   (bridgeConfig.remoteModuleConfig || []).forEach(
-    (config: ModuleConfig, moduleID: number) => {
+    (config              , moduleID        ) => {
       // Initially this config will only contain the module name when running in JSC. The actual
       // configuration of the module will be lazily loaded.
       const info = genModule(config, moduleID);

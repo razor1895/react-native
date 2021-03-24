@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
@@ -39,7 +39,7 @@ module.exports = {
     'sentences',
     'words',
     'characters',
-  ]): React$PropType$Primitive<'none' | 'sentences' | 'words' | 'characters'>),
+  ])                                                                         ),
   /**
    * Determines which content to suggest on auto complete, e.g.`username`.
    * To disable auto complete, use `off`.
@@ -78,21 +78,21 @@ module.exports = {
     'tel',
     'username',
     'off',
-  ]): React$PropType$Primitive<
-    | 'cc-csc'
-    | 'cc-exp'
-    | 'cc-exp-month'
-    | 'cc-exp-year'
-    | 'cc-number'
-    | 'email'
-    | 'name'
-    | 'password'
-    | 'postal-code'
-    | 'street-address'
-    | 'tel'
-    | 'username'
-    | 'off',
-  >),
+  ])                           
+              
+              
+                    
+                   
+                 
+             
+            
+                
+                   
+                      
+           
+                
+            
+   ),
   /**
    * If `false`, disables auto-correct. The default value is `true`.
    */
@@ -174,22 +174,22 @@ module.exports = {
     'ascii-capable-number-pad',
     // Android-only
     'visible-password',
-  ]): React$PropType$Primitive<
-    | 'default'
-    | 'email-address'
-    | 'numeric'
-    | 'phone-pad'
-    | 'number-pad'
-    | 'ascii-capable'
-    | 'numbers-and-punctuation'
-    | 'url'
-    | 'name-phone-pad'
-    | 'decimal-pad'
-    | 'twitter'
-    | 'web-search'
-    | 'ascii-capable-number-pad'
-    | 'visible-password',
-  >),
+  ])                           
+               
+                     
+               
+                 
+                  
+                     
+                               
+           
+                      
+                   
+               
+                  
+                                
+                         
+   ),
   /**
    * Determines the color of the keyboard.
    * @platform ios
@@ -198,7 +198,7 @@ module.exports = {
     'default',
     'light',
     'dark',
-  ]): React$PropType$Primitive<'default' | 'light' | 'dark'>),
+  ])                                                        ),
   /**
    * Determines how the return key should look. On Android you can also use
    * `returnKeyLabel`.
@@ -248,21 +248,21 @@ module.exports = {
     'join',
     'route',
     'yahoo',
-  ]): React$PropType$Primitive<
-    | 'done'
-    | 'go'
-    | 'next'
-    | 'search'
-    | 'send'
-    | 'none'
-    | 'previous'
-    | 'default'
-    | 'emergency-call'
-    | 'google'
-    | 'join'
-    | 'route'
-    | 'yahoo',
-  >),
+  ])                           
+            
+          
+            
+              
+            
+            
+                
+               
+                      
+              
+            
+             
+              
+   ),
   /**
    * Sets the return key to the label. Use it instead of `returnKeyType`.
    * @platform android
@@ -308,7 +308,7 @@ module.exports = {
     'simple',
     'highQuality',
     'balanced',
-  ]): React$PropType$Primitive<'simple' | 'highQuality' | 'balanced'>),
+  ])                                                                 ),
   /**
    * Callback that is called when the text input is blurred.
    */
@@ -398,11 +398,11 @@ module.exports = {
   selection: (PropTypes.shape({
     start: PropTypes.number.isRequired,
     end: PropTypes.number,
-  }): React$PropType$Primitive<{
-    end?: number,
-    start: number,
-    ...
-  }>),
+  })                            
+                 
+                  
+       
+    ),
   /**
    * The value to show for the text input. `TextInput` is a controlled
    * component, which means the native value will be forced to match this
@@ -429,9 +429,9 @@ module.exports = {
     'while-editing',
     'unless-editing',
     'always',
-  ]): React$PropType$Primitive<
-    'never' | 'while-editing' | 'unless-editing' | 'always',
-  >),
+  ])                           
+                                                            
+   ),
   /**
    * If `true`, clears the text field automatically when editing begins.
    * @platform ios
@@ -522,17 +522,17 @@ module.exports = {
   dataDetectorTypes: (PropTypes.oneOfType([
     PropTypes.oneOf(DataDetectorTypes),
     PropTypes.arrayOf(PropTypes.oneOf(DataDetectorTypes)),
-  ]): React$PropType$Primitive<
-    | 'phoneNumber'
-    | 'link'
-    | 'address'
-    | 'calendarEvent'
-    | 'none'
-    | 'all'
-    | Array<
-        'phoneNumber' | 'link' | 'address' | 'calendarEvent' | 'none' | 'all',
-      >,
-  >),
+  ])                           
+                   
+            
+               
+                     
+            
+           
+            
+                                                                              
+        
+   ),
   /**
    * If `true`, caret is hidden. The default value is `false`.
    * This property is supported only for single-line TextInput component on iOS.
@@ -583,36 +583,36 @@ module.exports = {
     'password',
     'newPassword',
     'oneTimeCode',
-  ]): React$PropType$Primitive<
-    | 'none'
-    | 'URL'
-    | 'addressCity'
-    | 'addressCityAndState'
-    | 'addressState'
-    | 'countryName'
-    | 'creditCardNumber'
-    | 'emailAddress'
-    | 'familyName'
-    | 'fullStreetAddress'
-    | 'givenName'
-    | 'jobTitle'
-    | 'location'
-    | 'middleName'
-    | 'name'
-    | 'namePrefix'
-    | 'nameSuffix'
-    | 'nickname'
-    | 'organizationName'
-    | 'postalCode'
-    | 'streetAddressLine1'
-    | 'streetAddressLine2'
-    | 'sublocality'
-    | 'telephoneNumber'
-    | 'username'
-    | 'password'
-    | 'newPassword'
-    | 'oneTimeCode',
-  >),
+  ])                           
+            
+           
+                   
+                           
+                    
+                   
+                        
+                    
+                  
+                         
+                 
+                
+                
+                  
+            
+                  
+                  
+                
+                        
+                  
+                          
+                          
+                   
+                       
+                
+                
+                   
+                    
+   ),
   /**
    * When `false`, it will prevent the soft keyboard from showing when the field is focused.
    * Defaults to `true`.

@@ -4,14 +4,14 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
 'use strict';
 
 module.exports = {
-  getViewManagerConfig: (viewManagerName: string): mixed => {
+  getViewManagerConfig: (viewManagerName        )        => {
     console.warn(
       'Attempting to get config for view manager: ' + viewManagerName,
     );
@@ -20,104 +20,104 @@ module.exports = {
     }
     return null;
   },
-  getConstants: (): {...} => ({}),
-  getConstantsForViewManager: (viewManagerName: string) => {},
-  getDefaultEventTypes: (): Array<$FlowFixMe> => [],
+  getConstants: ()        => ({}),
+  getConstantsForViewManager: (viewManagerName        ) => {},
+  getDefaultEventTypes: ()                    => [],
   playTouchSound: () => {},
-  lazilyLoadView: (name: string) => {},
+  lazilyLoadView: (name        ) => {},
   createView: (
-    reactTag: ?number,
-    viewName: string,
-    rootTag: number,
-    props: Object,
+    reactTag         ,
+    viewName        ,
+    rootTag        ,
+    props        ,
   ) => {},
-  updateView: (reactTag: number, viewName: string, props: Object) => {},
-  focus: (reactTag: ?number) => {},
-  blur: (reactTag: ?number) => {},
+  updateView: (reactTag        , viewName        , props        ) => {},
+  focus: (reactTag         ) => {},
+  blur: (reactTag         ) => {},
   findSubviewIn: (
-    reactTag: ?number,
-    point: Array<number>,
-    callback: (
-      nativeViewTag: number,
-      left: number,
-      top: number,
-      width: number,
-      height: number,
-    ) => void,
+    reactTag         ,
+    point               ,
+    callback   
+                            
+                   
+                  
+                    
+                     
+             ,
   ) => {},
   dispatchViewManagerCommand: (
-    reactTag: ?number,
-    commandID: number,
-    commandArgs: ?Array<string | number | boolean>,
+    reactTag         ,
+    commandID        ,
+    commandArgs                                   ,
   ) => {},
   measure: (
-    reactTag: ?number,
-    callback: (
-      left: number,
-      top: number,
-      width: number,
-      height: number,
-      pageX: number,
-      pageY: number,
-    ) => void,
+    reactTag         ,
+    callback   
+                   
+                  
+                    
+                     
+                    
+                    
+             ,
   ) => {},
   measureInWindow: (
-    reactTag: ?number,
-    callback: (x: number, y: number, width: number, height: number) => void,
+    reactTag         ,
+    callback                                                               ,
   ) => {},
   viewIsDescendantOf: (
-    reactTag: ?number,
-    ancestorReactTag: ?number,
-    callback: (result: Array<boolean>) => void,
+    reactTag         ,
+    ancestorReactTag         ,
+    callback                                  ,
   ) => {},
   measureLayout: (
-    reactTag: ?number,
-    ancestorReactTag: ?number,
-    errorCallback: (error: Object) => void,
-    callback: (
-      left: number,
-      top: number,
-      width: number,
-      height: number,
-    ) => void,
+    reactTag         ,
+    ancestorReactTag         ,
+    errorCallback                         ,
+    callback   
+                   
+                  
+                    
+                     
+             ,
   ) => {},
   measureLayoutRelativeToParent: (
-    reactTag: ?number,
-    errorCallback: (error: Object) => void,
-    callback: (
-      left: number,
-      top: number,
-      width: number,
-      height: number,
-    ) => void,
+    reactTag         ,
+    errorCallback                         ,
+    callback   
+                   
+                  
+                    
+                     
+             ,
   ) => {},
-  setJSResponder: (reactTag: ?number, blockNativeResponder: boolean) => {},
+  setJSResponder: (reactTag         , blockNativeResponder         ) => {},
   clearJSResponder: () => {},
   configureNextLayoutAnimation: (
-    config: Object,
-    callback: () => void,
-    errorCallback: (error: Object) => void,
+    config        ,
+    callback            ,
+    errorCallback                         ,
   ) => {},
-  removeSubviewsFromContainerWithID: (containerID: number) => {},
-  replaceExistingNonRootView: (reactTag: ?number, newReactTag: ?number) => {},
-  setChildren: (containerTag: ?number, reactTags: Array<number>) => {},
+  removeSubviewsFromContainerWithID: (containerID        ) => {},
+  replaceExistingNonRootView: (reactTag         , newReactTag         ) => {},
+  setChildren: (containerTag         , reactTags               ) => {},
   manageChildren: (
-    containerTag: ?number,
-    moveFromIndices: Array<number>,
-    moveToIndices: Array<number>,
-    addChildReactTags: Array<number>,
-    addAtIndices: Array<number>,
-    removeAtIndices: Array<number>,
+    containerTag         ,
+    moveFromIndices               ,
+    moveToIndices               ,
+    addChildReactTags               ,
+    addAtIndices               ,
+    removeAtIndices               ,
   ) => {},
 
   // Android only
-  setLayoutAnimationEnabledExperimental: (enabled: boolean) => {},
-  sendAccessibilityEvent: (reactTag: ?number, eventType: number) => {},
+  setLayoutAnimationEnabledExperimental: (enabled         ) => {},
+  sendAccessibilityEvent: (reactTag         , eventType        ) => {},
   showPopupMenu: (
-    reactTag: ?number,
-    items: Array<string>,
-    error: (error: Object) => void,
-    success: (event: string, selected?: number) => void,
+    reactTag         ,
+    items               ,
+    error                         ,
+    success                                            ,
   ) => {},
   dismissPopupMenu: () => {},
 };

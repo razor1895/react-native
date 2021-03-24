@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -25,10 +25,10 @@ import NativeAppState from './NativeAppState';
  * See https://reactnative.dev/docs/appstate.html
  */
 class AppState extends NativeEventEmitter {
-  _eventHandlers: Object;
+  _eventHandlers        ;
   _supportedEvents = ['change', 'memoryWarning', 'blur', 'focus'];
-  currentState: ?string;
-  isAvailable: boolean;
+  currentState         ;
+  isAvailable         ;
 
   constructor() {
     super(NativeAppState);
@@ -75,7 +75,7 @@ class AppState extends NativeEventEmitter {
    *
    * See https://reactnative.dev/docs/appstate.html#addeventlistener
    */
-  addEventListener(type: string, handler: Function) {
+  addEventListener(type        , handler          ) {
     invariant(
       this._supportedEvents.indexOf(type) !== -1,
       'Trying to subscribe to unknown event: "%s"',
@@ -122,7 +122,7 @@ class AppState extends NativeEventEmitter {
    *
    * See https://reactnative.dev/docs/appstate.html#removeeventlistener
    */
-  removeEventListener(type: string, handler: Function) {
+  removeEventListener(type        , handler          ) {
     invariant(
       this._supportedEvents.indexOf(type) !== -1,
       'Trying to remove listener for unknown event: "%s"',
@@ -146,14 +146,14 @@ function throwMissingNativeModule() {
 
 class MissingNativeAppStateShim extends EventEmitter {
   // AppState
-  isAvailable: boolean = false;
-  currentState: ?string = null;
+  isAvailable          = false;
+  currentState          = null;
 
-  addEventListener(type: string, handler: Function) {
+  addEventListener(type        , handler          ) {
     throwMissingNativeModule();
   }
 
-  removeEventListener(type: string, handler: Function) {
+  removeEventListener(type        , handler          ) {
     throwMissingNativeModule();
   }
 
@@ -174,7 +174,7 @@ class MissingNativeAppStateShim extends EventEmitter {
 // This module depends on the native `RCTAppState` module. If you don't include it,
 // `AppState.isAvailable` will return `false`, and any method calls will throw.
 // We reassign the class variable to keep the autodoc generator happy.
-const AppStateInstance: AppState | MissingNativeAppStateShim = NativeAppState
+const AppStateInstance                                       = NativeAppState
   ? new AppState()
   : new MissingNativeAppStateShim();
 

@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
@@ -24,7 +24,7 @@ const triedLoadingConfig = new Set();
 
 let NativeUIManagerConstants = {};
 let isNativeUIManagerConstantsSet = false;
-function getConstants(): Object {
+function getConstants()         {
   if (!isNativeUIManagerConstantsSet) {
     NativeUIManagerConstants = NativeUIManager.getConstants();
     isNativeUIManagerConstantsSet = true;
@@ -37,10 +37,10 @@ const UIManagerJS = {
    * error found when Flow v0.111 was deployed. To see the error, delete this
    * comment and run Flow. */
   ...NativeUIManager,
-  getConstants(): Object {
+  getConstants()         {
     return getConstants();
   },
-  getViewManagerConfig: function(viewManagerName: string): any {
+  getViewManagerConfig: function(viewManagerName        )      {
     if (
       viewManagerConfigs[viewManagerName] === undefined &&
       NativeUIManager.getConstantsForViewManager

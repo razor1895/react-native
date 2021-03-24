@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
@@ -15,7 +15,7 @@ import RCTDeviceEventEmitter from '../EventEmitter/RCTDeviceEventEmitter';
 
 const DEVICE_BACK_EVENT = 'hardwareBackPress';
 
-type BackPressEventName = 'backPress' | 'hardwareBackPress';
+                                                            
 
 const _backPressSubscriptions = [];
 
@@ -59,19 +59,19 @@ RCTDeviceEventEmitter.addListener(DEVICE_BACK_EVENT, function() {
  * });
  * ```
  */
-type TBackHandler = {|
-  +exitApp: () => void,
-  +addEventListener: (
-    eventName: BackPressEventName,
-    handler: Function,
-  ) => {remove: () => void, ...},
-  +removeEventListener: (
-    eventName: BackPressEventName,
-    handler: Function,
-  ) => void,
-|};
-const BackHandler: TBackHandler = {
-  exitApp: function(): void {
+                      
+                       
+                      
+                                  
+                      
+                                 
+                         
+                                  
+                      
+            
+   
+const BackHandler               = {
+  exitApp: function()       {
     if (!NativeDeviceEventManager) {
       return;
     }
@@ -86,14 +86,14 @@ const BackHandler: TBackHandler = {
    * tvOS menu button is pressed.
    */
   addEventListener: function(
-    eventName: BackPressEventName,
-    handler: Function,
-  ): {remove: () => void, ...} {
+    eventName                    ,
+    handler          ,
+  )                            {
     if (_backPressSubscriptions.indexOf(handler) === -1) {
       _backPressSubscriptions.push(handler);
     }
     return {
-      remove: (): void => BackHandler.removeEventListener(eventName, handler),
+      remove: ()       => BackHandler.removeEventListener(eventName, handler),
     };
   },
 
@@ -101,9 +101,9 @@ const BackHandler: TBackHandler = {
    * Removes the event handler.
    */
   removeEventListener: function(
-    eventName: BackPressEventName,
-    handler: Function,
-  ): void {
+    eventName                    ,
+    handler          ,
+  )       {
     if (_backPressSubscriptions.indexOf(handler) !== -1) {
       _backPressSubscriptions.splice(
         _backPressSubscriptions.indexOf(handler),

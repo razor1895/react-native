@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
 'use strict';
@@ -16,12 +16,12 @@ import invariant from 'invariant';
  * Tries to stringify with JSON.stringify and toString, but catches exceptions
  * (e.g. from circular objects) and always returns a string and never throws.
  */
-export function createStringifySafeWithLimits(limits: {|
-  maxDepth?: number,
-  maxStringLimit?: number,
-  maxArrayLimit?: number,
-  maxObjectKeysLimit?: number,
-|}): mixed => string {
+export function createStringifySafeWithLimits(limits    
+                    
+                          
+                         
+                              
+  )                  {
   const {
     maxDepth = Number.POSITIVE_INFINITY,
     maxStringLimit = Number.POSITIVE_INFINITY,
@@ -29,7 +29,7 @@ export function createStringifySafeWithLimits(limits: {|
     maxObjectKeysLimit = Number.POSITIVE_INFINITY,
   } = limits;
   const stack = [];
-  function replacer(key: string, value: mixed): mixed {
+  function replacer(key        , value       )        {
     while (stack.length && this !== stack[0]) {
       stack.shift();
     }
@@ -76,7 +76,7 @@ export function createStringifySafeWithLimits(limits: {|
     return retval;
   }
 
-  return function stringifySafe(arg: mixed): string {
+  return function stringifySafe(arg       )         {
     if (arg === undefined) {
       return 'undefined';
     } else if (arg === null) {
@@ -111,7 +111,7 @@ export function createStringifySafeWithLimits(limits: {|
   };
 }
 
-const stringifySafe: mixed => string = createStringifySafeWithLimits({
+const stringifySafe                  = createStringifySafeWithLimits({
   maxDepth: 10,
   maxStringLimit: 100,
   maxArrayLimit: 50,

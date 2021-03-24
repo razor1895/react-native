@@ -5,26 +5,26 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
 
-import type {StackFrame} from '../NativeExceptionsManager';
-import type {HermesParsedStack} from './parseHermesStack';
+                                                           
+                                                          
 
 const parseHermesStack = require('./parseHermesStack');
 
-export type ExtendedError = Error & {
-  jsEngine?: string,
-  preventSymbolication?: boolean,
-  componentStack?: string,
-  forceRedbox?: boolean,
-  isComponentError?: boolean,
-  ...
-};
+                                     
+                    
+                                 
+                          
+                        
+                             
+     
+  
 
-function convertHermesStack(stack: HermesParsedStack): Array<StackFrame> {
+function convertHermesStack(stack                   )                    {
   const frames = [];
   for (const entry of stack.entries) {
     if (entry.type !== 'FRAME') {
@@ -47,7 +47,7 @@ function convertHermesStack(stack: HermesParsedStack): Array<StackFrame> {
   return frames;
 }
 
-function parseErrorStack(e: ExtendedError): Array<StackFrame> {
+function parseErrorStack(e               )                    {
   if (!e || !e.stack) {
     return [];
   }

@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -23,7 +23,7 @@ const DeprecatedTextStylePropTypes = {
   fontStyle: (ReactPropTypes.oneOf([
     'normal',
     'italic',
-  ]): React$PropType$Primitive<'normal' | 'italic'>),
+  ])                                               ),
   /**
    * Specifies font weight. The values 'normal' and 'bold' are supported for
    * most fonts. Not all fonts have a variant for each of the numeric values,
@@ -41,19 +41,19 @@ const DeprecatedTextStylePropTypes = {
     '700',
     '800',
     '900',
-  ]): React$PropType$Primitive<
-    | 'normal'
-    | 'bold'
-    | '100'
-    | '200'
-    | '300'
-    | '400'
-    | '500'
-    | '600'
-    | '700'
-    | '800'
-    | '900',
-  >),
+  ])                           
+              
+            
+           
+           
+           
+           
+           
+           
+           
+           
+            
+   ),
   fontVariant: (ReactPropTypes.arrayOf(
     ReactPropTypes.oneOf([
       'small-caps',
@@ -62,23 +62,23 @@ const DeprecatedTextStylePropTypes = {
       'tabular-nums',
       'proportional-nums',
     ]),
-  ): React$PropType$Primitive<
-    Array<
-      | 'small-caps'
-      | 'oldstyle-nums'
-      | 'lining-nums'
-      | 'tabular-nums'
-      | 'proportional-nums',
-    >,
-  >),
+  )                           
+          
+                    
+                       
+                     
+                      
+                            
+      
+   ),
   textShadowOffset: (ReactPropTypes.shape({
     width: ReactPropTypes.number,
     height: ReactPropTypes.number,
-  }): React$PropType$Primitive<{
-    height?: number,
-    width?: number,
-    ...
-  }>),
+  })                            
+                    
+                   
+       
+    ),
   textShadowRadius: ReactPropTypes.number,
   textShadowColor: DeprecatedColorPropType,
   /**
@@ -96,9 +96,9 @@ const DeprecatedTextStylePropTypes = {
     'right',
     'center',
     'justify',
-  ]): React$PropType$Primitive<
-    'auto' | 'left' | 'right' | 'center' | 'justify',
-  >),
+  ])                           
+                                                     
+   ),
   /**
    * @platform android
    */
@@ -107,7 +107,7 @@ const DeprecatedTextStylePropTypes = {
     'top',
     'bottom',
     'center',
-  ]): React$PropType$Primitive<'auto' | 'top' | 'bottom' | 'center'>),
+  ])                                                                ),
   /**
    * Set to `false` to remove extra font padding intended to make space for certain ascenders / descenders.
    * With some fonts, this padding can make text look slightly misaligned when centered vertically.
@@ -120,9 +120,9 @@ const DeprecatedTextStylePropTypes = {
     'underline',
     'line-through',
     'underline line-through',
-  ]): React$PropType$Primitive<
-    'none' | 'underline' | 'line-through' | 'underline line-through',
-  >),
+  ])                           
+                                                                     
+   ),
   /**
    * @platform ios
    */
@@ -131,7 +131,7 @@ const DeprecatedTextStylePropTypes = {
     'double',
     'dotted',
     'dashed',
-  ]): React$PropType$Primitive<'solid' | 'double' | 'dotted' | 'dashed'>),
+  ])                                                                    ),
   /**
    * @platform ios
    */
@@ -141,9 +141,9 @@ const DeprecatedTextStylePropTypes = {
     'capitalize',
     'uppercase',
     'lowercase',
-  ]): React$PropType$Primitive<
-    'none' | 'capitalize' | 'uppercase' | 'lowercase',
-  >),
+  ])                           
+                                                      
+   ),
   /**
    * @platform ios
    */
@@ -151,7 +151,7 @@ const DeprecatedTextStylePropTypes = {
     'auto' /*default*/,
     'ltr',
     'rtl',
-  ]): React$PropType$Primitive<'auto' | 'ltr' | 'rtl'>),
+  ])                                                  ),
 };
 
 module.exports = DeprecatedTextStylePropTypes;

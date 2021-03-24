@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -13,20 +13,20 @@
 import EventEmitter from '../vendor/emitter/EventEmitter';
 import RCTDeviceEventEmitter from '../EventEmitter/RCTDeviceEventEmitter';
 import NativeDeviceInfo, {
-  type DisplayMetrics,
-  type DimensionsPayload,
+                      
+                         
 } from './NativeDeviceInfo';
 import invariant from 'invariant';
 
-type DimensionsValue = {
-  window?: DisplayMetrics,
-  screen?: DisplayMetrics,
-  ...
-};
+                        
+                          
+                          
+     
+  
 
 const eventEmitter = new EventEmitter();
 let dimensionsInitialized = false;
-let dimensions: DimensionsValue;
+let dimensions                 ;
 
 class Dimensions {
   /**
@@ -46,7 +46,7 @@ class Dimensions {
    * @param {string} dim Name of dimension as defined when calling `set`.
    * @returns {Object?} Value for the dimension.
    */
-  static get(dim: string): Object {
+  static get(dim        )         {
     invariant(dimensions[dim], 'No dimension set for key ' + dim);
     return dimensions[dim];
   }
@@ -57,7 +57,7 @@ class Dimensions {
    *
    * @param {object} dims Simple string-keyed object of dimensions to set
    */
-  static set(dims: $ReadOnly<{[key: string]: any, ...}>): void {
+  static set(dims                                      )       {
     // We calculate the window dimensions in JS so that we don't encounter loss of
     // precision in transferring the dimensions (which could be non-integers) over
     // the bridge.
@@ -100,7 +100,7 @@ class Dimensions {
    *   are the same as the return values of `Dimensions.get('window')` and
    *   `Dimensions.get('screen')`, respectively.
    */
-  static addEventListener(type: 'change', handler: Function) {
+  static addEventListener(type          , handler          ) {
     invariant(
       type === 'change',
       'Trying to subscribe to unknown event: "%s"',
@@ -112,7 +112,7 @@ class Dimensions {
   /**
    * Remove an event handler.
    */
-  static removeEventListener(type: 'change', handler: Function) {
+  static removeEventListener(type          , handler          ) {
     invariant(
       type === 'change',
       'Trying to remove listener for unknown event: "%s"',
@@ -122,7 +122,7 @@ class Dimensions {
   }
 }
 
-let initialDims: ?$ReadOnly<{[key: string]: any, ...}> =
+let initialDims                                        =
   global.nativeExtensions &&
   global.nativeExtensions.DeviceInfo &&
   global.nativeExtensions.DeviceInfo.Dimensions;
@@ -130,7 +130,7 @@ if (!initialDims) {
   // Subscribe before calling getConstants to make sure we don't miss any updates in between.
   RCTDeviceEventEmitter.addListener(
     'didUpdateDimensions',
-    (update: DimensionsPayload) => {
+    (update                   ) => {
       Dimensions.set(update);
     },
   );

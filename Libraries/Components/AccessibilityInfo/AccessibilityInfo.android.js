@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -18,12 +18,12 @@ import NativeAccessibilityInfo from './NativeAccessibilityInfo';
 const REDUCE_MOTION_EVENT = 'reduceMotionDidChange';
 const TOUCH_EXPLORATION_EVENT = 'touchExplorationDidChange';
 
-type ChangeEventName = $Keys<{
-  change: string,
-  reduceMotionChanged: string,
-  screenReaderChanged: string,
-  ...
-}>;
+                              
+                 
+                              
+                              
+     
+   
 
 const _subscriptions = new Map();
 
@@ -41,25 +41,25 @@ const AccessibilityInfo = {
   /**
    * iOS only
    */
-  isBoldTextEnabled: function(): Promise<boolean> {
+  isBoldTextEnabled: function()                   {
     return Promise.resolve(false);
   },
 
   /**
    * iOS only
    */
-  isGrayscaleEnabled: function(): Promise<boolean> {
+  isGrayscaleEnabled: function()                   {
     return Promise.resolve(false);
   },
 
   /**
    * iOS only
    */
-  isInvertColorsEnabled: function(): Promise<boolean> {
+  isInvertColorsEnabled: function()                   {
     return Promise.resolve(false);
   },
 
-  isReduceMotionEnabled: function(): Promise<boolean> {
+  isReduceMotionEnabled: function()                   {
     return new Promise((resolve, reject) => {
       if (NativeAccessibilityInfo) {
         NativeAccessibilityInfo.isReduceMotionEnabled(resolve);
@@ -72,11 +72,11 @@ const AccessibilityInfo = {
   /**
    * iOS only
    */
-  isReduceTransparencyEnabled: function(): Promise<boolean> {
+  isReduceTransparencyEnabled: function()                   {
     return Promise.resolve(false);
   },
 
-  isScreenReaderEnabled: function(): Promise<boolean> {
+  isScreenReaderEnabled: function()                   {
     return new Promise((resolve, reject) => {
       if (NativeAccessibilityInfo) {
         NativeAccessibilityInfo.isTouchExplorationEnabled(resolve);
@@ -91,7 +91,7 @@ const AccessibilityInfo = {
    *
    * Same as `isScreenReaderEnabled`
    */
-  get fetch(): () => Promise<boolean> {
+  get fetch()                         {
     console.warn(
       'AccessibilityInfo.fetch is deprecated, call AccessibilityInfo.isScreenReaderEnabled instead',
     );
@@ -99,9 +99,9 @@ const AccessibilityInfo = {
   },
 
   addEventListener: function(
-    eventName: ChangeEventName,
-    handler: Function,
-  ): void {
+    eventName                 ,
+    handler          ,
+  )       {
     let listener;
 
     if (eventName === 'change' || eventName === 'screenReaderChanged') {
@@ -124,9 +124,9 @@ const AccessibilityInfo = {
   },
 
   removeEventListener: function(
-    eventName: ChangeEventName,
-    handler: Function,
-  ): void {
+    eventName                 ,
+    handler          ,
+  )       {
     const listener = _subscriptions.get(handler);
     if (!listener) {
       return;
@@ -140,7 +140,7 @@ const AccessibilityInfo = {
    *
    * See https://reactnative.dev/docs/accessibilityinfo.html#setaccessibilityfocus
    */
-  setAccessibilityFocus: function(reactTag: number): void {
+  setAccessibilityFocus: function(reactTag        )       {
     UIManager.sendAccessibilityEvent(
       reactTag,
       UIManager.getConstants().AccessibilityEventTypes.typeViewFocused,
@@ -152,7 +152,7 @@ const AccessibilityInfo = {
    *
    * See https://reactnative.dev/docs/accessibilityinfo.html#announceforaccessibility
    */
-  announceForAccessibility: function(announcement: string): void {
+  announceForAccessibility: function(announcement        )       {
     if (NativeAccessibilityInfo) {
       NativeAccessibilityInfo.announceForAccessibility(announcement);
     }

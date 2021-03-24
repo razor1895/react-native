@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @noflow
+ *        
  * @typecheck
  */
 
@@ -32,8 +32,8 @@ const sparseFilterPredicate = () => true;
  * more advanced emitter may use an EventHolder and EventFactory.
  */
 class EventEmitter {
-  _subscriber: EventSubscriptionVendor;
-  _currentSubscription: ?EmitterSubscription;
+  _subscriber                         ;
+  _currentSubscription                      ;
 
   /**
    * @constructor
@@ -41,7 +41,7 @@ class EventEmitter {
    * @param {EventSubscriptionVendor} subscriber - Optional subscriber instance
    *   to use. If omitted, a new subscriber will be created for the emitter.
    */
-  constructor(subscriber: ?EventSubscriptionVendor) {
+  constructor(subscriber                          ) {
     this._subscriber = subscriber || new EventSubscriptionVendor();
   }
 
@@ -60,14 +60,14 @@ class EventEmitter {
    *   listener
    */
   addListener(
-    eventType: string,
-    listener: Function,
-    context: ?Object,
-  ): EmitterSubscription {
+    eventType        ,
+    listener          ,
+    context         ,
+  )                      {
     return (this._subscriber.addSubscription(
       eventType,
       new EmitterSubscription(this, this._subscriber, listener, context),
-    ): any);
+    )     );
   }
 
   /**
@@ -81,10 +81,10 @@ class EventEmitter {
    *   listener
    */
   once(
-    eventType: string,
-    listener: Function,
-    context: ?Object,
-  ): EmitterSubscription {
+    eventType        ,
+    listener          ,
+    context         ,
+  )                      {
     return this.addListener(eventType, (...args) => {
       this.removeCurrentListener();
       listener.apply(context, args);
@@ -98,7 +98,7 @@ class EventEmitter {
    * @param {?string} eventType - Optional name of the event whose registered
    *   listeners to remove
    */
-  removeAllListeners(eventType: ?string) {
+  removeAllListeners(eventType         ) {
     this._subscriber.removeAllSubscriptions(eventType);
   }
 
@@ -135,7 +135,7 @@ class EventEmitter {
    * Removes a specific subscription. Called by the `remove()` method of the
    * subscription itself to ensure any necessary cleanup is performed.
    */
-  removeSubscription(subscription: EmitterSubscription) {
+  removeSubscription(subscription                     ) {
     invariant(
       subscription.emitter === this,
       'Subscription does not belong to this emitter.',
@@ -150,7 +150,7 @@ class EventEmitter {
    * @param {string} eventType - Name of the event to query
    * @returns {array}
    */
-  listeners(eventType: string): [EmitterSubscription] {
+  listeners(eventType        )                        {
     const subscriptions = this._subscriber.getSubscriptionsForType(eventType);
     return subscriptions
       ? subscriptions
@@ -177,7 +177,7 @@ class EventEmitter {
    *
    *   emitter.emit('someEvent', 'abc'); // logs 'abc'
    */
-  emit(eventType: string) {
+  emit(eventType        ) {
     const subscriptions = this._subscriber.getSubscriptionsForType(eventType);
     if (subscriptions) {
       for (let i = 0, l = subscriptions.length; i < l; i++) {
@@ -209,7 +209,7 @@ class EventEmitter {
    *   }); // removes the listener if already registered
    *
    */
-  removeListener(eventType: String, listener) {
+  removeListener(eventType        , listener) {
     const subscriptions = this._subscriber.getSubscriptionsForType(eventType);
     if (subscriptions) {
       for (let i = 0, l = subscriptions.length; i < l; i++) {

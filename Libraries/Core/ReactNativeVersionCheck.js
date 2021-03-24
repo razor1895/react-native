@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow strict-local
+ *       strict-local
  * @format
  */
 
@@ -22,7 +22,7 @@ const ReactNativeVersion = require('./ReactNativeVersion');
  * implementations for other platforms (ex: Windows) may override this module
  * and rely on its existence as a separate module.
  */
-exports.checkVersions = function checkVersions(): void {
+exports.checkVersions = function checkVersions()       {
   const nativeVersion = Platform.constants.reactNativeVersion;
   if (
     ReactNativeVersion.version.major !== nativeVersion.major ||
@@ -40,7 +40,7 @@ exports.checkVersions = function checkVersions(): void {
   }
 };
 
-function _formatVersion(version): string {
+function _formatVersion(version)         {
   return (
     `${version.major}.${version.minor}.${version.patch}` +
     // eslint-disable-next-line eqeqeq

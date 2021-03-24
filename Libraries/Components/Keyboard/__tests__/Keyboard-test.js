@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  * @emails oncall+react_native
  */
 
@@ -41,9 +41,9 @@ describe('Keyboard', () => {
 
   describe('scheduling layout animation', () => {
     const scheduleLayoutAnimation = (
-      duration: number | null,
-      easing: string | null,
-    ): void => Keyboard.scheduleLayoutAnimation({duration, easing});
+      duration               ,
+      easing               ,
+    )       => Keyboard.scheduleLayoutAnimation({duration, easing});
 
     it('triggers layout animation', () => {
       scheduleLayoutAnimation(12, 'spring');

@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -25,8 +25,8 @@ const stringifySafe = require('../Utilities/stringifySafe').default;
  * interface to native code.
  */
 function processTransform(
-  transform: Array<Object>,
-): Array<Object> | Array<number> {
+  transform               ,
+)                                {
   if (__DEV__) {
     _validateTransforms(transform);
   }
@@ -117,10 +117,10 @@ function processTransform(
  * Performs a destructive operation on a transform matrix.
  */
 function _multiplyTransform(
-  result: Array<number>,
-  matrixMathFunction: Function,
-  args: Array<number>,
-): void {
+  result               ,
+  matrixMathFunction          ,
+  args               ,
+)       {
   const matrixToApply = MatrixMath.createIdentityMatrix();
   const argsWithIdentity = [matrixToApply].concat(args);
   matrixMathFunction.apply(this, argsWithIdentity);
@@ -131,12 +131,12 @@ function _multiplyTransform(
  * Parses a string like '0.5rad' or '60deg' into radians expressed in a float.
  * Note that validation on the string is done in `_validateTransform()`.
  */
-function _convertToRadians(value: string): number {
+function _convertToRadians(value        )         {
   const floatValue = parseFloat(value);
   return value.indexOf('rad') > -1 ? floatValue : (floatValue * Math.PI) / 180;
 }
 
-function _validateTransforms(transform: Array<Object>): void {
+function _validateTransforms(transform               )       {
   transform.forEach(transformation => {
     const keys = Object.keys(transformation);
     invariant(

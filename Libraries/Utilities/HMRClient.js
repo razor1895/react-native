@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -18,45 +18,45 @@ const prettyFormat = require('pretty-format');
 
 import NativeRedBox from '../NativeModules/specs/NativeRedBox';
 import * as LogBoxData from '../LogBox/Data/LogBoxData';
-import type {ExtendedError} from '../Core/Devtools/parseErrorStack';
+                                                                    
 
 const pendingEntryPoints = [];
 let hmrClient = null;
-let hmrUnavailableReason: string | null = null;
-let currentCompileErrorMessage: string | null = null;
-let didConnect: boolean = false;
-let pendingLogs: Array<[LogLevel, Array<mixed>]> = [];
+let hmrUnavailableReason                = null;
+let currentCompileErrorMessage                = null;
+let didConnect          = false;
+let pendingLogs                                  = [];
 
-type LogLevel =
-  | 'trace'
-  | 'info'
-  | 'warn'
-  | 'error'
-  | 'log'
-  | 'group'
-  | 'groupCollapsed'
-  | 'groupEnd'
-  | 'debug';
+               
+           
+          
+          
+           
+         
+           
+                    
+              
+            
 
-export type HMRClientNativeInterface = {|
-  enable(): void,
-  disable(): void,
-  registerBundle(requestUrl: string): void,
-  log(level: LogLevel, data: Array<mixed>): void,
-  setup(
-    platform: string,
-    bundleEntry: string,
-    host: string,
-    port: number | string,
-    isEnabled: boolean,
-  ): void,
-|};
+                                         
+                 
+                  
+                                           
+                                                 
+        
+                     
+                        
+                 
+                          
+                       
+          
+   
 
 /**
  * HMR Client that receives from the server HMR updates and propagates them
  * runtime to reflects those changes.
  */
-const HMRClient: HMRClientNativeInterface = {
+const HMRClient                           = {
   enable() {
     if (hmrUnavailableReason !== null) {
       // If HMR became unavailable while you weren't using it,
@@ -98,13 +98,13 @@ const HMRClient: HMRClientNativeInterface = {
     hmrClient.disable();
   },
 
-  registerBundle(requestUrl: string) {
+  registerBundle(requestUrl        ) {
     invariant(hmrClient, 'Expected HMRClient.setup() call at startup.');
     pendingEntryPoints.push(requestUrl);
     registerBundleEntryPoints(hmrClient);
   },
 
-  log(level: LogLevel, data: Array<mixed>) {
+  log(level          , data              ) {
     if (!hmrClient) {
       // Catch a reasonable number of early logs
       // in case hmrClient gets initialized later.
@@ -141,11 +141,11 @@ const HMRClient: HMRClientNativeInterface = {
   // Called once by the bridge on startup, even if Fast Refresh is off.
   // It creates the HMR client but doesn't actually set up the socket yet.
   setup(
-    platform: string,
-    bundleEntry: string,
-    host: string,
-    port: number | string,
-    isEnabled: boolean,
+    platform        ,
+    bundleEntry        ,
+    host        ,
+    port                 ,
+    isEnabled         ,
   ) {
     invariant(platform, 'Missing required parameter `platform`');
     invariant(bundleEntry, 'Missing required parameter `bundleEntry`');
@@ -281,7 +281,7 @@ function registerBundleEntryPoints(client) {
 
 function flushEarlyLogs(client) {
   try {
-    pendingLogs.forEach(([level: LogLevel, data: Array<mixed>]) => {
+    pendingLogs.forEach(([level          , data              ]) => {
       HMRClient.log(level, data);
     });
   } finally {
@@ -317,7 +317,7 @@ function showCompileError() {
   const message = currentCompileErrorMessage;
   currentCompileErrorMessage = null;
 
-  const error: ExtendedError = new Error(message);
+  const error                = new Error(message);
   // Symbolicating compile errors is wasted effort
   // because the stack trace is meaningless:
   error.preventSymbolication = true;

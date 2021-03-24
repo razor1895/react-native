@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
 // This is a controlled component version of RCTPickerIOS.
@@ -22,64 +22,64 @@ const processColor = require('../../StyleSheet/processColor');
 import RCTPickerNativeComponent, {
   Commands as PickerCommands,
 } from './RCTPickerNativeComponent';
-import type {TextStyleProp} from '../../StyleSheet/StyleSheet';
-import type {ColorValue} from '../../StyleSheet/StyleSheetTypes';
-import type {ProcessedColorValue} from '../../StyleSheet/processColor';
-import type {SyntheticEvent} from '../../Types/CoreEventTypes';
-import type {ViewProps} from '../View/ViewPropTypes';
+                                                               
+                                                                 
+                                                                       
+                                                               
+                                                     
 
-type PickerIOSChangeEvent = SyntheticEvent<
-  $ReadOnly<{|
-    newValue: number | string,
-    newIndex: number,
-  |}>,
->;
+                                           
+              
+                              
+                     
+      
+  
 
-type RCTPickerIOSItemType = $ReadOnly<{|
-  label: ?Label,
-  value: ?(number | string),
-  textColor: ?ProcessedColorValue,
-|}>;
+                                        
+                
+                            
+                                  
+    
 
-type Label = Stringish | number;
+                                
 
-type Props = $ReadOnly<{|
-  ...ViewProps,
-  children: React.ChildrenArray<React.Element<typeof PickerIOSItem>>,
-  itemStyle?: ?TextStyleProp,
-  onChange?: ?(event: PickerIOSChangeEvent) => mixed,
-  onValueChange?: ?(itemValue: string | number, itemIndex: number) => mixed,
-  selectedValue: ?(number | string),
-  accessibilityLabel?: ?string,
-|}>;
+                         
+               
+                                                                     
+                             
+                                                     
+                                                                            
+                                    
+                               
+    
 
-type State = {|
-  selectedIndex: number,
-  items: $ReadOnlyArray<RCTPickerIOSItemType>,
-|};
+               
+                        
+                                              
+   
 
-type ItemProps = $ReadOnly<{|
-  label: ?Label,
-  value?: ?(number | string),
-  color?: ?ColorValue,
-|}>;
+                             
+                
+                             
+                      
+    
 
-const PickerIOSItem = (props: ItemProps): null => {
+const PickerIOSItem = (props           )       => {
   return null;
 };
 
-class PickerIOS extends React.Component<Props, State> {
-  _picker: ?React.ElementRef<typeof RCTPickerNativeComponent> = null;
-  _lastNativeValue: ?number;
+class PickerIOS extends React.Component               {
+  _picker                                                     = null;
+  _lastNativeValue         ;
 
-  state: State = {
+  state        = {
     selectedIndex: 0,
     items: [],
   };
 
-  static Item: (props: ItemProps) => null = PickerIOSItem;
+  static Item                             = PickerIOSItem;
 
-  static getDerivedStateFromProps(props: Props): State {
+  static getDerivedStateFromProps(props       )        {
     let selectedIndex = 0;
     const items = [];
     React.Children.toArray(props.children)
@@ -102,7 +102,7 @@ class PickerIOS extends React.Component<Props, State> {
     return {selectedIndex, items};
   }
 
-  render(): React.Node {
+  render()             {
     return (
       <View style={this.props.style}>
         <RCTPickerNativeComponent

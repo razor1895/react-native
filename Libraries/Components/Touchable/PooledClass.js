@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -78,7 +78,7 @@ const standardReleaser = function(instance) {
 const DEFAULT_POOL_SIZE = 10;
 const DEFAULT_POOLER = oneArgumentPooler;
 
-type Pooler = any;
+                  
 
 /**
  * Augments `CopyConstructor` to be a poolable class, augmenting only the class
@@ -89,19 +89,19 @@ type Pooler = any;
  * @param {Function} CopyConstructor Constructor that can be used to reset.
  * @param {Function} pooler Customizable pooler.
  */
-const addPoolingTo = function<T>(
-  CopyConstructor: Class<T>,
-  pooler: Pooler,
-): Class<T> & {
-  getPooled(
-    ...args: $ReadOnlyArray<mixed>
-  ): /* arguments of the constructor */ T,
-  release(instance: mixed): void,
-  ...
-} {
+const addPoolingTo = function   (
+  CopyConstructor          ,
+  pooler        ,
+)              
+            
+                                  
+                                          
+                                 
+     
+  {
   // Casting as any so that flow ignores the actual implementation and trusts
   // it to match the type we declared
-  const NewKlass = (CopyConstructor: any);
+  const NewKlass = (CopyConstructor     );
   NewKlass.instancePool = [];
   NewKlass.getPooled = pooler || DEFAULT_POOLER;
   if (!NewKlass.poolSize) {
@@ -113,10 +113,10 @@ const addPoolingTo = function<T>(
 
 const PooledClass = {
   addPoolingTo: addPoolingTo,
-  oneArgumentPooler: (oneArgumentPooler: Pooler),
-  twoArgumentPooler: (twoArgumentPooler: Pooler),
-  threeArgumentPooler: (threeArgumentPooler: Pooler),
-  fourArgumentPooler: (fourArgumentPooler: Pooler),
+  oneArgumentPooler: (oneArgumentPooler        ),
+  twoArgumentPooler: (twoArgumentPooler        ),
+  threeArgumentPooler: (threeArgumentPooler        ),
+  fourArgumentPooler: (fourArgumentPooler        ),
 };
 
 module.exports = PooledClass;

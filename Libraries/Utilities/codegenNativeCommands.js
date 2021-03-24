@@ -5,18 +5,18 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
 
 import {dispatchCommand} from '../../Libraries/Renderer/shims/ReactNative';
 
-type Options<T = string> = $ReadOnly<{|
-  supportedCommands: $ReadOnlyArray<T>,
-|}>;
+                                       
+                                       
+    
 
-function codegenNativeCommands<T: {...}>(options: Options<$Keys<T>>): T {
+function codegenNativeCommands          (options                   )    {
   const commandObj = {};
 
   options.supportedCommands.forEach(command => {
@@ -25,7 +25,7 @@ function codegenNativeCommands<T: {...}>(options: Options<$Keys<T>>): T {
     };
   });
 
-  return ((commandObj: any): T);
+  return ((commandObj     )   );
 }
 
 export default codegenNativeCommands;

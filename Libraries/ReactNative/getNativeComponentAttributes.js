@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
@@ -23,7 +23,7 @@ const resolveAssetSource = require('../Image/resolveAssetSource');
 const sizesDiffer = require('../Utilities/differ/sizesDiffer');
 const warning = require('fbjs/lib/warning');
 
-function getNativeComponentAttributes(uiViewClassName: string): any {
+function getNativeComponentAttributes(uiViewClassName        )      {
   const viewConfig = UIManager.getViewManagerConfig(uiViewClassName);
 
   invariant(
@@ -93,7 +93,7 @@ function getNativeComponentAttributes(uiViewClassName: string): any {
 // TODO: Figure out how this makes sense. We're using a global boolean to only
 // initialize this on the first eagerly initialized native component.
 let hasAttachedDefaultEventTypes = false;
-function attachDefaultEventTypes(viewConfig: any) {
+function attachDefaultEventTypes(viewConfig     ) {
   // This is supported on UIManager platforms (ex: Android),
   // as lazy view managers are not implemented for all platforms.
   // See [UIManager] for details on constants and implementations.
@@ -114,7 +114,7 @@ function attachDefaultEventTypes(viewConfig: any) {
 }
 
 // TODO: Figure out how to avoid all this runtime initialization cost.
-function merge(destination: ?Object, source: ?Object): ?Object {
+function merge(destination         , source         )          {
   if (!source) {
     return destination;
   }
@@ -143,8 +143,8 @@ function merge(destination: ?Object, source: ?Object): ?Object {
 }
 
 function getDifferForType(
-  typeName: string,
-): ?(prevProp: any, nextProp: any) => boolean {
+  typeName        ,
+)                                             {
   switch (typeName) {
     // iOS Types
     case 'CATransform3D':
@@ -161,7 +161,7 @@ function getDifferForType(
   return null;
 }
 
-function getProcessorForType(typeName: string): ?(nextProp: any) => any {
+function getProcessorForType(typeName        )                          {
   switch (typeName) {
     // iOS Types
     case 'CGColor':

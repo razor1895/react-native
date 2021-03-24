@@ -5,12 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
 'use strict';
 
-export let isAsyncDebugging: boolean = false;
+export let isAsyncDebugging          = false;
 
 if (__DEV__) {
   // These native interfaces don't exist in asynchronous debugging environments.

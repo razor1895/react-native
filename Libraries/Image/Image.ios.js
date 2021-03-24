@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
@@ -18,17 +18,17 @@ const StyleSheet = require('../StyleSheet/StyleSheet');
 const flattenStyle = require('../StyleSheet/flattenStyle');
 const resolveAssetSource = require('./resolveAssetSource');
 
-import type {ImageProps as ImagePropsType} from './ImageProps';
+                                                               
 
-import type {ImageStyleProp} from '../StyleSheet/StyleSheet';
+                                                             
 import NativeImageLoaderIOS from './NativeImageLoaderIOS';
 
 import ImageViewNativeComponent from './ImageViewNativeComponent';
 
 function getSize(
-  uri: string,
-  success: (width: number, height: number) => void,
-  failure?: (error: any) => void,
+  uri        ,
+  success                                         ,
+  failure                       ,
 ) {
   NativeImageLoaderIOS.getSize(uri)
     .then(([width, height]) => success(width, height))
@@ -41,11 +41,11 @@ function getSize(
 }
 
 function getSizeWithHeaders(
-  uri: string,
-  headers: {[string]: string, ...},
-  success: (width: number, height: number) => void,
-  failure?: (error: any) => void,
-): any {
+  uri        ,
+  headers                         ,
+  success                                         ,
+  failure                       ,
+)      {
   return NativeImageLoaderIOS.getSizeWithHeaders(uri, headers)
     .then(function(sizes) {
       success(sizes.width, sizes.height);
@@ -58,24 +58,24 @@ function getSizeWithHeaders(
     );
 }
 
-function prefetch(url: string): any {
+function prefetch(url        )      {
   return NativeImageLoaderIOS.prefetchImage(url);
 }
 
 async function queryCache(
-  urls: Array<string>,
-): Promise<{[string]: 'memory' | 'disk' | 'disk/memory', ...}> {
+  urls               ,
+)                                                              {
   return await NativeImageLoaderIOS.queryCache(urls);
 }
 
-type ImageComponentStatics = $ReadOnly<{|
-  getSize: typeof getSize,
-  getSizeWithHeaders: typeof getSizeWithHeaders,
-  prefetch: typeof prefetch,
-  queryCache: typeof queryCache,
-  resolveAssetSource: typeof resolveAssetSource,
-  propTypes: typeof DeprecatedImagePropType,
-|}>;
+                                         
+                          
+                                                
+                            
+                                
+                                                
+                                            
+    
 
 /**
  * A React component for displaying different types of images,
@@ -84,7 +84,7 @@ type ImageComponentStatics = $ReadOnly<{|
  *
  * See https://reactnative.dev/docs/image.html
  */
-let Image = (props: ImagePropsType, forwardedRef) => {
+let Image = (props                , forwardedRef) => {
   const source = resolveAssetSource(props.source) || {
     uri: undefined,
     width: undefined,
@@ -92,7 +92,7 @@ let Image = (props: ImagePropsType, forwardedRef) => {
   };
 
   let sources;
-  let style: ImageStyleProp;
+  let style                ;
   if (Array.isArray(source)) {
     // $FlowFixMe flattenStyle is not strong enough
     style = flattenStyle([styles.base, props.style]) || {};
@@ -135,10 +135,10 @@ let Image = (props: ImagePropsType, forwardedRef) => {
   );
 };
 
-Image = React.forwardRef<
-  ImagePropsType,
-  React.ElementRef<typeof ImageViewNativeComponent>,
->(Image);
+Image = React.forwardRef 
+                 
+                                                    
+ (Image);
 Image.displayName = 'Image';
 
 /**
@@ -204,8 +204,8 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = ((Image: any): React.AbstractComponent<
-  ImagePropsType,
-  React.ElementRef<typeof ImageViewNativeComponent>,
-> &
-  ImageComponentStatics);
+module.exports = ((Image     )                          
+                 
+                                                    
+   
+                       );

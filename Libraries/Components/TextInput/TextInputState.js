@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
 // This class is responsible for coordinating the "focused" state for
@@ -20,13 +20,13 @@ const {findNodeHandle} = require('../../Renderer/shims/ReactNative');
 import {Commands as AndroidTextInputCommands} from '../../Components/TextInput/AndroidTextInputNativeComponent';
 import {Commands as iOSTextInputCommands} from '../../Components/TextInput/RCTSingelineTextInputNativeComponent';
 
-import type {HostComponent} from '../../Renderer/shims/ReactNativeTypes';
-type ComponentRef = React.ElementRef<HostComponent<mixed>>;
+                                                                         
+                                                           
 
-let currentlyFocusedInputRef: ?ComponentRef = null;
+let currentlyFocusedInputRef                = null;
 const inputs = new Set();
 
-function currentlyFocusedInput(): ?ComponentRef {
+function currentlyFocusedInput()                {
   return currentlyFocusedInputRef;
 }
 
@@ -34,7 +34,7 @@ function currentlyFocusedInput(): ?ComponentRef {
  * Returns the ID of the currently focused text field, if one exists
  * If no text field is focused it returns null
  */
-function currentlyFocusedField(): ?number {
+function currentlyFocusedField()          {
   if (__DEV__) {
     console.error(
       'currentlyFocusedField is deprecated and will be removed in a future release. Use currentlyFocusedInput',
@@ -44,19 +44,19 @@ function currentlyFocusedField(): ?number {
   return findNodeHandle(currentlyFocusedInputRef);
 }
 
-function focusInput(textField: ?ComponentRef): void {
+function focusInput(textField               )       {
   if (currentlyFocusedInputRef !== textField && textField != null) {
     currentlyFocusedInputRef = textField;
   }
 }
 
-function blurInput(textField: ?ComponentRef): void {
+function blurInput(textField               )       {
   if (currentlyFocusedInputRef === textField && textField != null) {
     currentlyFocusedInputRef = null;
   }
 }
 
-function focusField(textFieldID: ?number): void {
+function focusField(textFieldID         )       {
   if (__DEV__) {
     console.error('focusField no longer works. Use focusInput');
   }
@@ -64,7 +64,7 @@ function focusField(textFieldID: ?number): void {
   return;
 }
 
-function blurField(textFieldID: ?number) {
+function blurField(textFieldID         ) {
   if (__DEV__) {
     console.error('blurField no longer works. Use blurInput');
   }
@@ -77,7 +77,7 @@ function blurField(textFieldID: ?number) {
  * Focuses the specified text field
  * noop if the text field was already focused
  */
-function focusTextInput(textField: ?ComponentRef) {
+function focusTextInput(textField               ) {
   if (typeof textField === 'number') {
     if (__DEV__) {
       console.error(
@@ -108,7 +108,7 @@ function focusTextInput(textField: ?ComponentRef) {
  * Unfocuses the specified text field
  * noop if it wasn't focused
  */
-function blurTextInput(textField: ?ComponentRef) {
+function blurTextInput(textField               ) {
   if (typeof textField === 'number') {
     if (__DEV__) {
       console.error(
@@ -134,7 +134,7 @@ function blurTextInput(textField: ?ComponentRef) {
   }
 }
 
-function registerInput(textField: ComponentRef) {
+function registerInput(textField              ) {
   if (typeof textField === 'number') {
     if (__DEV__) {
       console.error(
@@ -148,7 +148,7 @@ function registerInput(textField: ComponentRef) {
   inputs.add(textField);
 }
 
-function unregisterInput(textField: ComponentRef) {
+function unregisterInput(textField              ) {
   if (typeof textField === 'number') {
     if (__DEV__) {
       console.error(
@@ -161,7 +161,7 @@ function unregisterInput(textField: ComponentRef) {
   inputs.delete(textField);
 }
 
-function isTextInput(textField: ComponentRef): boolean {
+function isTextInput(textField              )          {
   if (typeof textField === 'number') {
     if (__DEV__) {
       console.error(

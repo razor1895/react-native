@@ -6,12 +6,12 @@
  *
  * @emails oncall+react_native
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
 'use strict';
 
-import type {PressEvent} from '../../Types/CoreEventTypes';
+                                                           
 import * as HoverState from '../HoverState';
 import Pressability from '../Pressability';
 import invariant from 'invariant';
@@ -20,13 +20,13 @@ import Platform from '../../Utilities/Platform';
 import UIManager from '../../ReactNative/UIManager';
 
 // TODO: Move this util to a shared location.
-function getMock<TArguments: $ReadOnlyArray<mixed>, TReturn>(
-  fn: (...args: TArguments) => TReturn,
-): JestMockFn<TArguments, TReturn> {
+function getMock                                            (
+  fn                                  ,
+)                                  {
   if (!jest.isMockFunction(fn)) {
     throw new Error('Function must be mock function');
   }
-  return (fn: $FlowFixMe);
+  return (fn            );
 }
 
 const createMockPressability = overrides => {
@@ -78,7 +78,7 @@ const mockSlop = {
   right: 10,
 };
 
-const mockUIManagerMeasure = (options?: {|delay: number|}) => {
+const mockUIManagerMeasure = (options                    ) => {
   getMock(UIManager.measure).mockImplementation((id, fn) => {
     if (options && options.delay) {
       setTimeout(
@@ -165,14 +165,14 @@ const createMockMouseEvent = registrationName => {
 };
 
 const createMockPressEvent = (
-  nameOrOverrides:
-    | string
-    | $ReadOnly<{|
-        registrationName: string,
-        pageX: number,
-        pageY: number,
-      |}>,
-): PressEvent => {
+  nameOrOverrides 
+            
+                  
+                                 
+                      
+                      
+         ,
+)             => {
   let registrationName = '';
   let pageX = 0;
   let pageY = 0;

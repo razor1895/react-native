@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow strict-local
+ *       strict-local
  * @format
  */
 
@@ -23,18 +23,18 @@ import LogBoxInspectorReactFrames from './LogBoxInspectorReactFrames';
 import LogBoxInspectorStackFrames from './LogBoxInspectorStackFrames';
 import LogBoxInspectorHeader from './LogBoxInspectorHeader';
 import * as LogBoxStyle from './LogBoxStyle';
-import LogBoxLog, {type LogLevel} from '../Data/LogBoxLog';
+import LogBoxLog, {             } from '../Data/LogBoxLog';
 
-type Props = $ReadOnly<{|
-  onDismiss: () => void,
-  onChangeSelectedIndex: (index: number) => void,
-  onMinimize: () => void,
-  logs: $ReadOnlyArray<LogBoxLog>,
-  selectedIndex: number,
-  fatalType?: ?LogLevel,
-|}>;
+                         
+                        
+                                                 
+                         
+                                  
+                        
+                        
+    
 
-function LogBoxInspector(props: Props): React.Node {
+function LogBoxInspector(props       )             {
   const {logs, selectedIndex} = props;
   let log = logs[selectedIndex];
 

@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -18,13 +18,13 @@ const infoLog = require('../Utilities/infoLog');
 const invariant = require('invariant');
 const keyMirror = require('fbjs/lib/keyMirror');
 
-export type Handle = number;
-import type {Task} from './TaskQueue';
+                            
+                                      
 
 const _emitter = new EventEmitter();
 
-const DEBUG_DELAY: 0 = 0;
-const DEBUG: false = false;
+const DEBUG_DELAY    = 0;
+const DEBUG        = false;
 
 /**
  * InteractionManager allows long-running work to be scheduled after any
@@ -86,13 +86,13 @@ const InteractionManager = {
    * "promise".
    */
   runAfterInteractions(
-    task: ?Task,
-  ): {
-    then: Function,
-    done: Function,
-    cancel: Function,
-    ...
-  } {
+    task       ,
+  )   
+                   
+                   
+                     
+       
+    {
     const tasks = [];
     const promise = new Promise(resolve => {
       _scheduleUpdate();
@@ -125,7 +125,7 @@ const InteractionManager = {
   /**
    * Notify manager that an interaction has started.
    */
-  createInteractionHandle(): Handle {
+  createInteractionHandle()         {
     DEBUG && infoLog('InteractionManager: create interaction handle');
     _scheduleUpdate();
     const handle = ++_inc;
@@ -136,7 +136,7 @@ const InteractionManager = {
   /**
    * Notify manager that an interaction has completed.
    */
-  clearInteractionHandle(handle: Handle) {
+  clearInteractionHandle(handle        ) {
     DEBUG && infoLog('InteractionManager: clear interaction handle');
     invariant(!!handle, 'InteractionManager: Must provide a handle to clear.');
     _scheduleUpdate();
@@ -144,14 +144,14 @@ const InteractionManager = {
     _deleteInteractionSet.add(handle);
   },
 
-  addListener: (_emitter.addListener.bind(_emitter): $FlowFixMe),
+  addListener: (_emitter.addListener.bind(_emitter)            ),
 
   /**
    * A positive number will use setTimeout to schedule any tasks after the
    * eventLoopRunningTime hits the deadline value, otherwise all tasks will be
    * executed in one setImmediate batch (default).
    */
-  setDeadline(deadline: number) {
+  setDeadline(deadline        ) {
     _deadline = deadline;
   },
 };
@@ -164,7 +164,7 @@ let _nextUpdateHandle = 0;
 let _inc = 0;
 let _deadline = -1;
 
-declare function setImmediate(callback: any, ...args: Array<any>): number;
+                                                                          
 
 /**
  * Schedule an asynchronous update to the interaction state.

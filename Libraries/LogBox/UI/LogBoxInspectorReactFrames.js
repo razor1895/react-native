@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow strict-local
+ *       strict-local
  * @format
  */
 
@@ -19,11 +19,11 @@ import LogBoxButton from './LogBoxButton';
 import * as LogBoxStyle from './LogBoxStyle';
 import LogBoxInspectorSection from './LogBoxInspectorSection';
 import openFileInEditor from '../../Core/Devtools/openFileInEditor';
-import type LogBoxLog from '../Data/LogBoxLog';
+                                               
 
-type Props = $ReadOnly<{|
-  log: LogBoxLog,
-|}>;
+                         
+                 
+    
 
 const BEFORE_SLASH_RE = /^(.*)[\\/]/;
 
@@ -49,7 +49,7 @@ function getPrettyFileName(path) {
 
   return fileName;
 }
-function LogBoxInspectorReactFrames(props: Props): React.Node {
+function LogBoxInspectorReactFrames(props       )             {
   const [collapsed, setCollapsed] = React.useState(true);
   if (props.log.componentStack == null || props.log.componentStack.length < 1) {
     return null;

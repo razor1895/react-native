@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
@@ -26,7 +26,7 @@ let _canInstallReactHook = false;
 const REACT_MARKER = '\u269B';
 const userTimingPolyfill = __DEV__
   ? {
-      mark(markName: string) {
+      mark(markName        ) {
         if (_enabled) {
           _markStackIndex++;
           _markStack[_markStackIndex] = markName;
@@ -44,7 +44,7 @@ const userTimingPolyfill = __DEV__
           Systrace.beginEvent(systraceLabel);
         }
       },
-      measure(measureName: string, startMark: ?string, endMark: ?string) {
+      measure(measureName        , startMark         , endMark         ) {
         if (_enabled) {
           invariant(
             typeof measureName === 'string' &&
@@ -66,7 +66,7 @@ const userTimingPolyfill = __DEV__
           Systrace.endEvent();
         }
       },
-      clearMarks(markName: string) {
+      clearMarks(markName        ) {
         if (_enabled) {
           if (_markStackIndex === -1) {
             return;
@@ -111,7 +111,7 @@ const Systrace = {
     _canInstallReactHook = true;
   },
 
-  setEnabled(enabled: boolean) {
+  setEnabled(enabled         ) {
     if (_enabled !== enabled) {
       if (__DEV__) {
         if (enabled) {
@@ -131,14 +131,14 @@ const Systrace = {
     }
   },
 
-  isEnabled(): boolean {
+  isEnabled()          {
     return _enabled;
   },
 
   /**
    * beginEvent/endEvent for starting and then ending a profile within the same call stack frame
    **/
-  beginEvent(profileName?: any, args?: any) {
+  beginEvent(profileName      , args      ) {
     if (_enabled) {
       profileName =
         typeof profileName === 'function' ? profileName() : profileName;
@@ -157,7 +157,7 @@ const Systrace = {
    * occur on another thread or out of the current stack frame, eg await
    * the returned cookie variable should be used as input into the endAsyncEvent call to end the profile
    **/
-  beginAsyncEvent(profileName?: any): any {
+  beginAsyncEvent(profileName      )      {
     const cookie = _asyncCookie;
     if (_enabled) {
       _asyncCookie++;
@@ -172,7 +172,7 @@ const Systrace = {
     return cookie;
   },
 
-  endAsyncEvent(profileName?: any, cookie?: any) {
+  endAsyncEvent(profileName      , cookie      ) {
     if (_enabled) {
       profileName =
         typeof profileName === 'function' ? profileName() : profileName;
@@ -187,7 +187,7 @@ const Systrace = {
   /**
    * counterEvent registers the value to the profileName on the systrace timeline
    **/
-  counterEvent(profileName?: any, value?: any) {
+  counterEvent(profileName      , value      ) {
     if (_enabled) {
       profileName =
         typeof profileName === 'function' ? profileName() : profileName;
@@ -202,7 +202,7 @@ if (__DEV__) {
   // other files. Therefore, calls to `require('moduleId')` are not replaced
   // with numeric IDs
   // TODO(davidaurelio) Scan polyfills for dependencies, too (t9759686)
-  (require: any).Systrace = Systrace;
+  (require     ).Systrace = Systrace;
 }
 
 module.exports = Systrace;

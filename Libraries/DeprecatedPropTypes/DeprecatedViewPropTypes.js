@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
 'use strict';
@@ -17,7 +17,7 @@ const PropTypes = require('prop-types');
 
 const {DeprecatedAccessibilityRoles} = require('./DeprecatedViewAccessibility');
 
-const stylePropType: ReactPropsCheckType = DeprecatedStyleSheetPropType(
+const stylePropType                      = DeprecatedStyleSheetPropType(
   DeprecatedViewStylePropTypes,
 );
 
@@ -56,7 +56,7 @@ module.exports = {
    */
   accessibilityActions: (PropTypes.arrayOf(
     PropTypes.string,
-  ): React$PropType$Primitive<Array<string>>),
+  )                                         ),
 
   /**
    * Prevents view from being inverted if set to true and color inversion is turned on.
@@ -70,35 +70,35 @@ module.exports = {
    */
   accessibilityRole: (PropTypes.oneOf(
     DeprecatedAccessibilityRoles,
-  ): React$PropType$Primitive<
-    | 'none'
-    | 'button'
-    | 'link'
-    | 'search'
-    | 'image'
-    | 'keyboardkey'
-    | 'text'
-    | 'adjustable'
-    | 'imagebutton'
-    | 'header'
-    | 'summary'
-    | 'alert'
-    | 'checkbox'
-    | 'combobox'
-    | 'menu'
-    | 'menubar'
-    | 'menuitem'
-    | 'progressbar'
-    | 'radio'
-    | 'radiogroup'
-    | 'scrollbar'
-    | 'spinbutton'
-    | 'switch'
-    | 'tab'
-    | 'tablist'
-    | 'timer'
-    | 'toolbar',
-  >),
+  )                           
+            
+              
+            
+              
+             
+                   
+            
+                  
+                   
+              
+               
+             
+                
+                
+            
+               
+                
+                   
+             
+                  
+                 
+                  
+              
+           
+               
+             
+                
+   ),
 
   accessibilityState: PropTypes.object,
   accessibilityValue: PropTypes.object,
@@ -114,7 +114,7 @@ module.exports = {
     'none',
     'polite',
     'assertive',
-  ]): React$PropType$Primitive<'none' | 'polite' | 'assertive'>),
+  ])                                                           ),
 
   /**
    * Controls how view is important for accessibility which is if it
@@ -130,7 +130,7 @@ module.exports = {
     'yes',
     'no',
     'no-hide-descendants',
-  ]): React$PropType$Primitive<'auto' | 'yes' | 'no' | 'no-hide-descendants'>),
+  ])                                                                         ),
 
   /**
    * A value indicating whether VoiceOver should ignore the elements
@@ -346,7 +346,7 @@ module.exports = {
     'none',
     'box-only',
     'auto',
-  ]): React$PropType$Primitive<'box-none' | 'none' | 'box-only' | 'auto'>),
+  ])                                                                     ),
 
   /**
    * See https://reactnative.dev/docs/style.html

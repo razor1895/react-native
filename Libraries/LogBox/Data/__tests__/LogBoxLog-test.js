@@ -6,13 +6,13 @@
  *
  * @emails oncall+react_native
  * @format
- * @flow
+ *      
  */
 
 'use strict';
 
-import type {StackFrame} from '../../../Core/NativeExceptionsManager';
-import type {SymbolicatedStackTrace} from '../../../Core/Devtools/symbolicateStackTrace';
+                                                                      
+                                                                                         
 
 jest.mock('../LogBoxSymbolication', () => {
   return {__esModule: true, symbolicate: jest.fn(), deleteStack: jest.fn()};
@@ -40,13 +40,13 @@ function getLogBoxLog() {
   });
 }
 
-function getLogBoxSymbolication(): {|
-  symbolicate: JestMockFn<
-    $ReadOnlyArray<Array<StackFrame>>,
-    Promise<SymbolicatedStackTrace>,
-  >,
-|} {
-  return (require('../LogBoxSymbolication'): any);
+function getLogBoxSymbolication()    
+                          
+                                      
+                                    
+    
+   {
+  return (require('../LogBoxSymbolication')     );
 }
 
 const createStack = methodNames =>

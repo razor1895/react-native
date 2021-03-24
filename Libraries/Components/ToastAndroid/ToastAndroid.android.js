@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
 'use strict';
@@ -34,32 +34,32 @@ import NativeToastAndroid from './NativeToastAndroid';
 
 const ToastAndroid = {
   // Toast duration constants
-  SHORT: (NativeToastAndroid.getConstants().SHORT: number),
-  LONG: (NativeToastAndroid.getConstants().LONG: number),
+  SHORT: (NativeToastAndroid.getConstants().SHORT        ),
+  LONG: (NativeToastAndroid.getConstants().LONG        ),
   // Toast gravity constants
-  TOP: (NativeToastAndroid.getConstants().TOP: number),
-  BOTTOM: (NativeToastAndroid.getConstants().BOTTOM: number),
-  CENTER: (NativeToastAndroid.getConstants().CENTER: number),
+  TOP: (NativeToastAndroid.getConstants().TOP        ),
+  BOTTOM: (NativeToastAndroid.getConstants().BOTTOM        ),
+  CENTER: (NativeToastAndroid.getConstants().CENTER        ),
 
-  show: function(message: string, duration: number): void {
+  show: function(message        , duration        )       {
     NativeToastAndroid.show(message, duration);
   },
 
   showWithGravity: function(
-    message: string,
-    duration: number,
-    gravity: number,
-  ): void {
+    message        ,
+    duration        ,
+    gravity        ,
+  )       {
     NativeToastAndroid.showWithGravity(message, duration, gravity);
   },
 
   showWithGravityAndOffset: function(
-    message: string,
-    duration: number,
-    gravity: number,
-    xOffset: number,
-    yOffset: number,
-  ): void {
+    message        ,
+    duration        ,
+    gravity        ,
+    xOffset        ,
+    yOffset        ,
+  )       {
     NativeToastAndroid.showWithGravityAndOffset(
       message,
       duration,

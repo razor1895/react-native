@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
 'use strict';
@@ -13,12 +13,12 @@
 const deprecatedCreateStrictShapeTypeChecker = require('./deprecatedCreateStrictShapeTypeChecker');
 const flattenStyle = require('../StyleSheet/flattenStyle');
 
-function DeprecatedStyleSheetPropType(shape: {
-  [key: string]: ReactPropsCheckType,
-  ...,
-}): ReactPropsCheckType {
+function DeprecatedStyleSheetPropType(shape   
+                                     
+      
+ )                      {
   const shapePropType = deprecatedCreateStrictShapeTypeChecker(shape);
-  return function(props, propName, componentName, location?, ...rest) {
+  return function(props, propName, componentName, location , ...rest) {
     let newProps = props;
     if (props[propName]) {
       // Just make a dummy prop object with only the flattened style

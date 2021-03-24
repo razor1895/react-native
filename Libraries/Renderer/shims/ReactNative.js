@@ -5,12 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
 
-import type {ReactNativeType} from './ReactNativeTypes';
+                                                        
 
 let ReactNative;
 
@@ -20,4 +20,4 @@ if (__DEV__) {
   ReactNative = require('../implementations/ReactNativeRenderer-prod');
 }
 
-module.exports = (ReactNative: ReactNativeType);
+module.exports = (ReactNative                 );

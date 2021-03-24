@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -16,22 +16,22 @@ const RCTDeviceEventEmitter = require('./RCTDeviceEventEmitter');
 
 const invariant = require('invariant');
 
-import type EmitterSubscription from '../vendor/emitter/EmitterSubscription';
+                                                                             
 
-type NativeModule = {
-  +addListener: (eventType: string) => void,
-  +removeListeners: (count: number) => void,
-  ...
-};
+                     
+                                            
+                                            
+     
+  
 
 /**
  * Abstract base class for implementing event-emitting modules. This implements
  * a subset of the standard EventEmitter node module API.
  */
 class NativeEventEmitter extends EventEmitter {
-  _nativeModule: ?NativeModule;
+  _nativeModule               ;
 
-  constructor(nativeModule: ?NativeModule) {
+  constructor(nativeModule               ) {
     super(RCTDeviceEventEmitter.sharedSubscriber);
     if (Platform.OS === 'ios') {
       invariant(nativeModule, 'Native module cannot be null.');
@@ -40,17 +40,17 @@ class NativeEventEmitter extends EventEmitter {
   }
 
   addListener(
-    eventType: string,
-    listener: Function,
-    context: ?Object,
-  ): EmitterSubscription {
+    eventType        ,
+    listener          ,
+    context         ,
+  )                      {
     if (this._nativeModule != null) {
       this._nativeModule.addListener(eventType);
     }
     return super.addListener(eventType, listener, context);
   }
 
-  removeAllListeners(eventType: string) {
+  removeAllListeners(eventType        ) {
     invariant(eventType, 'eventType argument is required.');
     const count = this.listeners(eventType).length;
     if (this._nativeModule != null) {
@@ -59,7 +59,7 @@ class NativeEventEmitter extends EventEmitter {
     super.removeAllListeners(eventType);
   }
 
-  removeSubscription(subscription: EmitterSubscription) {
+  removeSubscription(subscription                     ) {
     if (this._nativeModule != null) {
       this._nativeModule.removeListeners(1);
     }

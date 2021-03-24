@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -19,8 +19,8 @@ if (__DEV__) {
   require('promise/setimmediate/rejection-tracking').enable({
     allRejections: true,
     onUnhandled: (id, error = {}) => {
-      let message: string;
-      let stack: ?string;
+      let message        ;
+      let stack         ;
 
       const stringValue = Object.prototype.toString.call(error);
       if (stringValue === '[object Error]') {

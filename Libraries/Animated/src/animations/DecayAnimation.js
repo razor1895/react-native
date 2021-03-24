@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *      
  * @format
  */
 
@@ -14,38 +14,38 @@ const Animation = require('./Animation');
 
 const {shouldUseNativeDriver} = require('../NativeAnimatedHelper');
 
-import type AnimatedValue from '../nodes/AnimatedValue';
-import type {AnimationConfig, EndCallback} from './Animation';
+                                                        
+                                                              
 
-export type DecayAnimationConfig = {
-  ...AnimationConfig,
-  velocity:
-    | number
-    | {
-        x: number,
-        y: number,
-        ...
-      },
-  deceleration?: number,
-};
+                                    
+                     
+           
+            
+       
+                  
+                  
+           
+        
+                        
+  
 
-export type DecayAnimationConfigSingle = {
-  ...AnimationConfig,
-  velocity: number,
-  deceleration?: number,
-};
+                                          
+                     
+                   
+                        
+  
 
 class DecayAnimation extends Animation {
-  _startTime: number;
-  _lastValue: number;
-  _fromValue: number;
-  _deceleration: number;
-  _velocity: number;
-  _onUpdate: (value: number) => void;
-  _animationFrame: any;
-  _useNativeDriver: boolean;
+  _startTime        ;
+  _lastValue        ;
+  _fromValue        ;
+  _deceleration        ;
+  _velocity        ;
+  _onUpdate                         ;
+  _animationFrame     ;
+  _useNativeDriver         ;
 
-  constructor(config: DecayAnimationConfigSingle) {
+  constructor(config                            ) {
     super();
     this._deceleration = config.deceleration ?? 0.998;
     this._velocity = config.velocity;
@@ -54,12 +54,12 @@ class DecayAnimation extends Animation {
     this.__iterations = config.iterations ?? 1;
   }
 
-  __getNativeAnimationConfig(): {|
-    deceleration: number,
-    iterations: number,
-    type: $TEMPORARY$string<'decay'>,
-    velocity: number,
-  |} {
+  __getNativeAnimationConfig()    
+                         
+                       
+                                     
+                     
+     {
     return {
       type: 'decay',
       deceleration: this._deceleration,
@@ -69,12 +69,12 @@ class DecayAnimation extends Animation {
   }
 
   start(
-    fromValue: number,
-    onUpdate: (value: number) => void,
-    onEnd: ?EndCallback,
-    previousAnimation: ?Animation,
-    animatedValue: AnimatedValue,
-  ): void {
+    fromValue        ,
+    onUpdate                         ,
+    onEnd              ,
+    previousAnimation            ,
+    animatedValue               ,
+  )       {
     this.__active = true;
     this._lastValue = fromValue;
     this._fromValue = fromValue;
@@ -88,7 +88,7 @@ class DecayAnimation extends Animation {
     }
   }
 
-  onUpdate(): void {
+  onUpdate()       {
     const now = Date.now();
 
     const value =
@@ -109,7 +109,7 @@ class DecayAnimation extends Animation {
     }
   }
 
-  stop(): void {
+  stop()       {
     super.stop();
     this.__active = false;
     global.cancelAnimationFrame(this._animationFrame);

@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
 'use strict';
@@ -24,7 +24,7 @@ module.exports = {
    * }
    * ```
    */
-  getString(): Promise<string> {
+  getString()                  {
     return NativeClipboard.getString();
   },
   /**
@@ -36,7 +36,7 @@ module.exports = {
    * ```
    * @param the content to be stored in the clipboard.
    */
-  setString(content: string) {
+  setString(content        ) {
     NativeClipboard.setString(content);
   },
 };

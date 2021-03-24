@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow strict-local
+ *       strict-local
  * @format
  */
 
@@ -22,61 +22,61 @@ import AndroidCheckBoxNativeComponent, {
   Commands as AndroidCheckBoxCommands,
 } from './AndroidCheckBoxNativeComponent';
 
-import type {ViewProps} from '../View/ViewPropTypes';
-import type {SyntheticEvent} from '../../Types/CoreEventTypes';
-import type {ColorValue} from '../../StyleSheet/StyleSheetTypes';
+                                                     
+                                                               
+                                                                 
 
-type CheckBoxEvent = SyntheticEvent<
-  $ReadOnly<{|
-    target: number,
-    value: boolean,
-  |}>,
->;
+                                    
+              
+                   
+                   
+      
+  
 
-type CommonProps = $ReadOnly<{|
-  ...ViewProps,
+                               
+               
 
-  /**
-   * Used in case the props change removes the component.
-   */
-  onChange?: ?(event: CheckBoxEvent) => mixed,
+     
+                                                         
+     
+                                              
 
-  /**
-   * Invoked with the new value when the value changes.
-   */
-  onValueChange?: ?(value: boolean) => mixed,
+     
+                                                       
+     
+                                             
 
-  /**
-   * Used to locate this view in end-to-end tests.
-   */
-  testID?: ?string,
-|}>;
+     
+                                                  
+     
+                   
+    
 
-type Props = $ReadOnly<{|
-  ...CommonProps,
+                         
+                 
 
-  /**
-   * The value of the checkbox.  If true the checkbox will be turned on.
-   * Default value is false.
-   */
-  value?: ?boolean,
+     
+                                                                        
+                            
+     
+                   
 
-  /**
-   * If true the user won't be able to toggle the checkbox.
-   * Default value is false.
-   */
-  disabled?: ?boolean,
+     
+                                                           
+                            
+     
+                      
 
-  /**
-   * Used to get the ref for the native checkbox
-   */
-  forwardedRef?: ?React.Ref<typeof AndroidCheckBoxNativeComponent>,
+     
+                                                
+     
+                                                                   
 
-  /**
-   * Controls the colors the checkbox has in checked and unchecked states.
-   */
-  tintColors?: {|true?: ?ColorValue, false?: ?ColorValue|},
-|}>;
+     
+                                                                          
+     
+                                                           
+    
 
 /**
  * Renders a boolean input (Android only).
@@ -133,8 +133,8 @@ type Props = $ReadOnly<{|
  * @keyword checkbox
  * @keyword toggle
  */
-class CheckBox extends React.Component<Props> {
-  _nativeRef: ?React.ElementRef<typeof AndroidCheckBoxNativeComponent> = null;
+class CheckBox extends React.Component        {
+  _nativeRef                                                           = null;
   _setNativeRef = setAndForwardRef({
     getForwardedRef: () => this.props.forwardedRef,
     setLocalRef: ref => {
@@ -142,7 +142,7 @@ class CheckBox extends React.Component<Props> {
     },
   });
 
-  _onChange = (event: CheckBoxEvent) => {
+  _onChange = (event               ) => {
     const value = this.props.value ?? false;
     AndroidCheckBoxCommands.setNativeValue(nullthrows(this._nativeRef), value);
     // Change the props after the native props are set in case the props
@@ -213,16 +213,16 @@ const styles = StyleSheet.create({
   },
 });
 
-type CheckBoxType = React.AbstractComponent<
-  Props,
-  React.ElementRef<typeof AndroidCheckBoxNativeComponent>,
->;
+                                            
+        
+                                                          
+  
 
-const CheckBoxWithRef = React.forwardRef<
-  Props,
-  React.ElementRef<typeof AndroidCheckBoxNativeComponent>,
->(function CheckBoxWithRef(props, ref) {
+const CheckBoxWithRef = React.forwardRef 
+        
+                                                          
+ (function CheckBoxWithRef(props, ref) {
   return <CheckBox {...props} forwardedRef={ref} />;
 });
 
-module.exports = (CheckBoxWithRef: CheckBoxType);
+module.exports = (CheckBoxWithRef              );

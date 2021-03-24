@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -35,7 +35,7 @@ class Linking extends NativeEventEmitter {
    *
    * See https://reactnative.dev/docs/linking.html#addeventlistener
    */
-  addEventListener(type: string, handler: Function) {
+  addEventListener(type        , handler          ) {
     this.addListener(type, handler);
   }
 
@@ -44,7 +44,7 @@ class Linking extends NativeEventEmitter {
    *
    * See https://reactnative.dev/docs/linking.html#removeeventlistener
    */
-  removeEventListener(type: string, handler: Function) {
+  removeEventListener(type        , handler          ) {
     this.removeListener(type, handler);
   }
 
@@ -53,7 +53,7 @@ class Linking extends NativeEventEmitter {
    *
    * See https://reactnative.dev/docs/linking.html#openurl
    */
-  openURL(url: string): Promise<any> {
+  openURL(url        )               {
     this._validateURL(url);
     return NativeLinking.openURL(url);
   }
@@ -63,7 +63,7 @@ class Linking extends NativeEventEmitter {
    *
    * See https://reactnative.dev/docs/linking.html#canopenurl
    */
-  canOpenURL(url: string): Promise<boolean> {
+  canOpenURL(url        )                   {
     this._validateURL(url);
     return NativeLinking.canOpenURL(url);
   }
@@ -73,7 +73,7 @@ class Linking extends NativeEventEmitter {
    *
    * See https://reactnative.dev/docs/linking.html#opensettings
    */
-  openSettings(): Promise<any> {
+  openSettings()               {
     return NativeLinking.openSettings();
   }
 
@@ -83,7 +83,7 @@ class Linking extends NativeEventEmitter {
    *
    * See https://reactnative.dev/docs/linking.html#getinitialurl
    */
-  getInitialURL(): Promise<?string> {
+  getInitialURL()                   {
     return Platform.OS === 'android'
       ? InteractionManager.runAfterInteractions().then(() =>
           NativeLinking.getInitialURL(),
@@ -99,20 +99,20 @@ class Linking extends NativeEventEmitter {
    * See https://reactnative.dev/docs/linking.html#sendintent
    */
   sendIntent(
-    action: string,
-    extras?: Array<{
-      key: string,
-      value: string | number | boolean,
-      ...
-    }>,
-  ): Promise<void> {
+    action        ,
+    extras          
+                  
+                                       
+         
+      ,
+  )                {
     if (Platform.OS === 'android') {
       return NativeLinking.sendIntent(action, extras);
     }
     return new Promise((resolve, reject) => reject(new Error('Unsupported')));
   }
 
-  _validateURL(url: string) {
+  _validateURL(url        ) {
     invariant(
       typeof url === 'string',
       'Invalid URL: should be a string. Was: ' + url,
@@ -121,4 +121,4 @@ class Linking extends NativeEventEmitter {
   }
 }
 
-module.exports = (new Linking(): Linking);
+module.exports = (new Linking()         );

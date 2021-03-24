@@ -5,19 +5,19 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
 'use strict';
 
 const processColor = require('./processColor');
 
-import type {ColorValue} from './StyleSheetTypes';
-import type {ProcessedColorValue} from './processColor';
+                                                  
+                                                        
 
 function processColorArray(
-  colors: ?Array<ColorValue>,
-): ?Array<?ProcessedColorValue> {
+  colors                    ,
+)                               {
   return colors == null ? null : colors.map(processColor);
 }
 

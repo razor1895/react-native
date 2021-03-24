@@ -5,22 +5,22 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
 
 const invariant = require('invariant');
 
-import type EventSubscription from './EventSubscription';
+                                                         
 
 /**
  * EventSubscriptionVendor stores a set of EventSubscriptions that are
  * subscribed to a particular event type.
  */
 class EventSubscriptionVendor {
-  _subscriptionsForType: Object;
-  _currentSubscription: ?EventSubscription;
+  _subscriptionsForType        ;
+  _currentSubscription                    ;
 
   constructor() {
     this._subscriptionsForType = {};
@@ -34,9 +34,9 @@ class EventSubscriptionVendor {
    * @param {EventSubscription} subscription
    */
   addSubscription(
-    eventType: string,
-    subscription: EventSubscription,
-  ): EventSubscription {
+    eventType        ,
+    subscription                   ,
+  )                    {
     invariant(
       subscription.subscriber === this,
       'The subscriber of the subscription is incorrectly set.',
@@ -57,7 +57,7 @@ class EventSubscriptionVendor {
    * @param {?string} eventType - Optional name of the event type whose
    *   registered supscriptions to remove, if null remove all subscriptions.
    */
-  removeAllSubscriptions(eventType: ?string) {
+  removeAllSubscriptions(eventType         ) {
     if (eventType === undefined) {
       this._subscriptionsForType = {};
     } else {
@@ -71,7 +71,7 @@ class EventSubscriptionVendor {
    *
    * @param {object} subscription
    */
-  removeSubscription(subscription: Object) {
+  removeSubscription(subscription        ) {
     const eventType = subscription.eventType;
     const key = subscription.key;
 
@@ -93,7 +93,7 @@ class EventSubscriptionVendor {
    * @param {string} eventType
    * @returns {?array}
    */
-  getSubscriptionsForType(eventType: string): ?[EventSubscription] {
+  getSubscriptionsForType(eventType        )                       {
     return this._subscriptionsForType[eventType];
   }
 }

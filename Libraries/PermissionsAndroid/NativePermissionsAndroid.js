@@ -5,17 +5,17 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
 'use strict';
 
-import type {TurboModule} from '../TurboModule/RCTExport';
+                                                          
 import * as TurboModuleRegistry from '../TurboModule/TurboModuleRegistry';
 
 // TODO: Use proper enum types.
-export type PermissionStatus = string;
-export type PermissionType = string;
+                                      
+                                    
 /*
 export type PermissionStatus = 'granted' | 'denied' | 'never_ask_again';
 export type PermissionType =
@@ -46,15 +46,15 @@ export type PermissionType =
   | 'android.permission.WRITE_EXTERNAL_STORAGE';
 */
 
-export interface Spec extends TurboModule {
-  +checkPermission: (permission: PermissionType) => Promise<boolean>;
-  +requestPermission: (permission: PermissionType) => Promise<PermissionStatus>;
-  +shouldShowRequestPermissionRationale: (
-    permission: string,
-  ) => Promise<boolean>;
-  +requestMultiplePermissions: (
-    permissions: Array<PermissionType>,
-  ) => Promise<{[permission: PermissionType]: PermissionStatus, ...}>;
-}
+                                           
+                                                                     
+                                                                                
+                                          
+                       
+                        
+                                
+                                       
+                                                                      
+ 
 
-export default (TurboModuleRegistry.get<Spec>('PermissionsAndroid'): ?Spec);
+export default (TurboModuleRegistry.get      ('PermissionsAndroid')       );

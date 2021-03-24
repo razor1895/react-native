@@ -5,23 +5,23 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict
+ *       strict
  * @polyfill
  */
 
 let _inGuard = 0;
 
-type ErrorHandler = (error: mixed, isFatal: boolean) => void;
-type Fn<Args, Return> = (...Args) => Return;
+                                                             
+                                            
 
 /**
  * This is the error handler that is called when we encounter an exception
  * when loading a module. This will report any errors encountered before
  * ExceptionsManager is configured.
  */
-let _globalHandler: ErrorHandler = function onError(
-  e: mixed,
-  isFatal: boolean,
+let _globalHandler               = function onError(
+  e       ,
+  isFatal         ,
 ) {
   throw e;
 };
@@ -35,28 +35,28 @@ let _globalHandler: ErrorHandler = function onError(
  * set) globally before requiring anything.
  */
 const ErrorUtils = {
-  setGlobalHandler(fun: ErrorHandler): void {
+  setGlobalHandler(fun              )       {
     _globalHandler = fun;
   },
-  getGlobalHandler(): ErrorHandler {
+  getGlobalHandler()               {
     return _globalHandler;
   },
-  reportError(error: mixed): void {
+  reportError(error       )       {
     _globalHandler && _globalHandler(error, false);
   },
-  reportFatalError(error: mixed): void {
+  reportFatalError(error       )       {
     // NOTE: This has an untyped call site in Metro.
     _globalHandler && _globalHandler(error, true);
   },
-  applyWithGuard<TArgs: $ReadOnlyArray<mixed>, TOut>(
-    fun: Fn<TArgs, TOut>,
-    context?: ?mixed,
-    args?: ?TArgs,
+  applyWithGuard                                    (
+    fun                 ,
+    context         ,
+    args         ,
     // Unused, but some code synced from www sets it to null.
-    unused_onError?: null,
+    unused_onError       ,
     // Some callers pass a name here, which we ignore.
-    unused_name?: ?string,
-  ): ?TOut {
+    unused_name          ,
+  )        {
     try {
       _inGuard++;
       // $FlowFixMe: TODO T48204745 (1) apply(context, null) is fine. (2) array -> rest array should work
@@ -68,11 +68,11 @@ const ErrorUtils = {
     }
     return null;
   },
-  applyWithGuardIfNeeded<TArgs: $ReadOnlyArray<mixed>, TOut>(
-    fun: Fn<TArgs, TOut>,
-    context?: ?mixed,
-    args?: ?TArgs,
-  ): ?TOut {
+  applyWithGuardIfNeeded                                    (
+    fun                 ,
+    context         ,
+    args         ,
+  )        {
     if (ErrorUtils.inGuard()) {
       // $FlowFixMe: TODO T48204745 (1) apply(context, null) is fine. (2) array -> rest array should work
       return fun.apply(context, args);
@@ -81,14 +81,14 @@ const ErrorUtils = {
     }
     return null;
   },
-  inGuard(): boolean {
+  inGuard()          {
     return !!_inGuard;
   },
-  guard<TArgs: $ReadOnlyArray<mixed>, TOut>(
-    fun: Fn<TArgs, TOut>,
-    name?: ?string,
-    context?: ?mixed,
-  ): ?(...TArgs) => ?TOut {
+  guard                                    (
+    fun                 ,
+    name          ,
+    context         ,
+  )                       {
     // TODO: (moti) T48204753 Make sure this warning is never hit and remove it - types
     // should be sufficient.
     if (typeof fun !== 'function') {
@@ -96,7 +96,7 @@ const ErrorUtils = {
       return null;
     }
     const guardName = name ?? fun.name ?? '<generated guard>';
-    function guarded(...args: TArgs): ?TOut {
+    function guarded(...args       )        {
       return ErrorUtils.applyWithGuard(
         fun,
         context ?? this,
@@ -112,4 +112,4 @@ const ErrorUtils = {
 
 global.ErrorUtils = ErrorUtils;
 
-export type ErrorUtilsT = typeof ErrorUtils;
+                                            

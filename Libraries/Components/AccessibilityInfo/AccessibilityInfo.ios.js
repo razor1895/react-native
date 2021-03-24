@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -25,17 +25,17 @@ const CHANGE_EVENT_NAME = {
   screenReaderChanged: 'screenReaderChanged',
 };
 
-type ChangeEventName = $Keys<{
-  announcementFinished: string,
-  boldTextChanged: string,
-  change: string,
-  grayscaleChanged: string,
-  invertColorsChanged: string,
-  reduceMotionChanged: string,
-  reduceTransparencyChanged: string,
-  screenReaderChanged: string,
-  ...
-}>;
+                              
+                               
+                          
+                 
+                           
+                              
+                              
+                                    
+                              
+     
+   
 
 const _subscriptions = new Map();
 
@@ -57,7 +57,7 @@ const AccessibilityInfo = {
    *
    * See https://reactnative.dev/docs/accessibilityinfo.html#isBoldTextEnabled
    */
-  isBoldTextEnabled: function(): Promise<boolean> {
+  isBoldTextEnabled: function()                   {
     return new Promise((resolve, reject) => {
       if (NativeAccessibilityManager) {
         NativeAccessibilityManager.getCurrentBoldTextState(resolve, reject);
@@ -75,7 +75,7 @@ const AccessibilityInfo = {
    *
    * See https://reactnative.dev/docs/accessibilityinfo.html#isGrayscaleEnabled
    */
-  isGrayscaleEnabled: function(): Promise<boolean> {
+  isGrayscaleEnabled: function()                   {
     return new Promise((resolve, reject) => {
       if (NativeAccessibilityManager) {
         NativeAccessibilityManager.getCurrentGrayscaleState(resolve, reject);
@@ -93,7 +93,7 @@ const AccessibilityInfo = {
    *
    * See https://reactnative.dev/docs/accessibilityinfo.html#isInvertColorsEnabled
    */
-  isInvertColorsEnabled: function(): Promise<boolean> {
+  isInvertColorsEnabled: function()                   {
     return new Promise((resolve, reject) => {
       if (NativeAccessibilityManager) {
         NativeAccessibilityManager.getCurrentInvertColorsState(resolve, reject);
@@ -111,7 +111,7 @@ const AccessibilityInfo = {
    *
    * See https://reactnative.dev/docs/accessibilityinfo.html#isReduceMotionEnabled
    */
-  isReduceMotionEnabled: function(): Promise<boolean> {
+  isReduceMotionEnabled: function()                   {
     return new Promise((resolve, reject) => {
       if (NativeAccessibilityManager) {
         NativeAccessibilityManager.getCurrentReduceMotionState(resolve, reject);
@@ -129,7 +129,7 @@ const AccessibilityInfo = {
    *
    * See https://reactnative.dev/docs/accessibilityinfo.html#isReduceTransparencyEnabled
    */
-  isReduceTransparencyEnabled: function(): Promise<boolean> {
+  isReduceTransparencyEnabled: function()                   {
     return new Promise((resolve, reject) => {
       if (NativeAccessibilityManager) {
         NativeAccessibilityManager.getCurrentReduceTransparencyState(
@@ -150,7 +150,7 @@ const AccessibilityInfo = {
    *
    * See https://reactnative.dev/docs/accessibilityinfo.html#isScreenReaderEnabled
    */
-  isScreenReaderEnabled: function(): Promise<boolean> {
+  isScreenReaderEnabled: function()                   {
     return new Promise((resolve, reject) => {
       if (NativeAccessibilityManager) {
         NativeAccessibilityManager.getCurrentVoiceOverState(resolve, reject);
@@ -165,7 +165,7 @@ const AccessibilityInfo = {
    *
    * Same as `isScreenReaderEnabled`
    */
-  get fetch(): $FlowFixMe {
+  get fetch()             {
     console.warn(
       'AccessibilityInfo.fetch is deprecated, call AccessibilityInfo.isScreenReaderEnabled instead',
     );
@@ -204,9 +204,9 @@ const AccessibilityInfo = {
    * See https://reactnative.dev/docs/accessibilityinfo.html#addeventlistener
    */
   addEventListener: function(
-    eventName: ChangeEventName,
-    handler: Function,
-  ): Object {
+    eventName                 ,
+    handler          ,
+  )         {
     let listener;
 
     if (eventName === 'change') {
@@ -233,7 +233,7 @@ const AccessibilityInfo = {
    *
    * See https://reactnative.dev/docs/accessibilityinfo.html#setaccessibilityfocus
    */
-  setAccessibilityFocus: function(reactTag: number): void {
+  setAccessibilityFocus: function(reactTag        )       {
     if (NativeAccessibilityManager) {
       NativeAccessibilityManager.setAccessibilityFocus(reactTag);
     }
@@ -244,7 +244,7 @@ const AccessibilityInfo = {
    *
    * See https://reactnative.dev/docs/accessibilityinfo.html#announceforaccessibility
    */
-  announceForAccessibility: function(announcement: string): void {
+  announceForAccessibility: function(announcement        )       {
     if (NativeAccessibilityManager) {
       NativeAccessibilityManager.announceForAccessibility(announcement);
     }
@@ -256,9 +256,9 @@ const AccessibilityInfo = {
    * See https://reactnative.dev/docs/accessibilityinfo.html#removeeventlistener
    */
   removeEventListener: function(
-    eventName: ChangeEventName,
-    handler: Function,
-  ): void {
+    eventName                 ,
+    handler          ,
+  )       {
     const listener = _subscriptions.get(handler);
     if (!listener) {
       return;

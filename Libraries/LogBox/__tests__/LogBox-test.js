@@ -6,7 +6,7 @@
  *
  * @emails oncall+react_native
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -14,10 +14,10 @@
 const LogBox = require('../LogBox');
 const LogBoxData = require('../Data/LogBoxData');
 
-declare var console: any;
+                         
 
 function mockFilterResult(returnValues) {
-  (LogBoxData.checkWarningFilter: any).mockReturnValue({
+  (LogBoxData.checkWarningFilter     ).mockReturnValue({
     finalFormat: 'Warning: ...',
     forceDialogImmediately: false,
     suppressDialog_LEGACY: false,
@@ -108,7 +108,7 @@ describe('LogBox', () => {
     const mockError = new Error('Simulated error');
 
     // Picking a random implemention detail to simulate throwing.
-    (LogBoxData.isMessageIgnored: any).mockImplementation(() => {
+    (LogBoxData.isMessageIgnored     ).mockImplementation(() => {
       throw mockError;
     });
 
@@ -211,7 +211,7 @@ describe('LogBox', () => {
     jest.mock('../Data/LogBoxData');
 
     mockFilterResult({});
-    (LogBoxData.isMessageIgnored: any).mockReturnValue(true);
+    (LogBoxData.isMessageIgnored     ).mockReturnValue(true);
 
     LogBox.install();
 
@@ -223,7 +223,7 @@ describe('LogBox', () => {
     jest.mock('../Data/LogBoxData');
 
     mockFilterResult({});
-    (LogBoxData.isLogBoxErrorMessage: any).mockReturnValue(true);
+    (LogBoxData.isLogBoxErrorMessage     ).mockReturnValue(true);
 
     LogBox.install();
 
@@ -233,7 +233,7 @@ describe('LogBox', () => {
 
   it('ignores logs that are pattern ignored"', () => {
     jest.mock('../Data/LogBoxData');
-    (LogBoxData.isMessageIgnored: any).mockReturnValue(true);
+    (LogBoxData.isMessageIgnored     ).mockReturnValue(true);
 
     LogBox.install();
 
@@ -243,7 +243,7 @@ describe('LogBox', () => {
 
   it('does not add logs that are from LogBox itself"', () => {
     jest.mock('../Data/LogBoxData');
-    (LogBoxData.isLogBoxErrorMessage: any).mockReturnValue(true);
+    (LogBoxData.isLogBoxErrorMessage     ).mockReturnValue(true);
 
     LogBox.install();
 

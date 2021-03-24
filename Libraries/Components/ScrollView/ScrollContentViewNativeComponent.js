@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -13,8 +13,8 @@
 const registerGeneratedViewConfig = require('../../Utilities/registerGeneratedViewConfig');
 const requireNativeComponent = require('../../ReactNative/requireNativeComponent');
 
-import type {HostComponent} from '../../Renderer/shims/ReactNativeTypes';
-import type {ViewProps} from '../View/ViewPropTypes';
+                                                                         
+                                                     
 
 const ScrollContentViewViewConfig = {
   uiViewClassName: 'RCTScrollContentView',
@@ -31,9 +31,9 @@ if (global.RN$Bridgeless) {
   );
   ScrollContentViewNativeComponent = 'RCTScrollContentView';
 } else {
-  ScrollContentViewNativeComponent = requireNativeComponent<ViewProps>(
+  ScrollContentViewNativeComponent = requireNativeComponent           (
     'RCTScrollContentView',
   );
 }
 
-export default ((ScrollContentViewNativeComponent: any): HostComponent<ViewProps>);
+export default ((ScrollContentViewNativeComponent     )                          );

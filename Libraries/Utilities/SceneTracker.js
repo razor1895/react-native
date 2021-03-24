@@ -5,30 +5,30 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict
+ *       strict
  */
 
 'use strict';
 
-export type Scene = {name: string, ...};
+                                        
 
-let _listeners: Array<(scene: Scene) => void> = [];
+let _listeners                                = [];
 
 let _activeScene = {name: 'default'};
 
 const SceneTracker = {
-  setActiveScene(scene: Scene) {
+  setActiveScene(scene       ) {
     _activeScene = scene;
     _listeners.forEach(listener => listener(_activeScene));
   },
 
-  getActiveScene(): Scene {
+  getActiveScene()        {
     return _activeScene;
   },
 
   addActiveSceneChangedListener(
-    callback: (scene: Scene) => void,
-  ): {remove: () => void, ...} {
+    callback                        ,
+  )                            {
     _listeners.push(callback);
     return {
       remove: () => {

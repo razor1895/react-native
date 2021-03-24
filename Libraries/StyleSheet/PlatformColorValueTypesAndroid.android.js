@@ -5,14 +5,14 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
 'use strict';
 
-import type {ColorValue} from './StyleSheetTypes';
+                                                  
 import {ColorAndroidPrivate} from './PlatformColorValueTypes';
 
-export const ColorAndroid = (color: string): ColorValue => {
+export const ColorAndroid = (color        )             => {
   return ColorAndroidPrivate(color);
 };

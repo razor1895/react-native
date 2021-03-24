@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow
+ *      
  */
 
 'use strict';
@@ -13,9 +13,9 @@
 const EventEmitter = require('../vendor/emitter/EventEmitter');
 const EventSubscriptionVendor = require('../vendor/emitter/EventSubscriptionVendor');
 
-import type EmitterSubscription from '../vendor/emitter/EmitterSubscription';
+                                                                             
 
-function checkNativeEventModule(eventType: ?string) {
+function checkNativeEventModule(eventType         ) {
   if (eventType) {
     if (eventType.lastIndexOf('statusBar', 0) === 0) {
       throw new Error(
@@ -46,7 +46,7 @@ function checkNativeEventModule(eventType: ?string) {
  * adding all event listeners directly to RCTDeviceEventEmitter.
  */
 class RCTDeviceEventEmitter extends EventEmitter {
-  sharedSubscriber: EventSubscriptionVendor;
+  sharedSubscriber                         ;
 
   constructor() {
     const sharedSubscriber = new EventSubscriptionVendor();
@@ -55,24 +55,24 @@ class RCTDeviceEventEmitter extends EventEmitter {
   }
 
   addListener(
-    eventType: string,
-    listener: Function,
-    context: ?Object,
-  ): EmitterSubscription {
+    eventType        ,
+    listener          ,
+    context         ,
+  )                      {
     if (__DEV__) {
       checkNativeEventModule(eventType);
     }
     return super.addListener(eventType, listener, context);
   }
 
-  removeAllListeners(eventType: ?string) {
+  removeAllListeners(eventType         ) {
     if (__DEV__) {
       checkNativeEventModule(eventType);
     }
     super.removeAllListeners(eventType);
   }
 
-  removeSubscription(subscription: EmitterSubscription) {
+  removeSubscription(subscription                     ) {
     if (subscription.emitter !== this) {
       subscription.emitter.removeSubscription(subscription);
     } else {
@@ -81,4 +81,4 @@ class RCTDeviceEventEmitter extends EventEmitter {
   }
 }
 
-module.exports = (new RCTDeviceEventEmitter(): RCTDeviceEventEmitter);
+module.exports = (new RCTDeviceEventEmitter()                       );

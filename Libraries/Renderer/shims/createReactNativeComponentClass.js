@@ -5,14 +5,14 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @format
- * @flow strict-local
+ *       strict-local
  */
 
 'use strict';
 
 import {ReactNativeViewConfigRegistry} from 'react-native/Libraries/ReactPrivate/ReactNativePrivateInterface';
 
-import type {ViewConfigGetter} from './ReactNativeTypes';
+                                                         
 
 const {register} = ReactNativeViewConfigRegistry;
 
@@ -25,9 +25,9 @@ const {register} = ReactNativeViewConfigRegistry;
  * @private
  */
 const createReactNativeComponentClass = function(
-  name: string,
-  callback: ViewConfigGetter,
-): string {
+  name        ,
+  callback                  ,
+)         {
   return register(name, callback);
 };
 
